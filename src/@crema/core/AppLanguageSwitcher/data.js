@@ -35,5 +35,17 @@ const languageData = [
     name: 'Arabic',
     icon: 'sa',
   },
+  {
+    languageId: 'uzbek',
+    locale: 'uz',
+    name: 'Uzbek',
+    icon: 'uz',
+  },
+  {
+    languageId: 'russian',
+    locale: 'ru',
+    name: 'Russian',
+    icon: 'ru',
+  },
 ];
 export default languageData;

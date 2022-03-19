@@ -13,6 +13,7 @@ import IntlMessages from '../../../utility/IntlMessages';
 import {CheckOutlined} from '@ant-design/icons';
 import {Switch} from 'antd';
 import MenuColorCell from './MenuColorCell';
+import {useIntl} from 'react-intl';
 import './index.style.less';
 
 const SidebarSettings = () => {
@@ -27,6 +28,7 @@ const SidebarSettings = () => {
     updateSidebarBgImage(image);
   };
 
+  const {messages} = useIntl();
   return (
     <div className='sidebar-setting'>
       <NavMenuStyle />
@@ -66,7 +68,7 @@ const SidebarSettings = () => {
       </div>
 
       <div className='customize-item'>
-        <h4>Sidebar Colors</h4>
+        <h4>{messages['customizer.sidebarColors']}</h4>
         <AppGrid
           data={sidebarColors}
           column={2}

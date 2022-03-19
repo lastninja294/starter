@@ -4,6 +4,8 @@ import arLang from './entries/ar_SA';
 import itLang from './entries/it_IT';
 import esLang from './entries/es_ES';
 import frLang from './entries/fr_FR';
+import uzLang from './entries/uz_UZ';
+import ruLang from './entries/ru_RU';
 
 const AppLocale = {
   en: enLang,
@@ -12,6 +14,8 @@ const AppLocale = {
   it: itLang,
   es: esLang,
   fr: frLang,
+  uz: uzLang,
+  ru: ruLang,
 };
 
 export default AppLocale;
