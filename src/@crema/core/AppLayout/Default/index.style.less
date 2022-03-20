@@ -7,6 +7,7 @@
   background: @body-background;
   overflow-x: hidden;
 
+
   &.appMainFixedFooter {
     padding-bottom: 46px;
 
@@ -100,6 +101,7 @@
       height: 0;
       padding: 0;
     }
+    
   }
 
   & .cr-user-info {
@@ -244,7 +246,6 @@
   @media screen and (min-width: @screen-md) {
     display: none;
   }
-
   & .ant-dropdown-link {
     font-weight: @font-weight-medium;
     text-transform: uppercase;
@@ -363,6 +364,16 @@
   & .ant-menu {
     background-color: transparent;
   }
+}
+
+
+// Mobile Sidebar
+.mobileswitcher{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+
 }
 
 

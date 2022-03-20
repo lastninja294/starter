@@ -1,11 +1,11 @@
 import React from 'react';
-import {Dropdown, Input, Layout, Menu} from 'antd';
+import {Dropdown, Input, Layout, Menu, Button} from 'antd';
 import './index.style.less';
 import AppLogo from '../components/AppLogo';
 import {useIntl} from 'react-intl';
 import AppLanguageSwitcher from '../../AppLanguageSwitcher';
-import AppHeaderMessages from '../../AppHeaderMessages';
-import AppNotifications from '../../AppNotifications';
+// import AppHeaderMessages from '../../AppHeaderMessages';
+// import AppNotifications from '../../AppNotifications';
 import PropTypes from 'prop-types';
 import {FiMoreVertical} from 'react-icons/fi';
 import {AiOutlineMenu} from 'react-icons/ai';
@@ -15,10 +15,14 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
   const {Search} = Input;
   const {messages} = useIntl();
   const menuMobile = (
-    <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
+    <Menu className='mobileswitcher'>
+      {/* <AppHeaderMessages />
+      <AppNotifications /> */}
+
       <AppLanguageSwitcher />
+      <Button type='primary' size={'small'}>
+        Create
+      </Button>
     </Menu>
   );
 
@@ -34,8 +38,11 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
       />
       <div className='app-header-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
+        {/* <AppHeaderMessages /> */}
+        {/* <AppNotifications /> */}
+        <Button type='primary' size={"large"}>
+          Create
+        </Button>
       </div>
       <div className='app-header-section-mobile'>
         <Dropdown overlay={menuMobile} trigger={['click']}>
