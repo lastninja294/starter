@@ -78,7 +78,7 @@ const UserInfo = ({hasColor}) => {
                   </span>
                 </span>
                 <span className='cr-user-designation text-truncate'>
-                  System Manager
+                  Bekarchi
                 </span>
               </span>
             </a>
