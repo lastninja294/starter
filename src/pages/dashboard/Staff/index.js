@@ -1,26 +1,25 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import CreateData from './crud/create/create-data.component';
+import {api} from './crud/api';
 
-class Staff extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-      isLoad: true,
-    };
-  }
-  componentDidMount() {
-    fetch('https://axiosuchunsinovapi.herokuapp.com/staff')
-      .then((res) => res.json())
-      .then((data) => this.setState({data: data}));
-  }
-  render() {
-    console.log(this.state.data);
-    return (
+const Staff = () => {
+  const [staffData, setData] = useState([]);
+  useEffect(() => {
+    api
+      .get('/')
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(staffData);
+  return (
+    <Router>
+      <Route exact path='/dashboard/staff/create' component={CreateData} />
       <div className='container-data'>
         <AppPageMetadata title='Staff' />
         <div className='row'>
-          {this.state.data.map((item) => (
+          {staffData.map((item) => (
             <div className='column' key={item.id}>
               <span>{item.id}</span>
               <span>{item.title}</span>
@@ -28,9 +27,12 @@ class Staff extends Component {
             </div>
           ))}
         </div>
+        <Link to='/dashboard/staff/create'>
+          <button>create</button>
+        </Link>
       </div>
-    );
-  }
-}
+    </Router>
+  );
+};
 
 export default Staff;
