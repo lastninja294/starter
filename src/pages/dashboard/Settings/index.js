@@ -1,7 +1,6 @@
 import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 
-
 const Settigs = () => {
   return (
     <>

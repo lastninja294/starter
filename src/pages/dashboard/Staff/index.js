@@ -1,15 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 
-
-const Staff = () => {
-  return (
-    <>
-      <AppPageMetadata title='Staff' />
-      <h2>Staff Page</h2>
-      <p>You can kick start your app</p>
-    </>
-  );
-};
+class Staff extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      isLoad: true,
+    };
+  }
+  componentDidMount() {
+    fetch('https://axiosuchunsinovapi.herokuapp.com/staff')
+      .then((res) => res.json())
+      .then((data) => this.setState({data: data}));
+  }
+  render() {
+    console.log(this.state.data);
+    return (
+      <div className='container-data'>
+        <AppPageMetadata title='Staff' />
+        <div className='row'>
+          {this.state.data.map((item) => (
+            <div className='column' key={item.id}>
+              <span>{item.id}</span>
+              <span>{item.title}</span>
+              <span>{item.description}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Staff;
