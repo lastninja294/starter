@@ -1,24 +1,24 @@
 import React from 'react';
 
-export const samplePagesConfigs = [
+export const dashboardPagesConfigs = [
   {
-    path: '/sample/settings',
+    path: '/dashboard/settings',
     component: React.lazy(() => import('./Settings')),
   },
   {
-    path: '/sample/news',
+    path: '/dashboard/news',
     component: React.lazy(() => import('./News')),
   },
   {
-    path: '/sample/staff',
+    path: '/dashboard/staff',
     component: React.lazy(() => import('./Staff')),
   },
   {
-    path: "/sample/certificates",
+    path: "/dashboard/certificates",
     component: React.lazy(() => import('./Certificates')),
   },
   {
-    path: "/sample/surgery",
+    path: "/dashboard/surgery",
     component: React.lazy(() => import('./Surgery')),
   }
 ];

@@ -5,8 +5,8 @@ import {FiMoreVertical} from 'react-icons/fi';
 import AppLogo from '../components/AppLogo';
 import {useIntl} from 'react-intl';
 import AppLanguageSwitcher from '../../AppLanguageSwitcher';
-import AppHeaderMessages from '../../AppHeaderMessages';
-import AppNotifications from '../../AppNotifications';
+// import AppHeaderMessages from '../../AppHeaderMessages';
+// import AppNotifications from '../../AppNotifications';
 import UserInfo from '../components/UserInfo';
 
 const AppHeader = () => {
@@ -16,9 +16,10 @@ const AppHeader = () => {
 
   const menuMobile = (
     <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
+      {/* <AppHeaderMessages />
+      <AppNotifications /> */}
       <AppLanguageSwitcher />
+      
     </Menu>
   );
 
@@ -32,8 +33,11 @@ const AppHeader = () => {
       />
       <div className='app-userMiniHeader-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
+        {/* <AppHeaderMessages />
+        <AppNotifications /> */}
+        {/* <Button type='primary' size={'large'}>
+          Create
+        </Button> */}
       </div>
       <UserInfo />
       <div className='app-userMiniHeader-section-mobile'>

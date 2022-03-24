@@ -1,8 +1,10 @@
 import React from 'react';
-import {IoChatboxOutline} from 'react-icons/io5';
+// import {IoChatboxOutline} from 'react-icons/io5';
 import {AiOutlineSearch} from 'react-icons/ai';
-import {FiSettings} from 'react-icons/fi';
-import {IoIosNotificationsOutline} from 'react-icons/io';
+import { FiSettings } from 'react-icons/fi';
+import {BsPlusCircleFill} from 'react-icons/bs';
+// import {IoIosNotificationsOutline} from 'react-icons/io';
+import {IoLanguageOutline} from 'react-icons/io5';
 import AppLanguageSwitcher from '../../AppLanguageSwitcher';
 import AppScrollbar from '../../AppScrollbar';
 import {useSidebarContext} from '../../../utility/AppContextProvider/SidebarContextProvider';
@@ -41,17 +43,12 @@ const BucketMinibar = () => {
               <AiOutlineSearch />
             </a>
 
-            <AppLanguageSwitcher />
+            {<AppLanguageSwitcher /> ? <AppLanguageSwitcher /> : <IoLanguageOutline />}
 
             <a
               className='bucket-minibar-link'
               onClick={(e) => e.preventDefault()}>
-              <IoChatboxOutline />
-            </a>
-            <a
-              className='bucket-minibar-link bucket-minibar-notify-link'
-              onClick={(e) => e.preventDefault()}>
-              <IoIosNotificationsOutline />
+              <BsPlusCircleFill style={{color: '#1890ff'}} />
             </a>
           </div>
           <div className='bucket-minibar-setting'>

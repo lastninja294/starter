@@ -35,7 +35,6 @@ function ComposeCertificate() {
 
     const isPdf = file.type === 'application/pdf';
     if (!isPdf) message.error('You can only upload PDF file.');
-    console.log('condition: ', isPdf && isOneFile);
     return isPdf || Upload.LIST_IGNORE;
   };
 

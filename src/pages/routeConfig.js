@@ -18,7 +18,7 @@ const routesConfig = [
         messageId: 'sidebar.sample.page1',
         type: 'item',
         icon: <FiSettings />,
-        path: '/sample/settings',
+        path: '/dashboard/settings',
       },
       {
         id: 'news',
@@ -26,7 +26,7 @@ const routesConfig = [
         messageId: 'sidebar.sample.page2',
         type: 'item',
         icon: <IoNewspaperOutline />,
-        path: '/sample/news',
+        path: '/dashboard/news',
       },
       {
         id: 'staff',
@@ -34,7 +34,7 @@ const routesConfig = [
         messageId: 'common.staff',
         type: 'item',
         icon: <CgUserList />,
-        path: '/sample/staff',
+        path: '/dashboard/staff',
       },
       {
         id: 'certificates',
@@ -42,7 +42,7 @@ const routesConfig = [
         messageId: 'sidebar.pages.sample.certificates',
         type: 'item',
         icon: <GrCertificate />,
-        path: '/sample/certificates',
+        path: '/dashboard/certificates',
       },
       {
         id: 'surgery',
@@ -50,7 +50,7 @@ const routesConfig = [
         messageId: 'sidebar.pages.sample.surgery',
         type: 'item',
         icon: <FaHospitalUser />,
-        path: '/sample/surgery',
+        path: '/dashboard/surgery',
       },
     ],
   },
