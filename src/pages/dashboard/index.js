@@ -14,11 +14,17 @@ export const dashboardPagesConfigs = [
     component: React.lazy(() => import('./Staff')),
   },
   {
-    path: "/dashboard/certificates",
+    path: '/dashboard/staff/create',
+    component: React.lazy(() =>
+      import('./Staff/crud/create/create-data.component'),
+    ),
+  },
+  {
+    path: '/dashboard/certificates',
     component: React.lazy(() => import('./Certificates')),
   },
   {
-    path: "/dashboard/surgery",
+    path: '/dashboard/surgery',
     component: React.lazy(() => import('./Surgery')),
-  }
+  },
 ];
