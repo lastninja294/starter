@@ -84,6 +84,7 @@ const News = () => {
       onError({err});
     }
   };
+  
   return (
     <>
       <AppPageMetadata title='News' />

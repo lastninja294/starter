@@ -29,26 +29,23 @@ const MyCard = ({post}) => {
     pauseOnHover: true,
   };
 
-  // modal form newspost update 
+  // modal form newspost update
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
 
-
-// update form va post descriptionlani bosganda farqlab beruvchi
-  const [modalDes , setModalDes] = useState(false)
-
+  // update form va post descriptionlani bosganda farqlab beruvchi
+  const [modalDes, setModalDes] = useState(false);
 
   // post description va update form modalkalani yopuvchi fun
   const showModalForm = () => {
-    setModalDes(false)
+    setModalDes(false);
     setVisible(true);
   };
 
   const showModalDes = () => {
-    setModalDes(true)
+    setModalDes(true);
     setVisible(true);
   };
-
 
   const handleCancel = () => {
     setVisible(false);
@@ -110,7 +107,7 @@ const MyCard = ({post}) => {
   };
   // postga yuklanga img va vidioni status seccess bolganlari
   const successUrl = post.src.filter((item) => item?.status === 'done');
-  
+
   // postni korinib turadigan birinchi rasmi
   const postImgSrc = successUrl.find((item) => item?.type.startsWith('image'));
 
@@ -119,14 +116,60 @@ const MyCard = ({post}) => {
     // newsDataId.post_description JSON.parsga beriladi
     const postHtml = JSON.parse(post?.description);
     const html = draftToHtml(postHtml);
-    
+
     return {__html: html};
   };
   // form update va modal post descripton valuelarini farqlab beradi
   const widthModalTitle = modalDes
     ? {width: 500, key: 'post', title: 'Post'}
     : {width: 800, key: 'updatepost', title: 'Update Post'};
+  ///  date bilan ishlash
+  
+  const datePost = new Date(post.date);
+  // get month function
+  const month = (index) => {
+    switch (index) {
+      case 0: {
+        return 'Yanvar';
+      }
+      case 1: {
+        return 'Fevral';
+      }
+      case 2: {
+        return 'Mart';
+      }
+      case 3: {
+        return 'Aprel';
+      }
+      case 4: {
+        return 'May';
+      }
+      case 5: {
+        return 'Iyun';
+      }
+      case 6: {
+        return 'Iyul';
+      }
+      case 7: {
+        return 'Avgust';
+      }
+      case 8: {
+        return 'Sentabr';
+      }
+      case 9: {
+        return 'Oktabr';
+      }
+      case 10: {
+        return 'Noyabr';
+      }
+      case 11: {
+        return 'Dekabr';
+      }
 
+      default:
+        break;
+    }
+  };
   return (
     <>
       <Card
@@ -155,7 +198,19 @@ const MyCard = ({post}) => {
             showModalDes();
           }}
           title={post?.title}
-          description={<div dangerouslySetInnerHTML={Html()} />}
+          description={
+            <>
+              <p style={{textAlign: 'right'}}>
+                {' '}
+                {month(datePost.getMonth()) +
+                  ' ' +
+                  datePost.getDay() +
+                  ' ' +
+                  datePost.getFullYear()}{' '}
+              </p>
+              <div dangerouslySetInnerHTML={Html()} />
+            </>
+          }
         />
       </Card>
 
@@ -185,6 +240,14 @@ const MyCard = ({post}) => {
               </Slider>
             </div>
             <h1>{post?.title}</h1>
+            <p style={{textAlign: 'right'}}>
+              {' '}
+              {month(datePost.getMonth()) +
+                ' ' +
+                datePost.getDay() +
+                ' ' +
+                datePost.getFullYear()}{' '}
+            </p>
             <div dangerouslySetInnerHTML={Html()} />
           </>
         ) : (
