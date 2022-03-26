@@ -1,19 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
-import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
-import {MdVideoLibrary} from 'react-icons/md';
+import ShowIamges from '../show-image/show-image';
+import ShowVideos from '../show-video/show-video';
 import {FaRegEdit} from 'react-icons/fa';
 import {Button} from 'antd';
 import {Table} from 'antd';
 import {api} from '../api';
-
 const TableComponent = () => {
   const [staffData, setData] = useState([]);
   useEffect(() => {
-    api
-      .get('/')
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+    async function fetchData() {
+      const request = await api.get('/');
+      console.log(request.data);
+      setData(request.data);
+      console.log('ishla');
+      return request;
+    }
+    fetchData();
+    // api
+    //   .get('/')
+    //   .then((res) => setData(res.data))
+    //   .catch((err) => console.log(err));
+    // console.log('ishla');
   }, []);
   console.log(staffData);
   const columns = [
@@ -45,7 +53,7 @@ const TableComponent = () => {
       render: () => (
         <a>
           <Button type='primary' shape='round' size={'middle'}>
-            <BsFillFileEarmarkImageFill size={'20px'} />
+            <ShowIamges />
           </Button>
         </a>
       ),
@@ -57,7 +65,7 @@ const TableComponent = () => {
       width: 80,
       render: () => (
         <Button type='primary' shape='round' size={'middle'}>
-          <MdVideoLibrary size={'20px'} />
+          <ShowVideos />
         </Button>
       ),
     },
@@ -97,11 +105,13 @@ const TableComponent = () => {
   //   });
   // }
   return (
-    <Table
-      columns={columns}
-      dataSource={staffData}
-      scroll={{x: 1500, y: 800}}
-    />
+    <div>
+      <Table
+        columns={columns}
+        dataSource={staffData}
+        scroll={{x: 1500, y: 500}}
+      />
+    </div>
   );
 };
 

@@ -8,13 +8,13 @@ const Staff = () => {
   return (
     <div className='container-data'>
       <AppPageMetadata title='Staff' />
+      <Create />
       {/* <CreateData /> */}
       {/* <Switch>
         <Route path='/' component={TableComponent} />
         <Route path='/dashboard/staff/edit' component={Edit} />
       </Switch> */}
       <TableComponent />
-      <Create />
     </div>
   );
 };
