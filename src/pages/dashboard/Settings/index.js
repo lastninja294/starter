@@ -12,4 +12,5 @@ const Settigs = () => {
   );
 };
 
+
 export default Settigs;
