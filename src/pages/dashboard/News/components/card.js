@@ -124,7 +124,7 @@ const MyCard = ({post}) => {
     ? {width: 500, key: 'post', title: 'Post'}
     : {width: 800, key: 'updatepost', title: 'Update Post'};
   ///  date bilan ishlash
-  
+
   const datePost = new Date(post.date);
   // get month function
   const month = (index) => {

@@ -2,28 +2,29 @@ import React, {useState, useEffect} from 'react';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
 import ShowIamges from '../show-image/show-image';
 import ShowVideos from '../show-video/show-video';
-import {FaRegEdit} from 'react-icons/fa';
 import {Button} from 'antd';
 import {Table} from 'antd';
 import {api} from '../api';
+import Edit from '../edit/edit.component';
 const TableComponent = () => {
   const [staffData, setData] = useState([]);
+  const fetchData = async () => {
+    const request = await api.get('/');
+    setData(request.data);
+    return request;
+  };
   useEffect(() => {
-    async function fetchData() {
-      const request = await api.get('/');
-      console.log(request.data);
-      setData(request.data);
-      console.log('ishla');
-      return request;
-    }
     fetchData();
-    // api
-    //   .get('/')
-    //   .then((res) => setData(res.data))
-    //   .catch((err) => console.log(err));
-    // console.log('ishla');
   }, []);
-  console.log(staffData);
+
+  const handleDelete = async (id) => {
+    await api.delete(`/${id}`);
+    fetchData();
+  };
+
+  const saveClickItemID = (id) => {
+    localStorage.setItem('EditID', `${id}`);
+  };
   const columns = [
     {
       title: 'ID',
@@ -74,9 +75,13 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
-        <Button type='primary' shape='round' size={'middle'}>
-          <FaRegEdit size={'20px'} />
+      render: (record) => (
+        <Button
+          type='primary'
+          shape='round'
+          size={'middle'}
+          onClick={() => saveClickItemID(record.id)}>
+          <Edit />
         </Button>
       ),
     },
@@ -85,9 +90,14 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <a>
-          <Button type='primary' shape='round' size={'middle'}>
+          <Button
+            type='primary'
+            shape='round'
+            size={'middle'}
+            danger
+            onClick={() => handleDelete(record.id)}>
             <RiDeleteBin6Fill size={'20px'} />
           </Button>
         </a>
@@ -107,9 +117,10 @@ const TableComponent = () => {
   return (
     <div>
       <Table
+        rowKey='id'
         columns={columns}
-        dataSource={staffData}
-        scroll={{x: 1500, y: 500}}
+        dataSource={[...staffData]}
+        scroll={{x: 1500, y: 480}}
       />
     </div>
   );

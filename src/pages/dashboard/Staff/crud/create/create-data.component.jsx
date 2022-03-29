@@ -38,12 +38,12 @@ const Create = () => {
   const onFinish = (values) => {
     api
       .post('/', {
-        title: values.user.introduction,
-        description: values.user.website,
+        title: values.user.website,
+        description: values.user.introduction,
       })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    console.log(values);
+    // console.log(values);
   };
   return (
     <>
@@ -137,9 +137,9 @@ const Create = () => {
               offset: 6,
             }}></Form.Item>
           <Button
+            onClick={() => setVisible(false)}
             type='primary'
-            htmlType='submit'
-            onSubmit={() => setVisible(false)}>
+            htmlType='submit'>
             Create
           </Button>
         </Form>
