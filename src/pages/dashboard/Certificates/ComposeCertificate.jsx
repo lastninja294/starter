@@ -1,12 +1,18 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import Modal from 'antd/lib/modal/Modal';
 import {Upload, Button, Input, message} from 'antd';
-import './compose-certificate.styles.css';
+import axios from 'axios';
 
 function ComposeCertificate() {
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [fileList, setFileList] = useState();
+  const [fileList, setFileList] = useState([]);
+  const [description, setDescription] = useState('');
+
+  const clearInputs = useCallback(() => {
+    setFileList([]);
+    setDescription('');
+  }, []);
 
   const showModal = () => {
     setIsVisible(true);
@@ -14,13 +20,18 @@ function ComposeCertificate() {
 
   const handleSubmit = () => {
     setLoading(true);
+    axios.post('https://jsonplaceholder.typicode.com/photos', {
+      description,
+    });
     setTimeout(() => {
+      clearInputs();
       setIsVisible(false);
       setLoading(false);
     }, 2000);
   };
 
   const handleCancel = () => {
+    clearInputs();
     setIsVisible(false);
   };
 
@@ -28,14 +39,12 @@ function ComposeCertificate() {
     setFileList(info.fileList.slice(-1)); // take only last element
   };
 
-  const beforeUpload = (file) => {
+  const beforeUpload = () => {
     // file type and number of files VALIDATION
     const isOneFile = fileList.length !== 1;
+    console.log('filelist: ', fileList);
     if (!isOneFile) message.error('You can upload only one file.');
-
-    const isPdf = file.type === 'application/pdf';
-    if (!isPdf) message.error('You can only upload PDF file.');
-    return isPdf || Upload.LIST_IGNORE;
+    // return file;
   };
 
   return (
@@ -66,6 +75,10 @@ function ComposeCertificate() {
         ]}>
         <Upload
           wrapClassName='upload'
+          // ACCEPTED IMAGE TYPES image/jpeg || image/webp || image/png || image/svg+xml
+          // image/*
+          listType='picture'
+          accept='image/jpeg,image/webp,image/png,image/svg+xml'
           beforeUpload={beforeUpload}
           onChange={handleChange}
           fileList={fileList}>
@@ -76,7 +89,9 @@ function ComposeCertificate() {
           showCount
           maxLength={100}
           placeholder='Enter Description'
-          />
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </Modal>
       {/* MODAL--END */}
     </div>

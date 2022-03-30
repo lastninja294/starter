@@ -1,8 +1,10 @@
 import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
+import './index.styles.css';
 
 import {Typography} from 'antd';
-import ComposeCertificate from './compose-certificate';
+import ComposeCertificate from './ComposeCertificate';
+import CertificatesTable from './CertificatesTable';
 
 const {Title} = Typography;
 
@@ -15,6 +17,7 @@ const Certificates = () => {
         <ComposeCertificate />
       </div>
       <p>You can kick start your app</p>
+      <CertificatesTable/>
     </>
   );
 };
