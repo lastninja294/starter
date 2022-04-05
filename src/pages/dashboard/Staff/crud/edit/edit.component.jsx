@@ -5,6 +5,7 @@ import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
 import {MdVideoLibrary} from 'react-icons/md';
 import {FaRegEdit} from 'react-icons/fa';
 import {api} from '../api';
+import PropTypes from 'prop-types';
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -32,22 +33,28 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-const Edit = () => {
+const Edit = ({id, fetchData}) => {
   const [visible, setVisible] = useState(false);
-  const onFinish = (values) => {
-    api
-      .put(`/${localStorage.getItem('EditID')}`, {
-        title: values.user.website,
-        description: values.user.introduction,
-        // images: [...values.images],
-        // videos: [...values.videos],
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-    console.log(values);
+  const onFinish = async (values) => {
+    try {
+      const response = await api.put(`/${id}`, {
+        title: values.user.title,
+        description: values.user.description,
+        images: [
+          'https://picfiles.alphacoders.com/280/280339.jpg',
+          'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
+          'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
+        ],
+        videos: [],
+      });
+      fetchData();
+      console.log(id);
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+  // console.log('render EDIT');
   return (
     <>
       <FaRegEdit size={'20px'} onClick={() => setVisible(true)} />
@@ -72,8 +79,8 @@ const Edit = () => {
           <Row>
             <Col span={12}>
               <Form.Item
-                name={['user', 'website']}
-                label='Website'
+                name={['user', 'title']}
+                label='Title'
                 rules={[
                   {
                     required: true,
@@ -81,10 +88,7 @@ const Edit = () => {
                 ]}>
                 <Input />
               </Form.Item>
-              <Form.Item
-                // value={props.description}
-                name={['user', 'introduction']}
-                label='Introduction'>
+              <Form.Item name={['user', 'description']} label='Description'>
                 <Input.TextArea />
               </Form.Item>
             </Col>
@@ -143,7 +147,7 @@ const Edit = () => {
           <Button
             type='primary'
             htmlType='submit'
-            onSubmit={() => setVisible(false)}>
+            onClick={() => setVisible(false)}>
             Edit
           </Button>
         </Form>
@@ -152,3 +156,8 @@ const Edit = () => {
   );
 };
 export default Edit;
+Edit.propTypes = {
+  myFunc: PropTypes.func,
+  id: PropTypes.number,
+  fetchData: PropTypes.func,
+};

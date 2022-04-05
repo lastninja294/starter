@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Form, Input, Modal, Upload} from 'antd';
 import './index.scss';
 import axios from 'axios';
@@ -84,7 +84,7 @@ const News = () => {
       onError({err});
     }
   };
-  
+
   return (
     <>
       <AppPageMetadata title='News' />

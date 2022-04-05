@@ -1,30 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
 import ShowIamges from '../show-image/show-image';
 import ShowVideos from '../show-video/show-video';
-import {Button} from 'antd';
-import {Table} from 'antd';
-import {api} from '../api';
+import {Table, Button, Skeleton} from 'antd';
 import Edit from '../edit/edit.component';
-const TableComponent = () => {
-  const [staffData, setData] = useState([]);
-  const fetchData = async () => {
-    const request = await api.get('/');
-    setData(request.data);
-    return request;
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const handleDelete = async (id) => {
-    await api.delete(`/${id}`);
-    fetchData();
-  };
-
-  const saveClickItemID = (id) => {
-    localStorage.setItem('EditID', `${id}`);
-  };
+import PropTypes from 'prop-types';
+const TableComponent = ({staffData, handleDelete, fetchData}) => {
+  // console.log('render Table');
   const columns = [
     {
       title: 'ID',
@@ -51,10 +33,10 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <a>
           <Button type='primary' shape='round' size={'middle'}>
-            <ShowIamges />
+            <ShowIamges data={staffData} id={record.id} />
           </Button>
         </a>
       ),
@@ -64,9 +46,9 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <Button type='primary' shape='round' size={'middle'}>
-          <ShowVideos />
+          <ShowVideos id={record.id} />
         </Button>
       ),
     },
@@ -76,12 +58,8 @@ const TableComponent = () => {
       fixed: 'right',
       width: 80,
       render: (record) => (
-        <Button
-          type='primary'
-          shape='round'
-          size={'middle'}
-          onClick={() => saveClickItemID(record.id)}>
-          <Edit />
+        <Button type='primary' shape='round' size={'middle'}>
+          <Edit id={record.id} fetchData={fetchData} />
         </Button>
       ),
     },
@@ -116,14 +94,21 @@ const TableComponent = () => {
   // }
   return (
     <div>
-      <Table
-        rowKey='id'
-        columns={columns}
-        dataSource={[...staffData]}
-        scroll={{x: 1500, y: 480}}
-      />
+      <Skeleton active loading={false} paragraph={{rows: 10}}>
+        <Table
+          rowKey='id'
+          columns={columns}
+          dataSource={[...staffData]}
+          scroll={{x: 1500, y: 480}}
+        />
+      </Skeleton>
     </div>
   );
 };
 
 export default TableComponent;
+TableComponent.propTypes = {
+  staffData: PropTypes.array,
+  handleDelete: PropTypes.func,
+  fetchData: PropTypes.func,
+};

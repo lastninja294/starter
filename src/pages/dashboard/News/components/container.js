@@ -2,7 +2,7 @@ import React from 'react';
 import MyCard from './card';
 import PropTypes from 'prop-types';
 
-import './styles/container.scss'
+import './styles/container.scss';
 const Container = ({posts}) => {
   return (
     <div className='card_container'>

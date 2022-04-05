@@ -4,6 +4,7 @@ import {Modal, Button} from 'antd';
 import {MdCreateNewFolder} from 'react-icons/md';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
 import {MdVideoLibrary} from 'react-icons/md';
+import PropTypes from 'prop-types';
 import './create-data.styles.scss';
 import {api} from '../api';
 const formItemLayout = {
@@ -33,18 +34,28 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-const Create = () => {
+const Create = ({fetchData}) => {
   const [visible, setVisible] = useState(false);
-  const onFinish = (values) => {
-    api
-      .post('/', {
-        title: values.user.website,
-        description: values.user.introduction,
-      })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-    // console.log(values);
+  const onFinish = async (values) => {
+    const newData = {
+      title: values.user.title,
+      description: values.user.description,
+      images: [
+        'https://picfiles.alphacoders.com/280/280339.jpg',
+        'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
+        'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
+      ],
+      videos: [],
+    };
+    try {
+      const response = await api.post('/', newData);
+      console.log(response.data);
+      fetchData();
+    } catch (error) {
+      console.log(error.massage);
+    }
   };
+  // console.log('render Create');
   return (
     <>
       <Button className='btn' type='primary' onClick={() => setVisible(true)}>
@@ -71,8 +82,8 @@ const Create = () => {
           <Row>
             <Col span={12}>
               <Form.Item
-                name={['user', 'website']}
-                label='Website'
+                name={['user', 'title']}
+                label='Title'
                 rules={[
                   {
                     required: true,
@@ -80,7 +91,7 @@ const Create = () => {
                 ]}>
                 <Input />
               </Form.Item>
-              <Form.Item name={['user', 'introduction']} label='Introduction'>
+              <Form.Item name={['user', 'description']} label='Description'>
                 <Input.TextArea />
               </Form.Item>
             </Col>
@@ -148,3 +159,6 @@ const Create = () => {
   );
 };
 export default Create;
+Create.propTypes = {
+  fetchData: PropTypes.func,
+};
