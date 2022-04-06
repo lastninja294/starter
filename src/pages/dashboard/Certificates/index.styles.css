@@ -14,14 +14,9 @@
     margin-bottom: 0;
 }
 
-.certificates-modal-container .upload {
-    min-height: 55px;
+.certificates-modal-container .ant-upload-picture-card-wrapper {
+    min-height: 112px;
 }
-
-.certificates-modal-container .ant-upload-list-item {
-    height: 45px ;
-}
-
 .certificates-modal-container .ant-input-textarea {
     margin-top: 12px;
 }

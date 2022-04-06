@@ -1,14 +1,20 @@
 import React, {useCallback, useState} from 'react';
 import Modal from 'antd/lib/modal/Modal';
-import {Upload, Button, Input, message} from 'antd';
+import {Upload, Button, Input} from 'antd';
 import axios from 'axios';
+import {PlusOutlined} from '@ant-design/icons';
 
 function ComposeCertificate() {
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [fileList, setFileList] = useState([]);
-  const [description, setDescription] = useState('');
 
+  const [fileList, setFileList] = useState([]);
+  const [previewImage, setPreviewImage] = useState([]);
+  const [previewVisible, setPreviewVisible] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+
+  const [description, setDescription] = useState('');
+  console.log(fileList);
   const clearInputs = useCallback(() => {
     setFileList([]);
     setDescription('');
@@ -35,17 +41,38 @@ function ComposeCertificate() {
     setIsVisible(false);
   };
 
-  const handleChange = (info) => {
-    setFileList(info.fileList.slice(-1)); // take only last element
+  const handleCancelUpload = () => setPreviewVisible(false);
+
+  function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+  const handleChangeUpload = (something) => {
+    const {fileList} = something;
+    setFileList(fileList);
   };
 
-  const beforeUpload = () => {
-    // file type and number of files VALIDATION
-    const isOneFile = fileList.length !== 1;
-    console.log('filelist: ', fileList);
-    if (!isOneFile) message.error('You can upload only one file.');
-    // return file;
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+
+    setPreviewImage(file.preview);
+    setPreviewVisible(true);
+    setPreviewTitle(file.name);
   };
+
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div style={{marginTop: 8}}>Upload</div>
+    </div>
+  );
 
   return (
     <div>
@@ -74,16 +101,20 @@ function ComposeCertificate() {
           </Button>,
         ]}>
         <Upload
-          wrapClassName='upload'
-          // ACCEPTED IMAGE TYPES image/jpeg || image/webp || image/png || image/svg+xml
-          // image/*
-          listType='picture'
-          accept='image/jpeg,image/webp,image/png,image/svg+xml'
-          beforeUpload={beforeUpload}
-          onChange={handleChange}
-          fileList={fileList}>
-          <Button>Upload certificate</Button>
+          listType='picture-card'
+          fileList={fileList}
+          onPreview={handlePreview}
+          onChange={handleChangeUpload}>
+          {fileList.length === 0 ? uploadButton : null}
         </Upload>
+
+        <Modal
+          visible={previewVisible}
+          title={previewTitle}
+          footer={null}
+          onCancel={handleCancelUpload}>
+          <img alt='example' style={{width: '100%'}} src={previewImage} />
+        </Modal>
 
         <Input.TextArea
           showCount
