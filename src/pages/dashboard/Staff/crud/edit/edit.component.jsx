@@ -33,13 +33,24 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-const Edit = ({id, fetchData}) => {
+const Edit = ({id, fetchData, data}) => {
+  const editObj = data.find((item) => item.id == id);
+  console.log(editObj);
+  const [inputvalue, setInputValue] = useState(editObj.title);
+  const [textareaValue, setTextareaValue] = useState(editObj.description);
   const [visible, setVisible] = useState(false);
-  const onFinish = async (values) => {
+  const onChangeInput = (e) => {
+    setInputValue(e.target.value);
+  };
+  const onChangeTextarea = (e) => {
+    setTextareaValue(e.target.value);
+  };
+  const onFinish = async () => {
+    //const onFinish = async (values)
     try {
       const response = await api.put(`/${id}`, {
-        title: values.user.title,
-        description: values.user.description,
+        title: inputvalue,
+        description: textareaValue,
         images: [
           'https://picfiles.alphacoders.com/280/280339.jpg',
           'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
@@ -78,18 +89,19 @@ const Edit = ({id, fetchData}) => {
           }}>
           <Row>
             <Col span={12}>
-              <Form.Item
-                name={['user', 'title']}
-                label='Title'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}>
-                <Input />
+              <Form.Item name={['user', 'title']} label='Title'>
+                <Input
+                  onChange={onChangeInput}
+                  defaultValue={editObj.title}
+                  value={inputvalue}
+                />
               </Form.Item>
               <Form.Item name={['user', 'description']} label='Description'>
-                <Input.TextArea />
+                <Input.TextArea
+                  onChange={onChangeTextarea}
+                  defaultValue={editObj.description}
+                  value={textareaValue}
+                />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -157,6 +169,7 @@ const Edit = ({id, fetchData}) => {
 };
 export default Edit;
 Edit.propTypes = {
+  data: PropTypes.array,
   myFunc: PropTypes.func,
   id: PropTypes.number,
   fetchData: PropTypes.func,

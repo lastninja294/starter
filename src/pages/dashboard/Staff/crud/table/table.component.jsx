@@ -59,7 +59,7 @@ const TableComponent = ({staffData, handleDelete, fetchData}) => {
       width: 80,
       render: (record) => (
         <Button type='primary' shape='round' size={'middle'}>
-          <Edit id={record.id} fetchData={fetchData} />
+          <Edit id={record.id} fetchData={fetchData} data={staffData} />
         </Button>
       ),
     },
