@@ -1,13 +1,13 @@
 export const posts = [
   {
     id: 1,
-    title: 'face data title',
+    title: 'face data titleface data titleface data titleface data title',
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -61,7 +61,7 @@ export const posts = [
       },
     ],
     description:
-      '{"blocks":[{"key":"clla0","text":"sakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      '{"blocks":[{"key":"clla0","text":"sakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD sakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldslaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {

@@ -1,7 +1,9 @@
 // Modal card
-
-.modal_img_contaner{
-    height: 330px;
+.modal_desc_container{
+    display: flex;
+    vertical-align: middle;
+    .modal_img_contaner{
+        height: 330px;
     overflow: hidden;
     width: 450px;
     margin: 0 auto;
@@ -46,6 +48,23 @@
         width: 210px;
         
     }
-
     
+    
+}
+.modal_description{
+    width: 600px;
+    padding: 0 20px;
+    .modal_des_top{
+        display: flex;
+        justify-content: space-between;
+    }
+    .modal_descrip_value{
+        height: 300px;
+        overflow-y: auto;
+    }
+}
+}
+.descrip_value{
+    overflow: hidden;
+    height: 40px;
 }
