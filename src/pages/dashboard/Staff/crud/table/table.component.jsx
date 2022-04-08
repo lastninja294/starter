@@ -1,29 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
 import ShowIamges from '../show-image/show-image';
 import ShowVideos from '../show-video/show-video';
-import {FaRegEdit} from 'react-icons/fa';
-import {Button} from 'antd';
-import {Table} from 'antd';
-import {api} from '../api';
-const TableComponent = () => {
-  const [staffData, setData] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const request = await api.get('/');
-      console.log(request.data);
-      setData(request.data);
-      console.log('ishla');
-      return request;
-    }
-    fetchData();
-    // api
-    //   .get('/')
-    //   .then((res) => setData(res.data))
-    //   .catch((err) => console.log(err));
-    // console.log('ishla');
-  }, []);
-  console.log(staffData);
+import {Table, Button, Skeleton} from 'antd';
+import Edit from '../edit/edit.component';
+import PropTypes from 'prop-types';
+const TableComponent = ({staffData, handleDelete, fetchData}) => {
+  // console.log('render Table');
   const columns = [
     {
       title: 'ID',
@@ -50,10 +33,10 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <a>
           <Button type='primary' shape='round' size={'middle'}>
-            <ShowIamges />
+            <ShowIamges data={staffData} id={record.id} />
           </Button>
         </a>
       ),
@@ -63,9 +46,9 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <Button type='primary' shape='round' size={'middle'}>
-          <ShowVideos />
+          <ShowVideos id={record.id} />
         </Button>
       ),
     },
@@ -74,9 +57,9 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <Button type='primary' shape='round' size={'middle'}>
-          <FaRegEdit size={'20px'} />
+          <Edit id={record.id} fetchData={fetchData} data={staffData} />
         </Button>
       ),
     },
@@ -85,9 +68,14 @@ const TableComponent = () => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: () => (
+      render: (record) => (
         <a>
-          <Button type='primary' shape='round' size={'middle'}>
+          <Button
+            type='primary'
+            shape='round'
+            size={'middle'}
+            danger
+            onClick={() => handleDelete(record.id)}>
             <RiDeleteBin6Fill size={'20px'} />
           </Button>
         </a>
@@ -106,13 +94,21 @@ const TableComponent = () => {
   // }
   return (
     <div>
-      <Table
-        columns={columns}
-        dataSource={staffData}
-        scroll={{x: 1500, y: 500}}
-      />
+      <Skeleton active loading={false} paragraph={{rows: 10}}>
+        <Table
+          rowKey='id'
+          columns={columns}
+          dataSource={[...staffData]}
+          scroll={{x: 1500, y: 480}}
+        />
+      </Skeleton>
     </div>
   );
 };
 
 export default TableComponent;
+TableComponent.propTypes = {
+  staffData: PropTypes.array,
+  handleDelete: PropTypes.func,
+  fetchData: PropTypes.func,
+};

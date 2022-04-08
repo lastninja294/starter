@@ -1,38 +1,44 @@
 import React, {useState} from 'react';
-import {Button, Form, Input, Modal, Upload} from 'antd';
-import './index.scss';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-
-import Container from './components/container';
-import {posts} from './components/facedata';
-
+import {Modal, Button, Input, Upload, Form} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 // for editor wysiwyg
 import {Editor} from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import {EditorState, ContentState, convertFromHTML} from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 
-import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
+const EditPost = ({post}) => {
+  // newsDataId.post_description JSON.parsga beriladi
+  const postHtml = JSON.parse(post?.description);
+  const html = draftToHtml(postHtml);
+  console.log(html);
+  // handle Editor Defaul value
+  const [state, setState] = useState({
+    editorState: EditorState.createWithContent(
+      ContentState.createFromBlockArray(convertFromHTML(html)),
+    ),
+  });
+  // Editor onChange value
+  const editorValue = (e) => {
+    const htmlEdit = draftToHtml(e);
 
-const News = () => {
+    setState({
+      editorState: EditorState.createWithContent(
+        ContentState.createFromBlockArray(convertFromHTML(htmlEdit)),
+      ),
+    });
+  };
   // modal form newspost update
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
-  /// create post modalkani ochish
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+  //Edit form modalkalani yopuvchi fun
   const showModalForm = () => {
     setVisible(true);
-  };
-  /// create post modalkani yopish
-
-  const handleOkForm = () => {
-    form.resetFields();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setVisible(false);
-    }, 3000);
-  };
-  const handleCancelForm = () => {
-    form.resetFields();
-    setVisible(false);
   };
   /// update form modal
 
@@ -44,10 +50,8 @@ const News = () => {
       span: 30,
     },
   };
-  // backendga post quyish uchun zapros
+
   const onFinish = (values) => {
-    const postDescription = JSON.stringify(values.post_description);
-    console.log(postDescription);
     form.resetFields();
     setLoading(true);
     setTimeout(() => {
@@ -57,7 +61,14 @@ const News = () => {
     console.log('Received values of form:', values);
   };
 
-  ///// form dregger uchun
+  ///// form dregger uchun yani filelani serverga joylab response qaytaradi
+  const normFile = (e) => {
+    console.log('Upload event: ldkjwalkdjl', e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  };
 
   const [form] = Form.useForm();
   const uploadImage = async (options) => {
@@ -66,7 +77,6 @@ const News = () => {
     const config = {
       headers: {'content-type': 'multipart/form-data'},
     };
-
     fmData.append('file', file, file.name);
     try {
       const res = await axios.post(
@@ -87,38 +97,42 @@ const News = () => {
 
   return (
     <>
-      <AppPageMetadata title='News' />
-      <>
-        {/* new post created button */}
-        <Button
-          type='danger'
-          style={{
-            margin: '-20px 100px 20px auto',
-          }}
-          onClick={showModalForm}>
-          Create
-        </Button>
-        {/* create post madalka form */}
-        <Modal
-          visible={visible}
-          title='Create Post'
-          onOk={handleOkForm}
-          onCancel={handleCancelForm}
-          footer={null}
-          width={800}>
+      <EditOutlined
+        key='edit'
+        style={{color: '#0f0'}}
+        onClick={showModalForm}
+      />
+
+      <Modal
+        key={'updatepost'}
+        visible={visible}
+        title={'Edit Post'}
+        onCancel={handleCancel}
+        footer={null}
+        width={800}>
+        {
           <Form
             {...formItemLayout}
             form={form}
             name='upload_post'
-            onFinish={onFinish}>
-            <Form.Item name='upload_post' rules={[{required: true}]}>
+            onFinish={onFinish}
+            initialValues={{
+              upload_file: post.src,
+              post_title: post?.title,
+              post_description: '<p>salom</p>',
+            }}>
+            <Form.Item
+              name='upload_file'
+              valuePropName='fileList'
+              getValueFromEvent={normFile}
+              rules={[{required: true}]}>
               <Upload.Dragger
+                multiple
                 name={'file'}
                 customRequest={uploadImage}
                 listType='picture-card'
-                multiple
                 accept={'image/* , video/*'}>
-                {'Upload image'}
+                {'Upload file'}
               </Upload.Dragger>
             </Form.Item>
             <Form.Item name='post_title' rules={[{required: true}]}>
@@ -128,6 +142,8 @@ const News = () => {
               <Editor
                 wrapperClassName='demo-wrapper'
                 editorClassName='demo-editor'
+                defaultEditorState={state.editorState}
+                onContentStateChange={editorValue}
               />
             </Form.Item>
             <Form.Item
@@ -141,16 +157,17 @@ const News = () => {
                 marginRight: '-10px',
               }}>
               <Button type='primary' loading={loading} htmlType='submit'>
-                QOSHISH
+                YUBORISH
               </Button>
             </Form.Item>
           </Form>
-        </Modal>
-        {/* posts cardlari */}
-        <Container posts={posts} />
-      </>
+        }
+      </Modal>
     </>
   );
 };
 
-export default News;
+export default EditPost;
+EditPost.propTypes = {
+  post: PropTypes.object,
+};

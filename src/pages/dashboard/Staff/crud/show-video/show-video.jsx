@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Modal} from 'antd';
 import {MdVideoLibrary} from 'react-icons/md';
 import {Carousel} from 'antd';
+import PropTypes from 'prop-types';
 const contentStyle = {
   height: '160px',
   color: '#fff',
@@ -11,6 +12,7 @@ const contentStyle = {
 };
 const ShowVideos = () => {
   const [visible, setVisible] = useState(false);
+  // console.log('render show video');
   return (
     <>
       <MdVideoLibrary onClick={() => setVisible(true)} size={'20px'} />
@@ -42,3 +44,7 @@ const ShowVideos = () => {
 };
 
 export default ShowVideos;
+ShowVideos.propTypes = {
+  data: PropTypes.array,
+  id: PropTypes.number,
+};
