@@ -1,8 +1,14 @@
 .card_container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     position: relative;
+    @media (max-width: 1076px) {
+        grid-template-columns: repeat(2 , 1fr);
+    }
+    @media (max-width: 676px) {
+        grid-template-columns: repeat(1 , 1fr);
+    }
     .ant-card{
         .ant-card-body{
             width: 300px;
