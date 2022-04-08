@@ -1,6 +1,8 @@
 import moment from 'moment';
 import {authRole} from '../../shared/constants/AppEnums';
-
+export const isRequestSuccessful = (status)=>{
+  if(status === 200)return true
+}
 export const createRoutes = (routeConfigs) => {
   let allRoutes = [];
   routeConfigs.forEach((config) => {

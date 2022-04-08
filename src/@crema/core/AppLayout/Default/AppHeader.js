@@ -10,8 +10,11 @@ import PropTypes from 'prop-types';
 // import {FiMoreVertical} from 'react-icons/fi';
 import {IoLanguageOutline} from 'react-icons/io5';
 import {AiOutlineMenu} from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { searchPost } from 'redux/actions/News';
 
 const AppHeader = ({isCollapsed, onToggleSidebar}) => {
+  const dispatch =  useDispatch()
   const {Header} = Layout;
   const {Search} = Input;
   const {messages} = useIntl();
@@ -24,7 +27,9 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
       
     </Menu>
   );
-
+  const onSearch = (e)=>{
+    dispatch(searchPost(e.target.value))
+  }
   return (
     <Header className='app-header'>
       <a className='trigger' onClick={() => onToggleSidebar(!isCollapsed)}>
@@ -34,6 +39,7 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
       <Search
         className='header-search'
         placeholder={messages['common.searchHere']}
+        onChange={onSearch}
       />
       <div className='app-header-sectionDesktop'>
         <AppLanguageSwitcher />
