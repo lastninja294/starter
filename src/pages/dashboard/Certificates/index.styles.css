@@ -1,24 +1,35 @@
 /* ComposeCertificate-styles-start */
 
-.certificates-modal-container .ant-modal-content .ant-modal-body {
-    min-height: 220px;
-}
-
 .certificates-title-container {
     display        : flex;
     justify-content: space-between;
     align-items    : center;
+    margin-bottom  : 16px;
 }
 
 .certificates-title-container .ant-typography {
     margin-bottom: 0;
 }
 
+.certificates-modal-container .ant-modal-content .ant-modal-body {
+    min-height: 220px;
+}
+
 .certificates-modal-container .ant-upload-picture-card-wrapper {
     min-height: 112px;
 }
+
 .certificates-modal-container .ant-input-textarea {
-    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.certificates-modal-container .ant-form-item {
+    margin-bottom: 12px;
+}
+
+.certificates-modal-container .footer-buttons {
+    justify-content: end;
+    width          : 100%;
 }
 
 .ant-message {

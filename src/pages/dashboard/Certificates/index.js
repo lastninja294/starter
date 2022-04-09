@@ -16,8 +16,7 @@ const Certificates = () => {
         <Title level={3}>Certificates Page</Title>
         <ComposeCertificate />
       </div>
-      <p>You can kick start your app</p>
-      <CertificatesTable/>
+      <CertificatesTable />
     </>
   );
 };

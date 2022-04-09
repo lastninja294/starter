@@ -20,7 +20,8 @@
     "react/jsx-uses-vars": "error",
     "react/display-name": "off",
     "prettier/prettier": "warn", //A warning will pop up when the prettier setting is not met
-    "react/react-in-jsx-scope": "off" // You must use the import React rule to close jsx files
+    "react/react-in-jsx-scope": "off", // You must use the import React rule to close jsx files
+    "react/prop-types": "off"
   },
   "env": {
     //Specify the environment, each environment has its own preset defined global variables, you can specify multiple environments at the same time
