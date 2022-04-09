@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
-import {Image} from 'antd';
+import {Image, Button} from 'antd';
 import PropTypes from 'prop-types';
 const ShowIamges = ({data, id}) => {
   const [visible, setVisible] = useState(false);
@@ -8,11 +8,13 @@ const ShowIamges = ({data, id}) => {
   // console.log('render showImage');
   return (
     <>
-      <BsFillFileEarmarkImageFill
-        width={'100%'}
+      <Button
+        type='primary'
+        shape='round'
         onClick={() => setVisible(true)}
-        size={'20px'}
-      />
+        size={'middle'}>
+        <BsFillFileEarmarkImageFill width={'100%'} size={'20px'} />
+      </Button>
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>

@@ -30,6 +30,7 @@ const AppHeader = () => {
       <Search
         className='userMiniHeader-search'
         placeholder={messages['common.searchHere']}
+        
       />
       <div className='app-userMiniHeader-sectionDesktop'>
         <AppLanguageSwitcher />

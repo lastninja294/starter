@@ -1,3 +1,4 @@
+import { getDataApi } from '@crema/utility/APIHooks';
 import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import './index.styles.css';

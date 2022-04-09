@@ -6,6 +6,7 @@ import axios from 'axios';
 import {Editor} from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 const Create = () => {
+  const [fileList, setFileList] = useState([]);
   // modal form newspost update
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -18,6 +19,8 @@ const Create = () => {
 
   const handleOkForm = () => {
     form.resetFields();
+     setFileList([]);
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -27,6 +30,8 @@ const Create = () => {
 
   const handleCancelForm = () => {
     form.resetFields();
+     setFileList([]);
+
     setVisible(false);
   };
 
@@ -45,6 +50,8 @@ const Create = () => {
     const postDescription = JSON.stringify(values.post_description);
     console.log(postDescription);
     form.resetFields();
+     setFileList([]);
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -80,6 +87,11 @@ const Create = () => {
       onError({err});
     }
   };
+
+  // onchange
+   const onChange = ({fileList: newFileList}) => {
+     setFileList(newFileList);
+   };
   return (
     <>
       {/* new post created button */}
@@ -111,6 +123,8 @@ const Create = () => {
               customRequest={uploadImage}
               listType='picture-card'
               multiple
+              fileList={fileList}
+              onChange={onChange}
               accept={'image/* , video/*'}>
               {'Upload image'}
             </Upload.Dragger>
