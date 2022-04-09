@@ -48,6 +48,7 @@ const Create = ({fetchData}) => {
       videos: [],
     };
     try {
+      // console.log(`data: ${values.user.file}`);
       const response = await api.post('/', newData);
       console.log(response.data);
       fetchData();
@@ -98,14 +99,15 @@ const Create = ({fetchData}) => {
             <Col span={12}>
               <Form.Item label='Dragger'>
                 <Form.Item
-                  name='images'
+                  name='file'
                   valuePropName='fileList'
                   getValueFromEvent={normFile}
                   noStyle>
                   <Upload.Dragger
                     listType='picture-card'
-                    name='files'
-                    action='/upload.do'>
+                    name='images'
+                    accept='.png,.jpeg,jpg'
+                    action='//jsonplaceholder.typicode.com/posts/'>
                     <p className='ant-upload-drag-icon'>
                       <BsFillFileEarmarkImageFill color='blue' size={'40px'} />
                     </p>
@@ -127,7 +129,7 @@ const Create = ({fetchData}) => {
                   <Upload.Dragger
                     listType='picture-card'
                     name='files'
-                    action='/upload.do'>
+                    action='//jsonplaceholder.typicode.com/posts/'>
                     <p className='ant-upload-drag-icon'>
                       <MdVideoLibrary color='blue' size={'40px'} />
                     </p>
