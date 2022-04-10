@@ -4,6 +4,8 @@ import {IoNewspaperOutline} from 'react-icons/io5';
 import { CgUserList } from 'react-icons/cg';
 import { GrCertificate } from 'react-icons/gr';
 import {FaHospitalUser} from 'react-icons/fa';
+import {BsCalendarEvent} from 'react-icons/bs';
+
 
 const routesConfig = [
   {
@@ -51,6 +53,14 @@ const routesConfig = [
         type: 'item',
         icon: <FaHospitalUser />,
         path: '/dashboard/surgery',
+      },
+      {
+        id: 'events',
+        title: 'Events',
+        messageId: 'sidebar.pages.sample.events',
+        type: 'item',
+        icon: <BsCalendarEvent />,
+        path: '/dashboard/events',
       },
     ],
   },
