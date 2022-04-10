@@ -17,7 +17,7 @@ function EventsVideo({item}) {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        style={{minWidth: '70%'}}
+        style={{minWidth: '70%', maxWidth: '100%'}}
         footer={null}>
         <video controls className='event-modal-video'>
           <source src={item.videoUrl} type='video/mp4' />
