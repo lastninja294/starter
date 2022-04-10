@@ -2,7 +2,7 @@ import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import EventsTable from './components/events-table/EventsTable';
 
-const Surgery = () => {
+const Events = () => {
   return (
     <>
       <AppPageMetadata title='Events' />
@@ -12,4 +12,4 @@ const Surgery = () => {
   );
 };
 
-export default Surgery;
+export default Events;

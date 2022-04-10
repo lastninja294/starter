@@ -4,7 +4,7 @@ import {AiOutlineVideoCamera} from 'react-icons/ai';
 // import ReactPlayer from 'react-player';
 import './EventsVideo.styles.scss';
 
-function EventsVideo() {
+function EventsVideo({item}) {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -12,7 +12,7 @@ function EventsVideo() {
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
       <Modal
-        title='Video'
+        title={item.title}
         centered
         visible={visible}
         onOk={() => setVisible(false)}
@@ -20,10 +20,7 @@ function EventsVideo() {
         style={{minWidth: '70%'}}
         footer={null}>
         <video controls className='event-modal-video'>
-          <source
-            src='https://www.w3schools.com/html/mov_bbb.mp4'
-            type='video/mp4'
-          />
+          <source src={item.videoUrl} type='video/mp4' />
           <source
             src='https://www.w3schools.com/html/mov_bbb.ogg'
             type='video/ogg'
