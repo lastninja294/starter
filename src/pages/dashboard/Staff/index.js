@@ -9,7 +9,7 @@ const Staff = () => {
   const fetchData = async () => {
     try {
       const request = await api.get('/');
-      setStaffData(request.data);
+      setStaffData(request.data); 
       // console.log('render API');
       return request;
     } catch (error) {
