@@ -11,14 +11,14 @@ function EventsVideo({item}) {
       <Button type='link' onClick={() => setVisible(true)}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
-      <style jsx>
+      {/* <style jsx>
         {`
           .ant-modal-body {
             padding: 0 !important;
             line-height: 0 !important;
           }
         `}
-      </style>
+      </style> */}
       <Modal
         title={item.title}
         centered

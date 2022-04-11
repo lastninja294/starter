@@ -10,7 +10,12 @@ import EventsVideo from '../events-video/EventsVideo';
 const columns = [
   {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
   {title: 'Title', dataIndex: 'title', key: 'title'},
-  {title: 'Description', dataIndex: 'description', key: 'description'},
+  {
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
+    render: (item) => <p style={{textOverflow:"ellipsis"}}>{item}</p>,
+  },
   {
     title: 'Action',
     dataIndex: '',

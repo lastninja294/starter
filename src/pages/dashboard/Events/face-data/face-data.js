@@ -3,7 +3,7 @@ export const FaceData = [
     key: 1,
     title: 'John Brown',
     description:
-      'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.',
+      'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park. ',
     videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
     imageUrl: [
       'https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp',
