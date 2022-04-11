@@ -530,6 +530,7 @@
   "sidebar.pages.errorPages.comingSoon": "快来了",
   "sidebar.pages.sample.certificates": "证书",
   "sidebar.pages.sample.surgery": "手术",
+  "sidebar.pages.sample.events": "Events",
   "validation.phoneNumberValid": "电话号码无效!",
   "validation.phoneNumberRequired": "请输入电话号码！",
   "validation.titleRequired": "请输入标题!",

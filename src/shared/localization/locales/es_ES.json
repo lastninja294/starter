@@ -530,6 +530,7 @@
   "sidebar.pages.errorPages.comingSoon": "Próximamente",
   "sidebar.pages.sample.certificates": "Certificados",
   "sidebar.pages.sample.surgery": "Cirugía",
+  "sidebar.pages.sample.events": "Events",
   "validation.phoneNumberValid": "número de teléfono no es válido!",
   "validation.phoneNumberRequired": "Por favor, introduzca el número de teléfono!",
   "validation.titleRequired": "Por favor, introduzca el título!",

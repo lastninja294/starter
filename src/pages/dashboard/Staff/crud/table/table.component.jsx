@@ -33,24 +33,14 @@ const TableComponent = ({staffData, handleDelete, fetchData}) => {
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: (record) => (
-        <a>
-          <Button type='primary' shape='round' size={'middle'}>
-            <ShowIamges data={staffData} id={record.id} />
-          </Button>
-        </a>
-      ),
+      render: (record) => <ShowIamges data={staffData} id={record.id} />,
     },
     {
       title: 'VIDEOS',
       key: 'operation',
       fixed: 'right',
       width: 80,
-      render: (record) => (
-        <Button type='primary' shape='round' size={'middle'}>
-          <ShowVideos id={record.id} />
-        </Button>
-      ),
+      render: (record) => <ShowVideos id={record.id} />,
     },
     {
       title: 'EDIT',
@@ -58,9 +48,7 @@ const TableComponent = ({staffData, handleDelete, fetchData}) => {
       fixed: 'right',
       width: 80,
       render: (record) => (
-        <Button type='primary' shape='round' size={'middle'}>
-          <Edit id={record.id} fetchData={fetchData} data={staffData} />
-        </Button>
+        <Edit id={record.id} fetchData={fetchData} data={staffData} />
       ),
     },
     {

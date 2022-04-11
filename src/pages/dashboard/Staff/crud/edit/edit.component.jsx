@@ -6,6 +6,7 @@ import {MdVideoLibrary} from 'react-icons/md';
 import {FaRegEdit} from 'react-icons/fa';
 import {api} from '../api';
 import PropTypes from 'prop-types';
+import './edit.styles.scss';
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -35,7 +36,7 @@ const normFile = (e) => {
 };
 const Edit = ({id, fetchData, data}) => {
   const editObj = data.find((item) => item.id == id);
-  console.log(editObj);
+  // console.log(editObj);
   const [inputvalue, setInputValue] = useState(editObj.title);
   const [textareaValue, setTextareaValue] = useState(editObj.description);
   const [visible, setVisible] = useState(false);
@@ -59,7 +60,6 @@ const Edit = ({id, fetchData, data}) => {
         videos: [],
       });
       fetchData();
-      console.log(id);
       console.log(response);
     } catch (error) {
       console.log(error.message);
@@ -68,7 +68,13 @@ const Edit = ({id, fetchData, data}) => {
   // console.log('render EDIT');
   return (
     <>
-      <FaRegEdit size={'20px'} onClick={() => setVisible(true)} />
+      <Button
+        type='primary'
+        shape='round'
+        onClick={() => setVisible(true)}
+        size={'middle'}>
+        <FaRegEdit className='icon-style' size={'20px'} />
+      </Button>
       <Modal
         title='Modal 1000px width'
         centered

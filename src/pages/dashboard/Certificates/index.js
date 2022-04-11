@@ -1,12 +1,22 @@
 import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
+import './index.styles.css';
+
+import {Typography} from 'antd';
+import ComposeCertificate from './ComposeCertificate';
+import CertificatesTable from './CertificatesTable';
+
+const {Title} = Typography;
 
 const Certificates = () => {
   return (
     <>
       <AppPageMetadata title='Certificates' />
-      <h2>Certificates Page</h2>
-      <p>You can kick start your app</p>
+      <div className='certificates-title-container'>
+        <Title level={3}>Certificates Page</Title>
+        <ComposeCertificate />
+      </div>
+      <CertificatesTable />
     </>
   );
 };

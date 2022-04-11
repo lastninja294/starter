@@ -3,11 +3,12 @@ import reducers from '../reducers';
 import {routerMiddleware} from 'connected-react-router';
 import thunk from 'redux-thunk';
 import {createBrowserHistory} from 'history';
+import logger from 'redux-logger';
 
 export const history = createBrowserHistory();
 const routeMiddleware = routerMiddleware(history);
 
-const middlewares = [thunk, routeMiddleware];
+const middlewares = [thunk, routeMiddleware , logger];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default function configureStore(initialState) {

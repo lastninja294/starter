@@ -530,6 +530,7 @@
   "sidebar.pages.errorPages.comingSoon": "قريبا",
   "sidebar.pages.sample.certificates": "شهادات",
   "sidebar.pages.sample.surgery": "عمليات جراحية",
+  "sidebar.pages.sample.events":"Events",
   "validation.phoneNumberValid": "رقم الهاتف غير صالح!",
   "validation.phoneNumberRequired": "الرجاء إدخال رقم الهاتف!",
   "validation.titleRequired": "من فضلك ادخل العنوان!",

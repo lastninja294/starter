@@ -12,7 +12,7 @@ const EditPost = ({post}) => {
   // newsDataId.post_description JSON.parsga beriladi
   const postHtml = JSON.parse(post?.description);
   const html = draftToHtml(postHtml);
-  console.log(html);
+  
   // handle Editor Defaul value
   const [state, setState] = useState({
     editorState: EditorState.createWithContent(

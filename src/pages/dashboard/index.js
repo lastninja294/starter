@@ -21,4 +21,8 @@ export const dashboardPagesConfigs = [
     path: '/dashboard/surgery',
     component: React.lazy(() => import('./Surgery')),
   },
+  {
+    path: '/dashboard/events',
+    component: React.lazy(() => import('./Events')),
+  },
 ];

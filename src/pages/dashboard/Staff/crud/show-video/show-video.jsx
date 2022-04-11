@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Modal} from 'antd';
 import {MdVideoLibrary} from 'react-icons/md';
-import {Carousel} from 'antd';
+import {Carousel, Button} from 'antd';
 import PropTypes from 'prop-types';
 const contentStyle = {
   height: '160px',
@@ -15,7 +15,14 @@ const ShowVideos = () => {
   // console.log('render show video');
   return (
     <>
-      <MdVideoLibrary onClick={() => setVisible(true)} size={'20px'} />
+      <Button
+        type='primary'
+        shape='round'
+        onClick={() => setVisible(true)}
+        size={'middle'}>
+        <MdVideoLibrary size={'20px'} />
+      </Button>
+
       <Modal
         title='Modal 1000px width'
         centered
