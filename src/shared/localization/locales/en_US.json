@@ -537,6 +537,7 @@
   "sidebar.pages.errorPages.comingSoon": "Coming Soon",
   "sidebar.pages.sample.certificates": "Certificates",
   "sidebar.pages.sample.surgery": "Surgery",
+  "sidebar.pages.sample.events": "Events",
   "validation.phoneNumberValid": "Phone number is not valid!",
   "validation.phoneNumberRequired": "Please enter phone number!",
   "validation.titleRequired": "Please enter Title!",
