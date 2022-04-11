@@ -13,18 +13,19 @@ const columns = [
   {title: 'Description', dataIndex: 'description', key: 'description'},
   {
     title: 'Action',
-    dataIndex: 'Action',
+    dataIndex: '',
     key: 'key',
-    render: () => (
+    render: (item) => (
       <>
-        <EventsImage />
-        <EventsVideo />
-        <EventsEdit />
-        <EventDelete />
+        <EventsImage item={item} />
+        <EventsVideo item={item} />
+        <EventsEdit item={item} />
+        <EventDelete item={item} />
       </>
     ),
   },
 ];
+
 const EventTable = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
