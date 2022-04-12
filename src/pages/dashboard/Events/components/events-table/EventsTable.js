@@ -1,32 +1,56 @@
 import React, {useState, useEffect} from 'react';
-import {Space, Table} from 'antd';
 import {FaceData} from '../../face-data/face-data';
+// ant
+import {Space, Table} from 'antd';
+import {Typography} from 'antd';
+// style
+import './EventsTable.styles.scss';
 // events btn
 import EventDelete from '../events-delete/EventsDelete';
 import EventsEdit from '../events-edit/EventsEdit';
 import EventsImage from '../events-image/EventsImage';
 import EventsVideo from '../events-video/EventsVideo';
 
-const columns = [
-  {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
-  {title: 'Title', dataIndex: 'title', key: 'title'},
-  {title: 'Description', dataIndex: 'description', key: 'description'},
-  {
-    title: 'Action',
-    dataIndex: '',
-    key: 'key',
-    render: (item) => (
-      <>
-        <EventsImage item={item} />
-        <EventsVideo item={item} />
-        <EventsEdit item={item} />
-        <EventDelete item={item} />
-      </>
-    ),
-  },
-];
-
 const EventTable = () => {
+  const {Paragraph} = Typography;
+
+  const columns = [
+    {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
+    {
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',
+      render: (item) => (
+        <Paragraph ellipsis={true} className='ellipsis-title'>
+          {item}
+        </Paragraph>
+      ),
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
+      render: (item) => (
+        <Paragraph ellipsis={true} className='ellipsis-text'>
+          {item}
+        </Paragraph>
+      ),
+    },
+    {
+      title: 'Action',
+      dataIndex: '',
+      key: 'key',
+      render: (item) => (
+        <>
+          <EventsImage item={item} />
+          <EventsVideo item={item} />
+          <EventsEdit item={item} />
+          <EventDelete item={item} />
+        </>
+      ),
+    },
+  ];
+
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 

@@ -1,31 +1,53 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Modal} from 'antd';
 import {AiOutlineVideoCamera} from 'react-icons/ai';
-// import './EventsVideo.styles.scss';
+import './SurgeryVideo.style.scss';
 
-export default function SurgeryVideo({item}){
-    const[visible, setVisible] = useState(false);
-    return(
-        <>
-            <Button type='link' onClick={()=> setVisible(true)}>
-                <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
-            </Button>
-            <Modal
-            centered
-            visible={visible}
-            onOk={()=> setVisible(false)}
-            onCancel={()=> setVisible(false)}
-            style={{minWidth: '70%', maxWidth: '100%'}}
-            footer={null}
-            >
-            <video controls className='event-modal-video'>
-          <source src={item.videoUrl} type='video/mp4' />
-          <source
-            src='https://www.w3schools.com/html/mov_bbb.ogg'
-            type='video/ogg'
-          />
-        </video>
-            </Modal>
-        </>
-    )
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+
+function SurgeryVideo({item}) {
+  const [visible, setVisible] = useState(false);
+  return (
+    <>
+      <Button type='link' onClick={() => setVisible(true)}>
+        <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
+      </Button>
+      <style jsx='true'>
+        {`
+          .ant-modal-body {
+            padding: 0 !important;
+            line-height: 0 !important;
+          }
+        `}
+      </style>
+      <Modal
+        title={item.title}
+        centered
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
+        footer={null}>
+        <Slider className='surgery-video-slide' {...settings}>
+          {item.videoUrl.map((url) => (
+            <video controls className='surgery-modal-video' key={url}>
+              <source src={url} type='video/mp4' />
+            </video>
+          ))}
+        </Slider>
+      </Modal>
+    </>
+  );
 }
+
+export default SurgeryVideo;

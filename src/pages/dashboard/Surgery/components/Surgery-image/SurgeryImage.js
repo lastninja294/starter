@@ -7,17 +7,20 @@ export default function SurgeryImages({item}) {
 
     return(
         <>
-            <Button>
-                <IoImageOutline style={{fontSize:"1.3em"}} onClick={()=> setVisible(true)}/>
-            </Button>
-            <div style={{display:'none'}}>
-                <Image.PreviewGroup
-                 preview={{visible, onVisibleChange: vis => setVisible(vis)}}>
-                    {item.imageUrl.map((img) => (
-                        <Image src={img} key={img} />
-                    ))}
-                </Image.PreviewGroup>
-            </div>
-        </>
+      <Button type='link'>
+        <IoImageOutline
+          style={{fontSize: '1.3em'}}
+          onClick={() => setVisible(true)}
+        />
+      </Button>
+      <div style={{display: 'none'}}>
+        <Image.PreviewGroup
+          preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
+          {item.imageUrl.map((img) => (
+            <Image src={img} key={img} />
+          ))}
+        </Image.PreviewGroup>
+      </div>
+    </>
     )
 }

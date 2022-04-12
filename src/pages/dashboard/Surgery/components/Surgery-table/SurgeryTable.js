@@ -10,6 +10,7 @@ const columns = [
     {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},
     {title: 'Title', dataIndex: 'title', key: 'title'},
     {title: 'Description', dataIndex: 'description', key: 'description'},
+    {title: 'Date', dataIndex: "date", key:'date'},
     {
       title: 'Actions',
       dataIndex: '',

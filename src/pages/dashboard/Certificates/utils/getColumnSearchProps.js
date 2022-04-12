@@ -67,3 +67,4 @@ const getColumnSearchProps = (dataIndex) => {
 };
 
 export default getColumnSearchProps;
+
