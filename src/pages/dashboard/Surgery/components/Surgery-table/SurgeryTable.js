@@ -9,7 +9,13 @@ import { fakeData } from '../../Fake-data/fake-data';
 const columns = [
     {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},
     {title: 'Title', dataIndex: 'title', key: 'title'},
-    {title: 'Description', dataIndex: 'description', key: 'description'},
+    {title: 'Description', dataIndex: 'description', key: 'description',
+    render: desc => (
+        <>
+            <p>{desc.slice(0,17) + "..."}</p>
+        </>
+    )
+},
     {title: 'Date', dataIndex: "date", key:'date'},
     {
       title: 'Actions',
