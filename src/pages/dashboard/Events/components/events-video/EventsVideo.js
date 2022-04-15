@@ -20,7 +20,10 @@ function EventsVideo({item}) {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Button type='link' onClick={() => setVisible(true)}>
+      <Button
+        type='link'
+        onClick={() => setVisible(true)}
+        style={{padding: 0, margin: '0 15px'}}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
       <style jsx='true'>
