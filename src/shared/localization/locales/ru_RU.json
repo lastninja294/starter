@@ -537,7 +537,11 @@
   "sidebar.pages.errorPages.comingSoon": "Вскоре",
   "sidebar.pages.sample.certificates": "Сертификаты",
   "sidebar.pages.sample.surgery": "Операция",
+<<<<<<< HEAD
   "sidebar.pages.sample.events": "События",
+=======
+  "sidebar.pages.sample.application": "Заявление",
+>>>>>>> 41f2917 (table)
   "validation.phoneNumberValid": "Номер телефона недействителен!",
   "validation.phoneNumberRequired": "Пожалуйста, введите номер телефона!",
   "validation.titleRequired": "Пожалуйста, введите название!",

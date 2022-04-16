@@ -22,7 +22,12 @@ export const dashboardPagesConfigs = [
     component: React.lazy(() => import('./Surgery')),
   },
   {
+<<<<<<< HEAD
     path: '/dashboard/events',
     component: React.lazy(() => import('./Events')),
+=======
+    path: '/dashboard/application',
+    component: React.lazy(() => import('./Application')),
+>>>>>>> 41f2917 (table)
   },
 ];

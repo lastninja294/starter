@@ -537,7 +537,11 @@
   "sidebar.pages.errorPages.comingSoon": "Tez kunda",
   "sidebar.pages.sample.certificates": "Serifikatlar",
   "sidebar.pages.sample.surgery": "Jarrohlik",
+<<<<<<< HEAD
   "sidebar.pages.sample.events": "Voqealar",
+=======
+  "sidebar.pages.sample.application": "Ariza formasi",
+>>>>>>> 41f2917 (table)
   "validation.phoneNumberValid": "Telefon raqami noto'g'ri!",
   "validation.phoneNumberRequired": "Iltimos, telefon raqamini kiriting!",
   "validation.titleRequired": "Iltimos, Sarlavhani kiriting!",
