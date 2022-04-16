@@ -6,11 +6,11 @@ function EventsImage({item}) {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Button type='link'>
-        <IoImageOutline
-          style={{fontSize: '1.3em'}}
-          onClick={() => setVisible(true)}
-        />
+      <Button
+        type='link'
+        onClick={() => setVisible(true)}
+        style={{padding: 0, margin: '0 15px'}}>
+        <IoImageOutline style={{fontSize: '1.3em'}} />
       </Button>
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
