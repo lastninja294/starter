@@ -4,12 +4,8 @@ import {IoNewspaperOutline} from 'react-icons/io5';
 import { CgUserList } from 'react-icons/cg';
 import { GrCertificate } from 'react-icons/gr';
 import {FaHospitalUser} from 'react-icons/fa';
-<<<<<<< HEAD
 import {BsCalendarEvent} from 'react-icons/bs';
-
-=======
 import { UsergroupAddOutlined } from '@ant-design/icons';
->>>>>>> 41f2917 (table)
 
 const routesConfig = [
   {
@@ -59,22 +55,21 @@ const routesConfig = [
         path: '/dashboard/surgery',
       },
       {
-<<<<<<< HEAD
         id: 'events',
         title: 'Events',
         messageId: 'sidebar.pages.sample.events',
         type: 'item',
         icon: <BsCalendarEvent />,
         path: '/dashboard/events',
-=======
+      },
+      {
         id: 'application',
         title: 'Application',
         messageId: 'sidebar.pages.sample.application',
         type: 'item',
         icon: <UsergroupAddOutlined />,
         path: '/dashboard/application',
->>>>>>> 41f2917 (table)
-      },
+      }
     ],
   },
 ];
