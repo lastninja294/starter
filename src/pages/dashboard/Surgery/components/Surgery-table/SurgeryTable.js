@@ -49,7 +49,7 @@ const SurgeryTable = () => {
           columns={columns}
           dataSource={data}
           loading={loading}
-          pagination={{pageSize:5}}
+          pagination={{pageSize:4}}
         />
       </Space>
     );
