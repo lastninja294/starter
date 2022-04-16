@@ -1,6 +1,5 @@
 import {Popconfirm, Button, message} from 'antd';
 import {AiOutlineDelete} from 'react-icons/ai';
-// import { success } from '../alerts/alerts';
 
 function EventsDelete() {
   return (
