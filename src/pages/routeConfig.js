@@ -2,7 +2,7 @@ import React from 'react';
 import {FiSettings} from 'react-icons/fi';
 import {IoNewspaperOutline} from 'react-icons/io5';
 import { CgUserList } from 'react-icons/cg';
-import { GrCertificate } from 'react-icons/gr';
+import {AiOutlineSafetyCertificate} from 'react-icons/ai';
 import {FaHospitalUser} from 'react-icons/fa';
 import {BsCalendarEvent} from 'react-icons/bs';
 
@@ -43,7 +43,7 @@ const routesConfig = [
         title: 'Certificates',
         messageId: 'sidebar.pages.sample.certificates',
         type: 'item',
-        icon: <GrCertificate />,
+        icon: <AiOutlineSafetyCertificate />,
         path: '/dashboard/certificates',
       },
       {
