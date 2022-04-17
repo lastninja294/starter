@@ -11,29 +11,26 @@ function NewsTable({posts}) {
   const columns = [
     {
       title: 'ID',
-      width: 50,
+      width: '5%',
       dataIndex: 'id',
       key: 'name',
       fixed: 'left',
     },
     {
       title: 'TITLE',
-      width: 220,
+      width: "25%",
       dataIndex: 'title',
       key: 'title',
       fixed: 'left',
-      render: (des) => {
-        if (des.length > 30) {
-          return <div>{des.slice(0, 25)}. . .</div>;
-        }
-        return <div>{des}</div>;
-      },
+      ellipsis: true,
+
     },
     {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
       fixed: 'left',
+      width: "36%",
       render: (des) => {
         // newsDataId.post_description JSON.parsga beriladi
         const postHtml = JSON.parse(des);
@@ -71,9 +68,7 @@ function NewsTable({posts}) {
       fixed: 'right',
       width: 30,
       render: (post) => {
-        return (
-            <EditPost post={post} />
-        );
+        return <EditPost post={post} />;
       },
     },
     {
@@ -81,28 +76,15 @@ function NewsTable({posts}) {
       key: 'operation',
       fixed: 'right',
       width: 30,
-      render: (record) => (
-            <Delete id={record.id} />
-      ),
+      render: (record) => <Delete id={record.id} />,
     },
   ];
-  const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-      console.log(
-        `selectedRowKeys: ${selectedRowKeys}`,
-        'selectedRows: ',
-        selectedRows,
-      );
-    },
-  };
   return (
     <Table
       rowKey='id'
-      rowSelection={{
-        type: 'checkbox',
-        ...rowSelection,
-      }}
+      pagination={{pageSize: 5}}
       columns={columns}
+      bordered={true}
       dataSource={[...posts]}
     />
   );
