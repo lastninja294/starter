@@ -25,4 +25,8 @@ export const dashboardPagesConfigs = [
     path: '/dashboard/events',
     component: React.lazy(() => import('./Events')),
   },
+  {
+    path: '/dashboard/application',
+    component: React.lazy(() => import('./Application')),
+  }
 ];

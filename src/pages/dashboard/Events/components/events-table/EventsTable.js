@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import {FaceData} from '../../fake-data/fake-data';
+// ant
 import {Space, Table} from 'antd';
-import {FaceData} from '../../face-data/face-data';
 // events btn
 import EventDelete from '../events-delete/EventsDelete';
 import EventsEdit from '../events-edit/EventsEdit';
@@ -9,16 +10,24 @@ import EventsVideo from '../events-video/EventsVideo';
 
 const columns = [
   {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
-  {title: 'Title', dataIndex: 'title', key: 'title'},
+  {
+    title: 'Title',
+    dataIndex: 'title',
+    width: '25%',
+    key: 'title',
+    ellipsis: true,
+  },
   {
     title: 'Description',
     dataIndex: 'description',
+    width: '50%',
     key: 'description',
-    render: (item) => <p style={{textOverflow:"ellipsis"}}>{item}</p>,
+    ellipsis: true,
   },
   {
-    title: 'Action',
+    title: '',
     dataIndex: '',
+    width: '20%',
     key: 'key',
     render: (item) => (
       <>
@@ -32,14 +41,15 @@ const columns = [
 ];
 
 const EventTable = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
+  const [data, setdata] = useState(null);
+  const [loading, setloading] = useState(false);
 
+  // fake-asinc
   useEffect(() => {
-    // face asinc
-    setData(FaceData);
+    setloading(true);
     setTimeout(() => {
-      setLoading(!loading);
+      setdata(FaceData);
+      setloading(false);
     }, 1000);
   }, []);
 
@@ -48,8 +58,9 @@ const EventTable = () => {
       <Table
         columns={columns}
         dataSource={data}
-        loading={loading}
         pagination={{pageSize: 5}}
+        bordered={true}
+        loading={loading}
       />
     </Space>
   );

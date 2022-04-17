@@ -5,7 +5,7 @@ import { CgUserList } from 'react-icons/cg';
 import {AiOutlineSafetyCertificate} from 'react-icons/ai';
 import {FaHospitalUser} from 'react-icons/fa';
 import {BsCalendarEvent} from 'react-icons/bs';
-
+import { UsergroupAddOutlined } from '@ant-design/icons';
 
 const routesConfig = [
   {
@@ -62,6 +62,14 @@ const routesConfig = [
         icon: <BsCalendarEvent />,
         path: '/dashboard/events',
       },
+      {
+        id: 'application',
+        title: 'Application',
+        messageId: 'sidebar.pages.sample.application',
+        type: 'item',
+        icon: <UsergroupAddOutlined />,
+        path: '/dashboard/application',
+      }
     ],
   },
 ];

@@ -1,8 +1,7 @@
-import {Button, Modal} from 'antd';
 import React, {useState} from 'react';
+import {Button, Modal} from 'antd';
 import {AiOutlineVideoCamera} from 'react-icons/ai';
-// import ReactPlayer from 'react-player';
-import './EventsVideo.styles.scss';
+import './SurgeryVideo.style.scss';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -16,14 +15,11 @@ const settings = {
   slidesToScroll: 1,
 };
 
-function EventsVideo({item}) {
+function SurgeryVideo({item}) {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Button
-        type='link'
-        onClick={() => setVisible(true)}
-        style={{padding: 0, margin: '0 15px'}}>
+      <Button type='link' onClick={() => setVisible(true)}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
       <style jsx='true'>
@@ -42,9 +38,9 @@ function EventsVideo({item}) {
         onCancel={() => setVisible(false)}
         style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
         footer={null}>
-        <Slider className='event-video-slide' {...settings}>
+        <Slider className='surgery-video-slide' {...settings}>
           {item.videoUrl.map((url) => (
-            <video controls className='event-modal-video' key={url}>
+            <video controls className='surgery-modal-video' key={url}>
               <source src={url} type='video/mp4' />
             </video>
           ))}
@@ -54,4 +50,4 @@ function EventsVideo({item}) {
   );
 }
 
-export default EventsVideo;
+export default SurgeryVideo;

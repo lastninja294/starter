@@ -19,17 +19,17 @@ const store = configureStore();
 const App = () => (
   <AppContextProvider>
     <Provider store={store}>
-      <AppThemeProvider>
-        <AppLocaleProvider>
-          <BrowserRouter>
-            <FirebaseAuthProvider>
-              <AuthRoutes>
-                <AppLayout />
-              </AuthRoutes>
-            </FirebaseAuthProvider>
-          </BrowserRouter>
-        </AppLocaleProvider>
-      </AppThemeProvider>
+        <AppThemeProvider>
+          <AppLocaleProvider>
+            <BrowserRouter>
+              <FirebaseAuthProvider>
+                <AuthRoutes>
+                  <AppLayout />
+                </AuthRoutes>
+              </FirebaseAuthProvider>
+            </BrowserRouter>
+          </AppLocaleProvider>
+        </AppThemeProvider>
     </Provider>
   </AppContextProvider>
 );

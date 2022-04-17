@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React,{useState} from 'react';
 import {Button, Image} from 'antd';
 import {IoImageOutline} from 'react-icons/io5';
 
-function EventsImage({item}) {
-  const [visible, setVisible] = useState(false);
-  return (
-    <>
-      <Button
-        type='link'
-        onClick={() => setVisible(true)}
-        style={{padding: 0, margin: '0 15px'}}>
-        <IoImageOutline style={{fontSize: '1.3em'}} />
+export default function SurgeryImages({item}) {
+    const[visible, setVisible] = useState(false);
+
+    return(
+        <>
+      <Button type='link'>
+        <IoImageOutline
+          style={{fontSize: '1.3em'}}
+          onClick={() => setVisible(true)}
+        />
       </Button>
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
@@ -21,7 +22,5 @@ function EventsImage({item}) {
         </Image.PreviewGroup>
       </div>
     </>
-  );
+    )
 }
-
-export default EventsImage;
