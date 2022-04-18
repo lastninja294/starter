@@ -2,7 +2,6 @@ import React from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import SurgeryTable from './components/Surgery-table/SurgeryTable';
 
-
 const Surgery = () => {
   return (
     <>

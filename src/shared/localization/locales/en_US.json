@@ -538,6 +538,7 @@
   "sidebar.pages.sample.certificates": "Certificates",
   "sidebar.pages.sample.surgery": "Surgery",
   "sidebar.pages.sample.events": "Events",
+  "sidebar.pages.sample.application": "Application",
   "validation.phoneNumberValid": "Phone number is not valid!",
   "validation.phoneNumberRequired": "Please enter phone number!",
   "validation.titleRequired": "Please enter Title!",

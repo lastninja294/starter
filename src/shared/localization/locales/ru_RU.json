@@ -538,6 +538,7 @@
   "sidebar.pages.sample.certificates": "Сертификаты",
   "sidebar.pages.sample.surgery": "Операция",
   "sidebar.pages.sample.events": "События",
+  "sidebar.pages.sample.application": "Заявление",
   "validation.phoneNumberValid": "Номер телефона недействителен!",
   "validation.phoneNumberRequired": "Пожалуйста, введите номер телефона!",
   "validation.titleRequired": "Пожалуйста, введите название!",
