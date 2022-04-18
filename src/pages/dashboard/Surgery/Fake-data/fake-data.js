@@ -11,7 +11,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -41,7 +40,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -56,7 +54,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -71,7 +68,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -86,7 +82,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -101,7 +96,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -116,7 +110,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -131,7 +124,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -146,10 +138,7 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
-    
-    
 ];

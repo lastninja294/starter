@@ -12,7 +12,7 @@ const columns = [
     {title: 'Description', dataIndex: 'description', key: 'description',
     render: desc => (
         <>
-            <p>{desc.slice(0,17) + "..."}</p>
+            <p>{desc.slice(0,34) + "..."}</p>
         </>
     )
 },
