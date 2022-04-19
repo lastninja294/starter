@@ -10,6 +10,7 @@ import TableActions from './Actions';
 export default function TableComponent({url}) {
   // define mutateAsync and isLoading(For the delete button)
   const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
+    "hospitals",
     'https://axiosuchunsinovapi.herokuapp.com/users/10',
   );
 
