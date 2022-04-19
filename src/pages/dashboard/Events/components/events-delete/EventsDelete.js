@@ -44,7 +44,7 @@ function EventsDelete({item}) {
           mutateAsync();
           clearMutation.mutate();
         }}>
-        <Button type='link' danger style={{padding: 0, margin: '0 15px'}}>
+        <Button type='link' danger style={{padding: 0, margin: '0 12px'}}>
           <AiOutlineDelete style={{fontSize: '1.3em'}} />
         </Button>
       </Popconfirm>
