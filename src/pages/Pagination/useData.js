@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {useQuery} from 'react-query';
 
-export default function useGetData(url) {
-  const {data, status, error, isFetching, refetch} = useQuery(url, async () => {
+export default function useGetData(name ,url) {
+  const {data, status, error, isFetching, refetch} = useQuery(name, async () => {
     const response = await axios.get(url);
     return response.data;
   });
