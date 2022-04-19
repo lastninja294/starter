@@ -5,6 +5,7 @@ import SurgeryEdit from '../Surgery-edit/SurgeryEdit';
 import SurgeryImages from '../Surgery-image/SurgeryImage';
 import SurgeryVideo from '../Surgery-video/SurgeryVideo';
 import { fakeData } from '../../Fake-data/fake-data';
+// import {Api} from '../Fake-data/fakeData'
 
 const columns = [
     {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},

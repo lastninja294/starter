@@ -1,4 +1,7 @@
 let day = new Date();
+// import axios from 'axios'
+// export const Api = axios.get('https://axiosuchunsinovapi.herokuapp.com/staff');
+
 export const fakeData = [
     {
         id : 1,
@@ -141,4 +144,4 @@ export const fakeData = [
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
-];
+]; 
