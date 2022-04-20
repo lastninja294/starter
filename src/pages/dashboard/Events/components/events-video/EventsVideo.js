@@ -23,7 +23,7 @@ function EventsVideo({item}) {
       <Button
         type='link'
         onClick={() => setVisible(true)}
-        style={{padding: 0, margin: '0 15px'}}>
+        style={{padding: 0, margin: '0 12px'}}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
       <style jsx='true'>

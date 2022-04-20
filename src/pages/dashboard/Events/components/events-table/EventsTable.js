@@ -32,10 +32,12 @@ const columns = [
     width: '20%',
     render: (item) => (
       <>
-        <EventsImage item={item} />
-        <EventsVideo item={item} />
-        <EventsEdit item={item} />
-        <EventDelete item={item} />
+        <div style={{width:"100%", display:"flex" , justifyContent:"space-between" , alignItems:"center"}}>
+          <EventsImage item={item} />
+          <EventsVideo item={item} />
+          <EventsEdit item={item} />
+          <EventDelete item={item} />
+        </div>
       </>
     ),
   },
