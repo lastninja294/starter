@@ -1,6 +1,7 @@
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import Create from './crud/create/create-data.component';
-import TableComponent from './crud/table/table.component';
+// import TableComponent from './crud/table/table.component';
+import NewTableComponent from './crud/table/new.table.component';
 import React, {useEffect, useState} from 'react';
 import {api} from './crud/api';
 const Staff = () => {
@@ -9,7 +10,8 @@ const Staff = () => {
   const fetchData = async () => {
     try {
       const request = await api.get('/');
-      setStaffData(request.data); 
+      console.log(request.data);
+      setStaffData(request.data);
       // console.log('render API');
       return request;
     } catch (error) {
@@ -37,7 +39,12 @@ const Staff = () => {
     <div className='container-data'>
       <AppPageMetadata title='Staff' />
       <Create fetchData={fetchData} />
-      <TableComponent
+      {/* <TableComponent
+        staffData={staffData}
+        handleDelete={handleDelete}
+        fetchData={fetchData}
+      /> */}
+      <NewTableComponent
         staffData={staffData}
         handleDelete={handleDelete}
         fetchData={fetchData}

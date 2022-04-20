@@ -3,7 +3,7 @@ import {Row, Col, Form, Upload, Input} from 'antd';
 import {Modal, Button} from 'antd';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
 import {MdVideoLibrary} from 'react-icons/md';
-import {FaRegEdit} from 'react-icons/fa';
+import {AiOutlineEdit} from 'react-icons/ai';
 import {api} from '../api';
 import PropTypes from 'prop-types';
 import './edit.styles.scss';
@@ -68,13 +68,11 @@ const Edit = ({id, fetchData, data}) => {
   // console.log('render EDIT');
   return (
     <>
-      <Button
-        type='primary'
-        shape='round'
+      <AiOutlineEdit
+        className='icon_style'
         onClick={() => setVisible(true)}
-        size={'middle'}>
-        <FaRegEdit className='icon-style' size={'20px'} />
-      </Button>
+        style={{fontSize: '1.3em'}}
+      />
       <Modal
         title='Modal 1000px width'
         centered

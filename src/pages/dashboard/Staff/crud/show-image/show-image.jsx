@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
-import {Image, Button} from 'antd';
+import {IoImageOutline} from 'react-icons/io5';
+import {Image} from 'antd';
+import './show-image.styles.scss';
 import PropTypes from 'prop-types';
 const ShowIamges = ({data, id}) => {
   const [visible, setVisible] = useState(false);
@@ -8,13 +9,12 @@ const ShowIamges = ({data, id}) => {
   // console.log('render showImage');
   return (
     <>
-      <Button
-        type='primary'
-        shape='round'
+      <IoImageOutline
+        className='icon_style'
         onClick={() => setVisible(true)}
-        size={'middle'}>
-        <BsFillFileEarmarkImageFill width={'100%'} size={'20px'} />
-      </Button>
+        width={'100%'}
+        size={'20px'}
+      />
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
