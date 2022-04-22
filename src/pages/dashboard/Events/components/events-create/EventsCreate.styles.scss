@@ -21,3 +21,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+.event-create-modal{
+
+  .ant-modal-body{
+    padding: 0;
+  }
+}

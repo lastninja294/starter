@@ -16,13 +16,6 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
 
   return (
     <>
-      <style jsx='true'>
-        {`
-          .ant-modal-body {
-            padding: 0;
-          }
-        `}
-      </style>
       <Modal
         visible={visible}
         centered={true}
@@ -30,6 +23,7 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
         okText='Create'
         cancelText='Cancel'
         onCancel={onCancel}
+        className="event-create-modal"
         width={1000}
         onOk={() => {
           form
