@@ -1,74 +1,78 @@
-import React, {useState, useEffect} from 'react';
-import {FaceData} from '../../face-data/face-data';
+import React, {useContext, useEffect} from 'react';
 // ant
 import {Space, Table} from 'antd';
-import {Typography} from 'antd';
-// style
-import './EventsTable.styles.scss';
 // events btn
 import EventDelete from '../events-delete/EventsDelete';
 import EventsEdit from '../events-edit/EventsEdit';
 import EventsImage from '../events-image/EventsImage';
 import EventsVideo from '../events-video/EventsVideo';
+import Error404 from 'pages/errorPages/Error404';
+import useGetData from 'pages/Pagination/useData';
+import isLoadingContext from '../../myContext/myContext';
 
-const EventTable = () => {
-  const {Paragraph} = Typography;
-
-  const columns = [
-    {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
-    {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
-      render: (item) => (
-        <Paragraph ellipsis={true} className='ellipsis-title'>
-          {item}
-        </Paragraph>
-      ),
-    },
-    {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
-      render: (item) => (
-        <Paragraph ellipsis={true} className='ellipsis-text'>
-          {item}
-        </Paragraph>
-      ),
-    },
-    {
-      title: 'Action',
-      dataIndex: '',
-      key: 'key',
-      render: (item) => (
-        <>
+const columns = [
+  {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},
+  {
+    title: 'Title',
+    dataIndex: 'name',
+    width: '25%',
+    key: 'title',
+    ellipsis: true,
+  },
+  {
+    title: 'Description',
+    dataIndex: 'surname',
+    width: '50%',
+    key: 'description',
+    ellipsis: true,
+  },
+  {
+    title: '',
+    dataIndex: '',
+    width: '20%',
+    render: (item) => (
+      <>
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
           <EventsImage item={item} />
           <EventsVideo item={item} />
           <EventsEdit item={item} />
           <EventDelete item={item} />
-        </>
-      ),
-    },
-  ];
+        </div>
+      </>
+    ),
+  },
+];
 
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
+const EventTable = () => {
+  const [loader, setloader] = useContext(isLoadingContext);
 
+  console.log('table');
+  const {data, status} = useGetData(
+    'event',
+    `https://axiosuchunsinovapi.herokuapp.com/users`,
+  );
   useEffect(() => {
-    // face asinc
-    setData(FaceData);
-    setTimeout(() => {
-      setLoading(!loading);
-    }, 1000);
-  }, []);
+    setloader(status === 'loading' ? true : false);
+  }, [status]);
 
+  if (status === 'error') {
+    return <Error404 />;
+  }
   return (
     <Space direction='vertical' style={{width: '100%'}}>
       <Table
+        rowKey='id'
         columns={columns}
         dataSource={data}
-        loading={loading}
-        pagination={{pageSize: 5}}
+        pagination={20}
+        bordered={true}
+        loading={loader}
       />
     </Space>
   );

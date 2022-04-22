@@ -538,6 +538,7 @@
   "sidebar.pages.sample.certificates": "Serifikatlar",
   "sidebar.pages.sample.surgery": "Jarrohlik",
   "sidebar.pages.sample.events": "Voqealar",
+  "sidebar.pages.sample.application": "Ariza formasi",
   "validation.phoneNumberValid": "Telefon raqami noto'g'ri!",
   "validation.phoneNumberRequired": "Iltimos, telefon raqamini kiriting!",
   "validation.titleRequired": "Iltimos, Sarlavhani kiriting!",

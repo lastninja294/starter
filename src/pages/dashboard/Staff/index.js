@@ -1,9 +1,11 @@
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
-import Create from './crud/create/create-data.component';
-// import TableComponent from './crud/table/table.component';
+// import Create from './crud/create/create-data.component';
+import Create from './crud/create/new-create-data.component';
 import NewTableComponent from './crud/table/new.table.component';
 import React, {useEffect, useState} from 'react';
+import {QueryClientProvider, QueryClient} from 'react-query';
 import {api} from './crud/api';
+const queryClient = new QueryClient();
 const Staff = () => {
   // console.log('render INDEX staff');
   const [staffData, setStaffData] = useState([]);
@@ -24,6 +26,7 @@ const Staff = () => {
       }
     }
   };
+  console.log(staffData);
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,20 +39,20 @@ const Staff = () => {
     }
   };
   return (
-    <div className='container-data'>
+    <QueryClientProvider client={queryClient}>
       <AppPageMetadata title='Staff' />
-      <Create fetchData={fetchData} />
+      <Create />
       {/* <TableComponent
         staffData={staffData}
-        handleDelete={handleDelete}
+        handleDelete={handleDelete}s
         fetchData={fetchData}
       /> */}
       <NewTableComponent
-        staffData={staffData}
+        //staffData={staffData}
         handleDelete={handleDelete}
         fetchData={fetchData}
       />
-    </div>
+    </QueryClientProvider>
   );
 };
 

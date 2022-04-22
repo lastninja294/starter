@@ -20,7 +20,10 @@ function EventsVideo({item}) {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Button type='link' onClick={() => setVisible(true)}>
+      <Button
+        type='link'
+        onClick={() => setVisible(true)}
+        style={{padding: 0, margin: '0 12px'}}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
       <style jsx='true'>
@@ -32,7 +35,7 @@ function EventsVideo({item}) {
         `}
       </style>
       <Modal
-        title={item.title}
+        title={item?.title}
         centered
         visible={visible}
         onOk={() => setVisible(false)}
@@ -40,11 +43,21 @@ function EventsVideo({item}) {
         style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
         footer={null}>
         <Slider className='event-video-slide' {...settings}>
-          {item.videoUrl.map((url) => (
-            <video controls className='event-modal-video' key={url}>
-              <source src={url} type='video/mp4' />
+          {/* {item.videos.map((url, i) => (
+            <div className='media-video' key={i}>
+              <video controls className='event-modal-video'>
+                <source src={url} type='video/mp4' />
+              </video>
+            </div>
+          ))} */}
+          <div className='media-video'>
+            <video controls className='event-modal-video'>
+              <source
+                src='https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
+                type='video/mp4'
+              />
             </video>
-          ))}
+          </div>
         </Slider>
       </Modal>
     </>
