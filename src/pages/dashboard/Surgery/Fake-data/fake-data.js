@@ -5,7 +5,7 @@ let day = new Date();
 export const fakeData = [
     {
         id : 1,
-        title:"Surgery title",
+        title:"Surgery title__1",
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ',
         date: day.toLocaleDateString(),
         imageUrl:[
@@ -19,7 +19,7 @@ export const fakeData = [
     },
     {
         id : 2,
-        title:"Surgery title",
+        title:"Surgery title__2",
         description: 'Lorem ipsum dolor sit amet.',
         date: day.toLocaleDateString(),
         imageUrl:[
@@ -34,7 +34,7 @@ export const fakeData = [
     },
     {
         id : 3,
-        title:"Surgery title",
+        title:"Surgery title__3",
         description: 'Lorem ipsum dolor sit amet.',
         date: day.toLocaleDateString(),
         imageUrl:[
