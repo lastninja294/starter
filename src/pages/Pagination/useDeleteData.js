@@ -8,6 +8,7 @@ export default function useDeleteData(url) {
       const response = await axios.delete(url);
       return response.data;
     },
+    
   );
   return {mutateAsync, isLoading, isSuccess, isError};
 }
