@@ -38,7 +38,11 @@ function EventsDelete({item}) {
 
   useEffect(() => {
     setloader(isLoading);
+<<<<<<< HEAD
   }, [isLoading]);
+=======
+  }, [isSuccess, isError, isLoading]);
+>>>>>>> 0106f7c8782a531044ddfd97e8697d0c6014a9e8
 
   return (
     <>

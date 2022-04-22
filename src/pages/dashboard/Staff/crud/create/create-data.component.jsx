@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+// import {createData} from '../../api/apiFunction';
+import {useCreateData} from '../../api/apiFunction';
 import {Row, Col, Form, Upload, Input} from 'antd';
 import {Modal, Button} from 'antd';
 import {MdCreateNewFolder} from 'react-icons/md';
@@ -6,7 +8,7 @@ import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
 import {MdVideoLibrary} from 'react-icons/md';
 import PropTypes from 'prop-types';
 import './create-data.styles.scss';
-import {api} from '../api';
+// import {api} from '../api';
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -34,9 +36,10 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-const Create = ({fetchData}) => {
+const Create = () => {
   const [visible, setVisible] = useState(false);
-  const onFinish = async (values) => {
+  const {mutate} = useCreateData();
+  const onFinish = (values) => {
     const newData = {
       title: values.user.title,
       description: values.user.description,
@@ -47,14 +50,7 @@ const Create = ({fetchData}) => {
       ],
       videos: [],
     };
-    try {
-      // console.log(`data: ${values.user.file}`);
-      const response = await api.post('/', newData);
-      console.log(response.data);
-      fetchData();
-    } catch (error) {
-      console.log(error.massage);
-    }
+    mutate(newData);
   };
   // console.log('render Create');
   return (

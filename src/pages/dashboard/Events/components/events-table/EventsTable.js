@@ -39,7 +39,17 @@ const columns = [
     align: 'center',
     render: (item) => (
       <>
+<<<<<<< HEAD
         <div style={{margin: '0 auto'}}>
+=======
+        <div
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+>>>>>>> 0106f7c8782a531044ddfd97e8697d0c6014a9e8
           <EventsImage item={item} />
           <EventsVideo item={item} />
           <EventsEdit item={item} />
@@ -58,7 +68,6 @@ const EventTable = () => {
     'event',
     `https://axiosuchunsinovapi.herokuapp.com/users?_page=${pageParam}&_limit=${pageLimit}`,
   );
-
   useEffect(() => {
     setloader(status === 'loading' ? true : false);
   }, [status]);
