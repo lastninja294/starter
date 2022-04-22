@@ -1,6 +1,6 @@
 import React from 'react';
 import {useMutation, useQuery, useQueryClient} from 'react-query';
-import {Table, Space} from 'antd';
+import {Table, Button, Space} from 'antd';
 import Edit from '../edit/edit.component';
 import PropTypes from 'prop-types';
 import {AiOutlineDelete} from 'react-icons/ai';
@@ -11,7 +11,7 @@ import {deleteData} from '../../api/apiFunction';
 const NewTableComponent = ({fetchData}) => {
   const {data, isLoading} = useQuery('staff', getAllData);
   const queryClient = useQueryClient();
-  const {mutateAsync /*isLoading: isDeleting*/} = useMutation(deleteData);
+  const {mutateAsync, isLoading: isDeleting} = useMutation(deleteData);
   const remove = async (id) => {
     await mutateAsync(id);
     queryClient.invalidateQueries('staff');
@@ -88,10 +88,14 @@ const NewTableComponent = ({fetchData}) => {
       render: (record) => (
         <Space size='middle'>
           <Edit id={record.id} fetchData={fetchData} data={data} />
-          <AiOutlineDelete
-            style={{fontSize: '1.3em', color: 'red', cursor: 'pointer'}}
+          <Button
+            type='link'
             onClick={() => remove(record.id)}
-          />
+            loading={isDeleting}>
+            <AiOutlineDelete
+              style={{fontSize: '1.3em', color: 'red', cursor: 'pointer'}}
+            />
+          </Button>
         </Space>
       ),
     },

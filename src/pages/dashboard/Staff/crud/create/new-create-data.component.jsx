@@ -81,7 +81,7 @@ const Create = () => {
         onCancel={() => setVisible(false)}
         width={1300}>
         <Form
-          style={{overflowY: 'auto', maxHeight: '82vh'}}
+          style={{overflowY: 'auto', maxHeight: '83vh'}}
           name='dynamic_form_nest_item'
           onFinish={onFinish}
           autoComplete='off'>
