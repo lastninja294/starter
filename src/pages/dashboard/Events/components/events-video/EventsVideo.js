@@ -74,7 +74,13 @@ function EventsVideo() {
         style={{padding: 0, margin: '0 1em'}}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
-
+      <style jsx='true'>
+        {`
+          .ant-modal-body {
+            padding: 24px;
+          }
+        `}
+      </style>
       <Modal
         title='video'
         centered
