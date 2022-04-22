@@ -1,60 +1,78 @@
-import React,{useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Table, Space} from 'antd';
 import SurgeryDelate from '../Surgery-delate/SurgeryDelate';
 import SurgeryEdit from '../Surgery-edit/SurgeryEdit';
 import SurgeryImages from '../Surgery-image/SurgeryImage';
 import SurgeryVideo from '../Surgery-video/SurgeryVideo';
-import { fakeData } from '../../Fake-data/fake-data';
-// import axios from 'axios'
-
+// import Error404 from 'pages/errorPages/Error404';
+// import {fakeData} from '../../Fake-data/fake-data';
+import axios from 'axios';
 
 const columns = [
-    {title: 'Id', width: '10%', dataIndex: 'id', key: 'id', ellipsis: true},
-    {title: 'Title', dataIndex: 'title', key: 'title', ellipsis:true},
-    {title: 'Description', dataIndex: 'description', key: 'description', ellipsis: true, width:'40%'
-},
-    {title: 'Date', dataIndex: "date", key:'date'},
-    {
-      title: 'Actions',
-      dataIndex: '',
-      key: 'id',
-      width:'24%',
-      
-      render: (item) => (
-        <div>
-          <SurgeryImages item={item} />
-          <SurgeryVideo item={item} />
-          <SurgeryEdit item={item} />
-          <SurgeryDelate item={item} />
-        </div>
-      ),
-    },
+  {title: 'Id', width: '5%', dataIndex: 'id', key: 'id', ellipsis: true},
+  {
+    title: 'Title',
+    width: '15%',
+    dataIndex: 'title_uz',
+    /*dataIndex: 'title' */
+    key: 'title_uz',
+    ellipsis: true,
+  },
+  {
+    title: 'Description',
+    dataIndex: 'description_uz',
+    // dataIndex: 'description',
+
+    key: 'description_uz',
+    ellipsis: true,
+    width: '45%',
+  },
+  // {title: 'Date', dataIndex: 'date', key: 'date'},
+  {
+    title: 'Actions',
+    dataIndex: '',
+    key: 'id',
+    width: '20%',
+
+    render: (item) => (
+      <div>
+        <SurgeryImages item={item} />
+        <SurgeryVideo item={item} />
+        <SurgeryEdit item={item} />
+        <SurgeryDelate item={item} />
+      </div>
+    ),
+  },
 ];
 
+const api = axios.create({
+  baseURL: 'https://axiosuchunsinovapi.herokuapp.com/staff',
+});
+
 const SurgeryTable = () => {
-    const [data, setData] = useState();
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      setData(fakeData);
-      setTimeout(() => {
-        setLoading(!loading);
-      }, 1000);
-    }, []);
+  const [base, setBase] = useState();
+  const [loading, setLoading] = useState(true);
 
- 
-    return (
-      <Space direction='vertical' style={{width: '100%'}}>
-        <Table
-          rowKey='id'
-          columns={columns}
-          dataSource={data}
-          loading={loading}
-          pagination={{pageSize:4}}
-        />
-        {/* <button onClick={getaxios}>Click me</button> */}
-      </Space>
-    );
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      // setBase(fakeData);
+      setLoading(!loading);
+    }, 1000);
+  }, []);
 
-  export default SurgeryTable;
+  api.get('/').then((res) => setBase(res.data));
+
+  return (
+    <Space direction='vertical' style={{width: '100%'}}>
+      <Table
+        rowKey='id'
+        columns={columns}
+        dataSource={base}
+        loading={loading}
+        pagination={{pageSize: 4}}
+      />
+    </Space>
+  );
+};
+
+export default SurgeryTable;

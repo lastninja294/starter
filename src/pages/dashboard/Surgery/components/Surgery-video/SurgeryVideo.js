@@ -39,7 +39,7 @@ function SurgeryVideo({item}) {
         style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
         footer={null}>
         <Slider className='surgery-video-slide' {...settings}>
-          {item.videoUrl.map((url) => (
+          {item.videos.map((url) => (
             <video controls className='surgery-modal-video' key={url}>
               <source src={url} type='video/mp4' />
             </video>

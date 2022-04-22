@@ -16,8 +16,8 @@ export default function SurgeryImages({item}) {
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {item.imageUrl.map((img) => (
-            <Image src={img} key={img} />
+          {item.images.map((img, key) => (
+            <Image src={img} key={key} />
           ))}
         </Image.PreviewGroup>
       </div>
