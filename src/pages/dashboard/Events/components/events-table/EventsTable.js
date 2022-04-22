@@ -11,7 +11,14 @@ import useGetData from 'pages/Pagination/useData';
 import isLoadingContext from '../../myContext/myContext';
 
 const columns = [
-  {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},
+  {
+    title: 'Id',
+    width: 60,
+    dataIndex: 'id',
+    key: 'id',
+    align: 'center',
+    ellipsis: true,
+  },
   {
     title: 'Title',
     dataIndex: 'name',
@@ -22,17 +29,17 @@ const columns = [
   {
     title: 'Description',
     dataIndex: 'surname',
-    width: '50%',
+    width: '48%',
     key: 'description',
     ellipsis: true,
   },
   {
     title: '',
     dataIndex: '',
-    width: '20%',
+    align: 'center',
     render: (item) => (
       <>
-        <div style={{width:"100%", display:"flex" , justifyContent:"space-between" , alignItems:"center"}}>
+        <div style={{margin: '0 auto'}}>
           <EventsImage item={item} />
           <EventsVideo item={item} />
           <EventsEdit item={item} />
@@ -46,10 +53,10 @@ const columns = [
 const EventTable = () => {
   const [loader, setloader] = useContext(isLoadingContext);
 
-  console.log('table');
+  let pageParam = 1 , pageLimit=20;
   const {data, status} = useGetData(
     'event',
-    `https://axiosuchunsinovapi.herokuapp.com/users`,
+    `https://axiosuchunsinovapi.herokuapp.com/users?_page=${pageParam}&_limit=${pageLimit}`,
   );
 
   useEffect(() => {

@@ -10,7 +10,7 @@ function EventsImage({item}) {
       <Button
         type='link'
         onClick={() => setVisible(true)}
-        style={{padding: 0, margin: '0 12px'}}>
+        style={{padding: 0, margin: '0 1em'}}>
         <IoImageOutline style={{fontSize: '1.3em'}} />
       </Button>
       <div style={{display: 'none'}}>
@@ -19,9 +19,7 @@ function EventsImage({item}) {
           {/* {item.images.map((img , i) => (
             <Image src={img} key={i} />
           ))} */}
-          <Image
-            src='https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp'
-          />
+          <Image src='https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp' />
         </Image.PreviewGroup>
       </div>
     </>
