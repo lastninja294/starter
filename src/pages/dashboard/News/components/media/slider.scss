@@ -6,54 +6,52 @@
       div {
         position: relative;
         height: 300px;
-        @media (max-width: 600px) {
-        height: 270px;
-    }
-       
-        @media (max-width: 490px) {
-            height: 250px;
-        }
-        
-        @media (max-width: 450px) {
-            height: 210px;
-        }
-        @media (max-width: 380px) {
-            height: 160px;
-        }
         overflow: hidden;
-        img , video {
+        video {
           position: absolute;
           min-width: 100%;
+          height: 100%;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
         }
-        video{
-          height: 100%;
-        }
-        img{
-          min-height: 100%;
-        }
+        
       }
     }
   }
 
   .slick-prev {
-    margin-left: 30px;
     position: absolute;
     z-index: 98793;
+    left: -7%;
     &::before {
       content: '←';
       font-size: 30px;
     }
   }
   .slick-next {
-    margin-right: 40px;
-    position: absolute;
+    position: absolute;   
     z-index: 98793;
+    right: -5%;
     &::before {
       content: '→';
       font-size: 30px;
     }
   }
+}
+.mymodal{
+  .ant-modal-body{
+    padding: 0;
+  background-color: black;
+}
+.ant-modal-header{
+  display: none;
+}
+.ant-modal-close-x{
+  color: rgb(254, 27, 27);
+  &:hover{
+    color: aliceblue;
+    background-color: rgb(254, 27, 27);
+  }
+}
 }

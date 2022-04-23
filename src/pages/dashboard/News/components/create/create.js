@@ -3,6 +3,7 @@ import {Button, Modal} from 'antd';
 import NewsForm from '../form';
 
 const Create = () => {
+  
   const [visible, setVisible] = useState(false);
   // create post modalkani ochish
   const showModalForm = () => {

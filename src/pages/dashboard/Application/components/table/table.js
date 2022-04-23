@@ -1,9 +1,12 @@
 import React from 'react';
-import {Skeleton, Table} from 'antd';
+import {Table} from 'antd';
 import PropTypes from 'prop-types';
+import QueryPagination from 'pages/Pagination';
+import {useIntl} from 'react-intl';
 
 function ApplicationTable({users}) {
-    const users1 = users? users : []
+  const {messages} = useIntl();
+  const users1 = users? users : []
   const columns = [
     {
       title: 'ID',
@@ -27,14 +30,14 @@ function ApplicationTable({users}) {
       fixed: 'left',
     },
     {
-      title: 'EMAIL',
+      title: messages['common.email'],
       key: 'email',
       fixed: 'right',
       width: 150,
       dataIndex: 'email',
     },
     {
-      title: 'PHONE',
+      title: messages['common.phone'],
       key: 'phone',
       fixed: 'right',
       dataIndex: 'phone',
@@ -43,9 +46,10 @@ function ApplicationTable({users}) {
   ];
 
   return (
-    <Skeleton active loading={false} paragraph={{rows: 20}}>
-      <Table rowKey='id' columns={columns} dataSource={[...users1]} />;
-    </Skeleton>
+    <>
+      <Table rowKey='id' columns={columns} dataSource={[...users1]} />
+      <QueryPagination pageName='application' />
+    </>
   );
 }
 

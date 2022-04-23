@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Pagination} from 'antd';
+import PropTypes from 'prop-types';
+
 // import useData from './useData';
 
-const QueryPagination = () => {
+const QueryPagination = ({pageName, countPage}) => {
   // Define the history object, because we need to redirect the user to the correct page
   const history = useHistory();
 
@@ -16,7 +18,7 @@ const QueryPagination = () => {
 
   // It's easier with useSearchParams but this project is not using it
   useEffect(() => {
-    history.push(`?page=${page}&size=${size}`);
+    history.push(`/dashboard/${pageName}?page=${page}&size=${size}`);
   }, [page, size]);
 
   return (
@@ -24,7 +26,7 @@ const QueryPagination = () => {
       <Pagination
         current={+params.get('page') || 1}
         pageSize={+params.get('size') || 10}
-        total={500}
+        total={countPage?countPage:500}
         onChange={(page, size) => {
           setPage(page);
           setSize(size);
@@ -35,3 +37,7 @@ const QueryPagination = () => {
 };
 
 export default QueryPagination;
+QueryPagination.propTypes = {
+  pageName: PropTypes.string,
+  countPage: PropTypes.number,
+};

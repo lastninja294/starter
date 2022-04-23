@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import { Controller} from 'react-hook-form';
 import { Upload } from 'antd';
 
-function UploadFile({defaultValue ,  control}) {
-
+function UploadFile({defaultValue ,  control , error}) {
+  // const [fileList, setFileList] = useState(defaultValue);
+  // const handleChange = ({fileList}) =>{
+  //   setFileList(fileList)
+  // };
+  // console.log(fileList);
   return (
     <div>
       <Controller
@@ -20,9 +24,16 @@ function UploadFile({defaultValue ,  control}) {
                 multiple
                 defaultFileList={defaultValue}
                 rules={{required: true}}
+                // fileList={fileList}
+                // onChange={handleChange}
                 accept={'image/* , video/*'}>
                 Upload image
               </Upload.Dragger>
+              {error && (
+                <p style={{color: 'red', fontSize: '12px'}}>
+                  * {error?.message || 'This field is required to be filled'}
+                </p>
+              )}
             </>
           );
         }}
@@ -35,5 +46,6 @@ export default UploadFile
 
 UploadFile.propTypes = {
   defaultValue: PropTypes.array,
-  control: PropTypes.object
+  control: PropTypes.object,
+  error: PropTypes.object
 };
