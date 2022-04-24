@@ -29,8 +29,9 @@ export default function SurgeryEdit({item}) {
           <Form.Item name={['user', 'title']} label='Title En:'>
             <Input type='text' defaultValue={item.title_en} placeholder='title_uz'/>
           </Form.Item>
-
           </section>
+
+          
           <section className='textarea__description'>
           <Form.Item name={['user', 'description']} label='Description Uz:'>
             <Input.TextArea type='text' defaultValue={item.description_uz} />
