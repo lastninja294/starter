@@ -1,7 +1,6 @@
 import React from 'react';
 import {RiDeleteBin6Fill} from 'react-icons/ri';
 import ShowIamges from '../show-image/show-image';
-import ShowVideos from '../show-video/show-video';
 import {Table, Button, Skeleton} from 'antd';
 import Edit from '../edit/edit.component';
 import PropTypes from 'prop-types';
@@ -34,13 +33,6 @@ const TableComponent = ({staffData, handleDelete, fetchData}) => {
       fixed: 'right',
       width: 80,
       render: (record) => <ShowIamges data={staffData} id={record.id} />,
-    },
-    {
-      title: 'VIDEOS',
-      key: 'operation',
-      fixed: 'right',
-      width: 80,
-      render: (record) => <ShowVideos id={record.id} />,
     },
     {
       title: 'EDIT',

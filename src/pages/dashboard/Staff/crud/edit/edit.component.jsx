@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import {Row, Col, Form, Upload, Input} from 'antd';
 import {Modal, Button} from 'antd';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
+// import {editStaffItem} from '../../api/apiFunction';
+import {useUpdateData} from '../../api/apiFunction';
 import {MdVideoLibrary} from 'react-icons/md';
-import {FaRegEdit} from 'react-icons/fa';
-import {api} from '../api';
+import {AiOutlineEdit} from 'react-icons/ai';
+// import {api} from '../api';/
 import PropTypes from 'prop-types';
 import './edit.styles.scss';
+// import {useMutation, useQueryClient} from 'react-query';
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -34,9 +37,9 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-const Edit = ({id, fetchData, data}) => {
+const Edit = ({id, data}) => {
+  const {mutate} = useUpdateData(id);
   const editObj = data.find((item) => item.id == id);
-  // console.log(editObj);
   const [inputvalue, setInputValue] = useState(editObj.title);
   const [textareaValue, setTextareaValue] = useState(editObj.description);
   const [visible, setVisible] = useState(false);
@@ -48,33 +51,27 @@ const Edit = ({id, fetchData, data}) => {
   };
   const onFinish = async () => {
     //const onFinish = async (values)
-    try {
-      const response = await api.put(`/${id}`, {
-        title: inputvalue,
-        description: textareaValue,
-        images: [
-          'https://picfiles.alphacoders.com/280/280339.jpg',
-          'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
-          'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
-        ],
-        videos: [],
-      });
-      fetchData();
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
+    const editData = {
+      id: id,
+      title: inputvalue,
+      description: textareaValue,
+      images: [
+        'https://picfiles.alphacoders.com/280/280339.jpg',
+        'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
+        'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
+      ],
+      videos: [],
+    };
+    mutate(editData);
+    console.log(editData);
   };
-  // console.log('render EDIT');
   return (
     <>
-      <Button
-        type='primary'
-        shape='round'
+      <AiOutlineEdit
+        className='icon_style'
         onClick={() => setVisible(true)}
-        size={'middle'}>
-        <FaRegEdit className='icon-style' size={'20px'} />
-      </Button>
+        style={{fontSize: '1.3em'}}
+      />
       <Modal
         title='Modal 1000px width'
         centered

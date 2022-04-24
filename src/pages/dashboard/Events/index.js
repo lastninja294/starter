@@ -3,6 +3,7 @@ import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import EventsTable from './components/events-table/EventsTable';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import isLoadingContext from './myContext/myContext';
+import EventCreate from './components/events-create/EventsCreate';
 
 const queryClient = new QueryClient();
 
@@ -14,7 +15,7 @@ const Events = () => {
       <isLoadingContext.Provider value={[loader, setloader]}>
         <QueryClientProvider client={queryClient}>
           <AppPageMetadata title='Events' />
-          <h2>Events Page</h2>
+          <EventCreate/>
           <EventsTable />
         </QueryClientProvider>
       </isLoadingContext.Provider>

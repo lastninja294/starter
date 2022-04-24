@@ -1,8 +1,11 @@
 let day = new Date();
+// import axios from 'axios'
+// export const Api = axios.get('https://axiosuchunsinovapi.herokuapp.com/staff');
+
 export const fakeData = [
     {
         id : 1,
-        title:"Surgery title",
+        title:"Surgery title__1",
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ',
         date: day.toLocaleDateString(),
         imageUrl:[
@@ -11,13 +14,12 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
     {
         id : 2,
-        title:"Surgery title",
+        title:"Surgery title__2",
         description: 'Lorem ipsum dolor sit amet.',
         date: day.toLocaleDateString(),
         imageUrl:[
@@ -32,7 +34,7 @@ export const fakeData = [
     },
     {
         id : 3,
-        title:"Surgery title",
+        title:"Surgery title__3",
         description: 'Lorem ipsum dolor sit amet.',
         date: day.toLocaleDateString(),
         imageUrl:[
@@ -41,7 +43,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -56,7 +57,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -71,7 +71,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -86,7 +85,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -101,7 +99,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -116,7 +113,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -131,7 +127,6 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
@@ -146,9 +141,7 @@ export const fakeData = [
             'https://media.istockphoto.com/photos/funny-young-man-holding-magnifying-glass-by-his-toothy-smile-picture-id1210339994',
         ],
         videoUrl:[
-            'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             'https://media.w3.org/2010/05/sintel/trailer_hd.mp4'
         ]
     },
-    
-];
+]; 

@@ -8,9 +8,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const settings = {
-  dots: true,
+  // dots: true,
   infinite: true,
-  speed: 500,
+  speed: 600,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
@@ -22,7 +22,7 @@ function SurgeryVideo({item}) {
       <Button type='link' onClick={() => setVisible(true)}>
         <AiOutlineVideoCamera style={{fontSize: '1.3em'}} />
       </Button>
-      <style jsx='true'>
+      <style jsx='false'>
         {`
           .ant-modal-body {
             padding: 0 !important;
@@ -39,7 +39,7 @@ function SurgeryVideo({item}) {
         style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
         footer={null}>
         <Slider className='surgery-video-slide' {...settings}>
-          {item.videoUrl.map((url) => (
+          {item.videos.map((url) => (
             <video controls className='surgery-modal-video' key={url}>
               <source src={url} type='video/mp4' />
             </video>

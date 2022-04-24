@@ -6,7 +6,6 @@ export default function useGetData(name, url) {
     name,
     async () => {
       const response = await axios.get(url);
-      console.log('useGetData', name, url);
       return response.data;
     },
   );

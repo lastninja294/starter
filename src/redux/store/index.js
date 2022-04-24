@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 export const history = createBrowserHistory();
 const routeMiddleware = routerMiddleware(history);
 
-const middlewares = [thunk, routeMiddleware , logger];
+const middlewares = [thunk, routeMiddleware, logger];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default function configureStore(initialState) {

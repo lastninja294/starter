@@ -16,7 +16,7 @@ const QueryPagination = () => {
 
   // It's easier with useSearchParams but this project is not using it
   useEffect(() => {
-    history.push(`/dashboard/settings?page=${page}&size=${size}`);
+    history.push(`?page=${page}&size=${size}`);
   }, [page, size]);
 
   return (
