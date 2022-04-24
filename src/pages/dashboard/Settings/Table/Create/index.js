@@ -41,7 +41,7 @@ const CreateModal = () => {
                     align='baseline'>
                     <Form.Item
                       {...restField}
-                      name={[name, 'first']}
+                      name={[name, 'name']}
                       rules={[
                         {required: true, message: 'Missing hospital name'},
                       ]}>
@@ -49,13 +49,13 @@ const CreateModal = () => {
                     </Form.Item>
                     <Form.Item
                       {...restField}
-                      name={[name, 'last']}
+                      name={[name, 'address']}
                       rules={[{required: true, message: 'Missing address'}]}>
                       <Input placeholder='Address' />
                     </Form.Item>
                     <Form.Item
                       {...restField}
-                      name={[name, 'last']}
+                      name={[name, 'number']}
                       rules={[
                         {required: true, message: 'Missing phone number'},
                       ]}>

@@ -6,10 +6,25 @@ import QueryPagination from 'pages/Pagination';
 import useDeleteData from 'pages/Pagination/useDeleteData';
 import useGetData from 'pages/Pagination/useData';
 import TableActions from './Actions';
+import {useHistory} from 'react-router-dom';
 
-export default function TableComponent({url}) {
+export default function TableComponent() {
+  // define the history object, because we need to define the page number and page size in the url
+  const history = useHistory();
+
+  // define the search query
+  const params = new URLSearchParams(history.location.search);
+
+  //  define page and pageSize. If they are not defined, set them to 1 and 10
+  const page = params.get('page');
+  // const size = params.get('size');
+
+  // url for the query
+  let url = `https://swapi.dev/api/people/?page=${page}`;
+
   // define mutateAsync and isLoading(For the delete button)
   const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
+    'hospitals',
     'https://axiosuchunsinovapi.herokuapp.com/users/10',
   );
 
@@ -47,10 +62,12 @@ export default function TableComponent({url}) {
   if (isError) {
     message.error('Error deleting item. Try again later');
   }
-  console.log(isLoading, isSuccess, isError);
 
   // define the data of the table
-  const {data, status} = useGetData(url);
+  const {data, status} = useGetData('hospitals', url);
+
+  console.log('data', data);
+
   if (status === 'error') {
     return <Error404 />;
   }

@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import {FaceData} from '../../fake-data/fake-data';
+import React, {useContext, useEffect} from 'react';
 // ant
 import {Space, Table} from 'antd';
 // events btn
@@ -7,19 +6,22 @@ import EventDelete from '../events-delete/EventsDelete';
 import EventsEdit from '../events-edit/EventsEdit';
 import EventsImage from '../events-image/EventsImage';
 import EventsVideo from '../events-video/EventsVideo';
+import Error404 from 'pages/errorPages/Error404';
+import useGetData from 'pages/Pagination/useData';
+import isLoadingContext from '../../myContext/myContext';
 
 const columns = [
-  {title: 'Id', width: 50, dataIndex: 'key', key: 'key'},
+  {title: 'Id', width: 50, dataIndex: 'id', key: 'id'},
   {
     title: 'Title',
-    dataIndex: 'title',
+    dataIndex: 'name',
     width: '25%',
     key: 'title',
     ellipsis: true,
   },
   {
     title: 'Description',
-    dataIndex: 'description',
+    dataIndex: 'surname',
     width: '50%',
     key: 'description',
     ellipsis: true,
@@ -28,39 +30,44 @@ const columns = [
     title: '',
     dataIndex: '',
     width: '20%',
-    key: 'key',
     render: (item) => (
       <>
-        <EventsImage item={item} />
-        <EventsVideo item={item} />
-        <EventsEdit item={item} />
-        <EventDelete item={item} />
+        <div style={{width:"100%", display:"flex" , justifyContent:"space-between" , alignItems:"center"}}>
+          <EventsImage item={item} />
+          <EventsVideo item={item} />
+          <EventsEdit item={item} />
+          <EventDelete item={item} />
+        </div>
       </>
     ),
   },
 ];
 
 const EventTable = () => {
-  const [data, setdata] = useState(null);
-  const [loading, setloading] = useState(false);
+  const [loader, setloader] = useContext(isLoadingContext);
 
-  // fake-asinc
+  console.log('table');
+  const {data, status} = useGetData(
+    'event',
+    `https://axiosuchunsinovapi.herokuapp.com/users`,
+  );
+
   useEffect(() => {
-    setloading(true);
-    setTimeout(() => {
-      setdata(FaceData);
-      setloading(false);
-    }, 1000);
-  }, []);
+    setloader(status === 'loading' ? true : false);
+  }, [status]);
 
+  if (status === 'error') {
+    return <Error404 />;
+  }
   return (
     <Space direction='vertical' style={{width: '100%'}}>
       <Table
+        rowKey='id'
         columns={columns}
         dataSource={data}
-        pagination={{pageSize: 5}}
+        pagination={20}
         bordered={true}
-        loading={loading}
+        loading={loader}
       />
     </Space>
   );
