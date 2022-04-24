@@ -7,7 +7,6 @@ import useDeleteData from 'pages/Pagination/useDeleteData';
 import useGetData from 'pages/Pagination/useData';
 import TableActions from './Actions';
 import {useHistory} from 'react-router-dom';
-import {useState} from 'react';
 
 export default function TableComponent() {
   // define the history object, because we need to define the page number and page size in the url
@@ -21,7 +20,14 @@ export default function TableComponent() {
   // const size = params.get('size');
 
   // url for the query
-  let [url, setUrl] = useState(`https://swapi.dev/api/people/?page=1`);
+  let url = `https://swapi.dev/api/people/?page=${page}`;
+
+  // define the data of the table
+  const { data, status } = useGetData('hospitals', url);
+
+  console.log('page', page);
+  console.log('data', data);
+  console.log('status', status);
 
   // define mutateAsync and isLoading(For the delete button)
   const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
@@ -57,6 +63,7 @@ export default function TableComponent() {
       ),
     },
   ];
+
   if (isSuccess) {
     message.success('Item deleted successfully. Good job!');
   }
@@ -64,11 +71,7 @@ export default function TableComponent() {
     message.error('Error deleting item. Try again later');
   }
 
-  // define the data of the table
-  const {data, status} = useGetData('hospitals', url);
-
-  console.log('data', data);
-
+  // if the data is not defined, return the error page
   if (status === 'error') {
     return <Error404 />;
   }
@@ -89,6 +92,7 @@ export default function TableComponent() {
         dataSource={data?.results}
         loading={status === 'loading'}
         pagination={false}
+        size='small'
       />
       <QueryPagination />
     </Space>
