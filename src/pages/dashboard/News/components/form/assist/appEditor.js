@@ -11,6 +11,7 @@ const AppEditor = ({
   error,
   defaultValue,
   name,
+  label,
   ...editorProps
 }) => {
   // newsDataId.post_description JSON.parsga beriladi
@@ -41,6 +42,14 @@ const AppEditor = ({
         render={({field}) => {
           return (
             <>
+              <label
+                style={{
+                  display: 'inline-block',
+                  marginTop: '15px',
+                  fontSize: '16px',
+                }}>
+                {label}
+              </label>
               <Editor
                 {...field}
                 wrapperClassName='demo-wrapper'
@@ -49,7 +58,11 @@ const AppEditor = ({
                 onContentStateChange={editorValue}
                 {...editorProps}
               />
-              {error && <p style={{color: 'red'}}>{'maydoni tuldiring'}</p>}
+              {error && (
+                <p style={{color: 'red', fontSize: '12px', margin: '0'}}>
+                  * {error?.message || 'This field is required to be filled'}
+                </p>
+              )}
             </>
           );
         }}
@@ -65,4 +78,5 @@ AppEditor.propTypes = {
   error: PropTypes.object,
   defaultValue: PropTypes.string,
   name: PropTypes.string,
+  label: PropTypes.string,
 };

@@ -97,7 +97,7 @@ export default function TableComponent() {
         pagination={false}
         size='small'
       />
-      <QueryPagination />
+      <QueryPagination pageName='settings' />
     </Space>
   );
 }
