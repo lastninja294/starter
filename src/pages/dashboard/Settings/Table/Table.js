@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import {message, Table} from 'antd';
 import {useIntl} from 'react-intl';
 import {Space} from 'antd';
@@ -16,18 +17,14 @@ export default function TableComponent() {
   const params = new URLSearchParams(history.location.search);
 
   //  define page and pageSize. If they are not defined, set them to 1 and 10
-  const page = params.get('page');
-  // const size = params.get('size');
+  const [page, setPage] = useState(params.get('page') || 1);
+  const [size, setSize] = useState(params.get('size') || 10);
 
   // url for the query
-  let url = `https://swapi.dev/api/people/?page=${page}`;
+  let url = `https://axiosuchunsinovapi.herokuapp.com/staff?page=${page}&size=${size}`;
 
   // define the data of the table
-  const { data, status } = useGetData('hospitals', url);
-
-  console.log('page', page);
-  console.log('data', data);
-  console.log('status', status);
+  const {data, status} = useGetData('hospitals', url);
 
   // define mutateAsync and isLoading(For the delete button)
   const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
@@ -42,17 +39,17 @@ export default function TableComponent() {
   const columns = [
     {
       title: messages['common.name'],
-      dataIndex: 'name',
+      dataIndex: 'title_uz',
       key: 'name',
     },
     {
       title: messages['common.address'],
-      dataIndex: 'created',
+      dataIndex: 'title_en',
       key: 'address',
     },
     {
       title: messages['common.phone'],
-      dataIndex: 'eye_color',
+      dataIndex: 'phone',
       key: 'phone',
     },
     {
@@ -70,6 +67,12 @@ export default function TableComponent() {
   if (isError) {
     message.error('Error deleting item. Try again later');
   }
+
+  useEffect(() => {
+    setPage(params.get('page') || 1);
+    setSize(params.get('size') || 10);
+    console.log(params.get('page'));
+  }, [history.location.search]);
 
   // if the data is not defined, return the error page
   if (status === 'error') {
