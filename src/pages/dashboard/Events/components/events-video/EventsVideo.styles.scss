@@ -1,7 +1,69 @@
-.team-slider-view {
-  margin-left: -20px;
-  margin-right: -20px;
+.events-slider-view {
+  // margin-left: -22px;
+  // margin-right: -22px;
   padding-bottom: 25px;
+
+  .events-slider-info {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+
+    & h5 {
+      margin-bottom: 4px;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+  }
+
+  .events-slider-thumb {
+    position: relative;
+    width: 100%;
+    height: 150px !important;
+    margin-bottom: 12px;
+
+    & video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      border-radius: 20px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .media-video-icon {
+      font-size: 2em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffff;
+      pointer-events: none;
+    }
+  }
+
+  .slick-slider {
+    position: relative;
+    .slick-prev {
+      margin-left: 5px;
+      position: absolute;
+      z-index: 999;
+      &:before {
+        color: #be8658;
+      }
+    }
+    .slick-next {
+      margin-right: 5px;
+      position: absolute;
+      z-index: 999;
+      &:before {
+        color: #be8658;
+      }
+    }
+  }
 
   & .slick-dots li {
     width: 12px;
@@ -27,48 +89,11 @@
   }
 }
 
-.team-slider-info {
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-
-  & h5 {
-    margin-bottom: 4px;
-    font-weight: 500;
-    font-size: 1.1em;
-  }
-}
-
-.team-slider-thumb {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  margin-bottom: 12px;
-
-  & video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    border-radius: 20px;
-  }
-  .media-video-icon {
-    font-size: 2em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffff;
-    cursor:pointer;
-    &:hover{
-      opacity: .8;
-    }
-  }
-}
-.event-modal-video{
+.event-modal-video {
   padding: 24px !important;
+}
+.events-video-slide-title {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
 }
