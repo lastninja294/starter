@@ -15,7 +15,7 @@ const Events = () => {
       <isLoadingContext.Provider value={[loader, setloader]}>
         <QueryClientProvider client={queryClient}>
           <AppPageMetadata title='Events' />
-          <EventCreate/>
+          <EventCreate />
           <EventsTable />
         </QueryClientProvider>
       </isLoadingContext.Provider>

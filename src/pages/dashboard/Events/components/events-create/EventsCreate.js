@@ -14,7 +14,7 @@ function EventCreate() {
     <div>
       <Button
         type='primary'
-        style={{ margin:'1em 0'}}
+        style={{margin: '1em 0'}}
         onClick={() => {
           setVisible(true);
         }}>
@@ -29,6 +29,6 @@ function EventCreate() {
       />
     </div>
   );
-};
+}
 
 export default EventCreate;

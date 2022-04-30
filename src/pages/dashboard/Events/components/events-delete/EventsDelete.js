@@ -10,8 +10,6 @@ function EventsDelete({item}) {
   const [, setloader] = useContext(isLoadingContext);
   const queryClient = useQueryClient();
 
-
-
   // <delete data>
   // const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
   //   `https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`,
@@ -19,7 +17,9 @@ function EventsDelete({item}) {
 
   const {mutateAsync, isLoading} = useMutation(
     async () => {
-      const response = await axios.delete(`https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`);
+      const response = await axios.delete(
+        `https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`,
+      );
       return response.data;
     },
     {

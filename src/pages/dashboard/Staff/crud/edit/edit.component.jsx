@@ -67,11 +67,12 @@ const Edit = ({id, data}) => {
   };
   return (
     <>
-      <AiOutlineEdit
-        className='icon_style'
-        onClick={() => setVisible(true)}
-        style={{fontSize: '1.3em'}}
-      />
+      <Button
+        size='large'
+        style={{padding: '0'}}
+        type='link'
+        icon={<AiOutlineEdit size={'20px'} />}
+        onClick={() => setVisible(true)}></Button>
       <Modal
         title='Modal 1000px width'
         centered

@@ -66,7 +66,7 @@ const NewsForm = ({setVisible, defaultValue}) => {
       //reset da file descripton ishlamayabdi
       file: {
         file: {},
-        fileList: []
+        fileList: [],
       },
       title: '',
       title_en: '',
@@ -84,11 +84,7 @@ const NewsForm = ({setVisible, defaultValue}) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <UploadFile 
-      control={control} 
-      defaultValue={file} 
-      error={errors.file} 
-      />
+      <UploadFile control={control} defaultValue={file} error={errors.file} />
       <TitleInput
         name='title'
         id='title'

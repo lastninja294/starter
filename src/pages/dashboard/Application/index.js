@@ -62,7 +62,7 @@ const users = [
 const Application = () => {
   return (
     <>
-    <ApplicationTable users = {users} />
+      <ApplicationTable users={users} />
     </>
   );
 };
