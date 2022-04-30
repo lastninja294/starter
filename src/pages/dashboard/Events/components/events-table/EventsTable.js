@@ -6,7 +6,9 @@ import EventsImage from '../events-image/EventsImage';
 import EventsVideo from '../events-video/EventsVideo';
 import Error404 from 'pages/errorPages/Error404';
 import isLoadingContext from '../../myContext/myContext';
-import useGetData from 'pages/Pagination/useData';
+// import useGetData from 'pages/Pagination/useData';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 const columns = [
   {
@@ -51,9 +53,18 @@ const EventTable = () => {
   const [page] = useState(1);
   const [size] = useState(20);
 
-  const {data, status} = useGetData(
+  // const {data, status} = useGetData(
+  //   'event',
+  //   `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
+  // );
+  const {data, status} = useQuery(
     'event',
-    `https://axiosuchunsinovapi.herokuapp.com/staff/?_page=${page}&_limit=${size}`,
+   async () => {
+    return axios.get(
+      `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
+    ).then(res => res.data);
+    }
+    ,
   );
 
   useEffect(() => {
