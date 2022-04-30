@@ -82,6 +82,7 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
                     </Form.Item>
                     <Button
                       type='link'
+                      danger
                       className='event-create-btn'
                       onClick={() => remove(name)}>
                       <IoIosRemoveCircleOutline

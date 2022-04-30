@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from 'antd';
-import EventCreateForm from './EventCreateForm';
+import EventsCreateForm from './EventsCreateForm';
 
 function EventCreate() {
   const [visible, setVisible] = useState(false);
@@ -20,7 +20,7 @@ function EventCreate() {
         }}>
         Create
       </Button>
-      <EventCreateForm
+      <EventsCreateForm
         visible={visible}
         onCreate={onCreate}
         onCancel={() => {
