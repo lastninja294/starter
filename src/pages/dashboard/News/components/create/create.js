@@ -3,8 +3,18 @@ import {Button, Modal} from 'antd';
 import NewsForm from '../form';
 
 const Create = () => {
-  
   const [visible, setVisible] = useState(false);
+  const emptyEditor =
+    '{"blocks":[{"key":"clla0","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[{}],"entityRanges":[],"data":{}}],"entityMap":{}}';
+  const defaultValue = {
+    file: [],
+    title_uz: '',
+    title_en: '',
+    title_ru: '',
+    description_uz: emptyEditor,
+    description_en: emptyEditor,
+    description_ru: emptyEditor,
+  };
   // create post modalkani ochish
   const showModalForm = () => {
     setVisible(true);
@@ -13,12 +23,6 @@ const Create = () => {
   const handleCancelForm = () => {
     setVisible(false);
   };
-
-    const defaultValue = {
-      title: '',
-      file: null,
-      description: null,
-    };
 
   return (
     <>
@@ -41,7 +45,11 @@ const Create = () => {
         footer={null}
         width={800}
         style={{height: '800px'}}>
-         <NewsForm setVisible ={setVisible} visible ={visible} defaultValue={defaultValue} />
+        <NewsForm
+          setVisible={setVisible}
+          visible={visible}
+          defaultValue={defaultValue}
+        />
       </Modal>
     </>
   );

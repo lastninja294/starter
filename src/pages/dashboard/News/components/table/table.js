@@ -7,23 +7,18 @@ import EditPost from '../edit_post/edit_post';
 import draftToHtml from 'draftjs-to-html';
 import MediaView from '../media/media';
 import QueryPagination from 'pages/Pagination';
-import { useQuery } from 'react-query';
-import axios from 'axios';
-import Error404 from 'pages/errorPages/Error404';
+import { getAllNews } from 'hooks';
 import { useHistory } from 'react-router-dom';
+// import Error404 from 'pages/errorPages/Error404';
 
 function NewsTable({posts  }) {
-const history = useHistory();
-const params = new URLSearchParams(history.location.search);
-const page = params.get('page');
-const size = params.get('size');
-console.log(page , size);
-const url = `https://swapi.dev/api/people/?page=${page}&size=${size}`;
-    
-  const {data ,error, isLoading } = useQuery('get-news-data',  () => {
-    return  axios.get(url);
-  });
-  console.log(data?.data);
+  
+  const history = useHistory();
+  const params = new URLSearchParams(history.location.search);
+  const page = params.get('page');
+  const size = params.get('size');
+	const {isLoading , data} = getAllNews({page,size});
+
   const {messages} = useIntl();
   const columns = [
     {
@@ -34,22 +29,52 @@ const url = `https://swapi.dev/api/people/?page=${page}&size=${size}`;
       fixed: 'left',
     },
     {
-      title: messages['common.title'],
-      width: '25%',
+      title: `${messages['common.title']} uz `,
+      width: '12.5%',
       dataIndex: 'title',
       key: 'title',
       fixed: 'left',
       ellipsis: true,
+      render: (title)=>(<>{title?.uz}</>)
+      
     },
     {
-      title: messages['common.description'],
+      title: `${messages['common.title']} ru `,
+      width: '12.5%',
+      dataIndex: 'title',
+      key: 'title',
+      fixed: 'left',
+      ellipsis: true,
+      render: (title)=>(<>{title?.ru}</>)
+    },
+    {
+      title: `${messages['common.description']} uz`,
       dataIndex: 'description',
       key: 'description',
       fixed: 'left',
-      width: '36%',
+      width: '18%',
       render: (des) => {
         // newsDataId.post_description JSON.parsga beriladi
-        const postHtml = JSON.parse(des);
+        const postHtml = JSON.parse(des?.uz);
+        const post_des_html = draftToHtml(postHtml);
+        return (
+          <div
+            className='descrip_value'
+            style={{width: '100%', height: '20px', overflow: 'hidden'}}
+            dangerouslySetInnerHTML={{__html: post_des_html}}
+          />
+        );
+      },
+    },
+    {
+      title: `${messages['common.description']} ru`,
+      dataIndex: 'description',
+      key: 'description',
+      fixed: 'left',
+      width: '18%',
+      render: (des) => {
+        // newsDataId.post_description JSON.parsga beriladi
+        const postHtml = JSON.parse(des?.ru);
         const post_des_html = draftToHtml(postHtml);
         return (
           <div
@@ -95,7 +120,7 @@ const url = `https://swapi.dev/api/people/?page=${page}&size=${size}`;
       render: (record) => <Delete id={record.id} />,
     },
   ];
-  if(error)return <Error404 />;
+  // if(isError)return <Error404 />;
   return (<>
     <Table
       rowKey='id'

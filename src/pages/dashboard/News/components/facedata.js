@@ -1,7 +1,11 @@
 export const posts = [
   {
     id: 1,
-    title: 'face data titleface data titleface data titleface data title',
+    title: {
+      uz: 'uzbekcha face data title data titleface data titleface data title',
+      ru: 'ruscha face data title data titleface data titleface data title',
+      en: 'inglizcha face data title data titleface data titleface data title',
+    },
     src: [
       {
         uid: '-1',
@@ -60,19 +64,26 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD sakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldslaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADaslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDADsakldsl   sadlk aksdhkhd sdaasjdlkas  aslkdjfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": " ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":" englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {
     id: 2,
-    title: 'face data title 2',
+    title: {
+      uz: 'uzbekcha face data title 2',
+      ru: 'ruscha face data title 2',
+      en: 'inglizcha face data title 2',
+    },
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -125,19 +136,26 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 2 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "2 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"2 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {
     id: 3,
-    title: 'face data title 3',
+    title: {
+      uz: 'uzbekcha face data title 3',
+      ru: 'ruscha face data title 3',
+      en: 'inglizcha face data title 3',
+    },
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -190,19 +208,26 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 3 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "3 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"3 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {
     id: 4,
-    title: 'face data title 4',
+    title: {
+      uz: 'uzbekcha face data title 4',
+      ru: 'ruscha face data title 4',
+      en: 'inglizcha face data title 4',
+    },
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -255,19 +280,26 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 4 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "4 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"4 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {
     id: 5,
-    title: 'face data title 5',
+    title: {
+      uz: 'uzbekcha face data title 5',
+      ru: 'ruscha face data title 5',
+      en: 'inglizcha face data title 5',
+    },
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -320,19 +352,26 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 5 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "5 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"5 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
   {
     id: 6,
-    title: 'face data title 6',
+    title: {
+      uz: 'uzbekcha face data title 6',
+      ru: 'ruscha face data title 6',
+      en: 'inglizcha face data title 6',
+    },
     src: [
       {
         uid: '-1',
         name: 'image.png',
         status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
         type: 'image/png',
       },
       {
@@ -385,8 +424,84 @@ export const posts = [
         type: 'video/mp4',
       },
     ],
-    description:
-      '{"blocks":[{"key":"clla0","text":"sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 6 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "6 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"6 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
     date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
   },
+  {
+    id: 7,
+    title: {
+      uz: 'uzbekcha face data title 7',
+      ru: 'ruscha face data title 7',
+      en: 'inglizcha face data title 7',
+    },
+    src: [
+      {
+        uid: '-1',
+        name: 'image.png',
+        status: 'done',
+        url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
+        type: 'image/png',
+      },
+      {
+        uid: '-2',
+        name: 'image2.png',
+        status: 'done',
+        url: 'https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds-1200x900.jpg',
+        type: 'image/',
+      },
+      {
+        uid: '-3',
+        name: 'image3.png',
+        status: 'done',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/3/32/BMW_G20%2C_Paris_Motor_Show_2018%2C_IMG_0493.jpg',
+        type: 'image/jpeg',
+      },
+      {
+        uid: '-4',
+        name: 'image4.png',
+        status: 'done',
+        url: 'https://images.ctfassets.net/lzny33ho1g45/how-to-use-github-p-img/f1f10acdfa6c545337954efb32439232/file.png?w=1520&fm=jpg&q=30&fit=thumb&h=760',
+        type: 'image/jpeg',
+      },
+      {
+        uid: '-5',
+        name: 'image5.png',
+        status: 'done',
+        url: 'https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds-1200x900.jpg',
+        type: 'image/jpeg',
+      },
+      {
+        uid: '-6',
+        name: 'video6.png',
+        status: 'done',
+        url: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        type: 'video/mp4',
+      },
+      {
+        uid: '-7',
+        name: 'video7.png',
+        status: 'done',
+        url: 'https://www.w3schools.com/html/movie.mp4',
+        type: 'video/mp4',
+      },
+      {
+        uid: '-8',
+        name: 'video8.png',
+        status: 'done',
+        url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm',
+        type: 'video/mp4',
+      },
+    ],
+    description: {
+      uz: '{"blocks":[{"key":"clla0","text":" 8 uzbekcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      ru: '{"blocks":[{"key":"clla0","text": "8 ruscha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+      en: '{"blocks":[{"key":"clla0","text":"8 englizcha description sakldslfFDSAASDAD","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":7,"style":"BOLD"}],"entityRanges":[],"data":{}}],"entityMap":{}}',
+    },
+    date: 'Wed Mar 23 2022 16:01:01 GMT+0500 (Uzbekistan Standard Time)',
+  },
+  
 ];

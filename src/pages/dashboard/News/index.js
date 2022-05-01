@@ -7,7 +7,13 @@ import AppPageMetadata from '@crema/core/AppPageMetadata';
 
 import {QueryClientProvider, QueryClient} from 'react-query';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const News = () => {
     

@@ -18,9 +18,14 @@ const EditPost = ({post}) => {
   };
 
   const defaultValue = {
-    title: post.title,
-    file: post.src,
-    description: post.description,
+    //defaultda file va description ishlamayabdi
+    file: post?.src,
+    title_uz: post?.title?.uz,
+    title_en: post?.title?.en,
+    title_ru: post?.title?.ru,
+    description_uz: post?.description?.uz,
+    description_en: post?.description?.en,
+    description_ru: post?.description?.ru,
   };
   return (
     <>
