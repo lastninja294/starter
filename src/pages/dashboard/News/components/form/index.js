@@ -20,12 +20,19 @@ const schema = yup.object().shape({
   description_ru: yup.object().required('This field is required to be filled'),
 });
 
-const NewsForm = ({setVisible, defaultValue}) => {
+const NewsForm = ({loading, defaultValue, onSubmit}) => {
   // const nn = JSON.parse(
   //   '{"blocks":[{"key":"clla0","text":"berdimay","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
   // );
-  const {title_en , title_ru , title_uz, description_uz, description_en , description_ru , file} = defaultValue;
-  const [loading, setLoading] = useState(false);
+  const {
+    title_en,
+    title_ru,
+    title_uz,
+    description_uz,
+    description_en,
+    description_ru,
+    file,
+  } = defaultValue;
   const defaultValues = {
     //defaultda file va description ishlamayabdi
     file: [],
@@ -39,31 +46,10 @@ const NewsForm = ({setVisible, defaultValue}) => {
   const {
     handleSubmit,
     control,
-    reset,
+    // reset,
     formState: {errors},
   } = useForm({defaultValues, resolver: yupResolver(schema)});
   console.log(errors);
-  const onSubmit = (data) => {
-    console.log(data, 'sadsad');
-    reset({
-      //reset da file descripton ishlamayabdi
-      file: {
-        file: {},
-        fileList: [],
-      },
-      title_uz: '',
-      title_en: '',
-      title_ru: '',
-      description_uz: description_en,
-      description_en: description_en,
-      description_ru: description_en,
-    });
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setVisible(false);
-    }, 3000);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,6 +111,7 @@ const NewsForm = ({setVisible, defaultValue}) => {
 export default NewsForm;
 
 NewsForm.propTypes = {
-  setVisible: PropTypes.func,
+  loading: PropTypes.bool,
   defaultValue: PropTypes.object,
+  onSubmit: PropTypes.func,
 };

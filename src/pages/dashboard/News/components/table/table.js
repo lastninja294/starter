@@ -7,17 +7,9 @@ import EditPost from '../edit_post/edit_post';
 import draftToHtml from 'draftjs-to-html';
 import MediaView from '../media/media';
 import QueryPagination from 'pages/Pagination';
-import { getAllNews } from 'hooks';
-import { useHistory } from 'react-router-dom';
-// import Error404 from 'pages/errorPages/Error404';
 
-function NewsTable({posts  }) {
-  
-  const history = useHistory();
-  const params = new URLSearchParams(history.location.search);
-  const page = params.get('page');
-  const size = params.get('size');
-	const {isLoading , data} = getAllNews({page,size});
+function NewsTable({posts , refetch , isLoading ,data }) {
+
 
   const {messages} = useIntl();
   const columns = [
@@ -117,10 +109,9 @@ function NewsTable({posts  }) {
       key: 'operation',
       fixed: 'right',
       width: 30,
-      render: (record) => <Delete id={record.id} />,
+      render: (record) => <Delete id={record.id} refetch = {refetch}/>,
     },
   ];
-  // if(isError)return <Error404 />;
   return (<>
     <Table
       rowKey='id'
@@ -140,4 +131,7 @@ export default NewsTable;
 NewsTable.propTypes = {
   posts: PropTypes.array,
   url: PropTypes.string,
+  isLoading: PropTypes.bool,
+  refetch: PropTypes.func,
+  data: PropTypes.object
 };

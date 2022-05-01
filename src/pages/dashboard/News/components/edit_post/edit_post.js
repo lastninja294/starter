@@ -8,6 +8,7 @@ import NewsForm from '../form';
 const EditPost = ({post}) => {
   // modal form newspost update
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleCancel = () => {
     setVisible(false);
@@ -27,6 +28,27 @@ const EditPost = ({post}) => {
     description_en: post?.description?.en,
     description_ru: post?.description?.ru,
   };
+    const onSubmit = (data) => {
+      console.log('edit data ', data);
+      // reset({
+      //   //reset da file descripton ishlamayabdi
+      //   file: {
+      //     file: {},
+      //     fileList: [],
+      //   },
+      //   title_uz: '',
+      //   title_en: '',
+      //   title_ru: '',
+      //   description_uz: description_en,
+      //   description_en: description_en,
+      //   description_ru: description_en,
+      // });
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        setVisible(false);
+      }, 3000);
+    };
   return (
     <>
       <Button type='link'>
@@ -38,10 +60,9 @@ const EditPost = ({post}) => {
         onCancel={handleCancel}
         footer={null}
         width={800}>
-        
         <NewsForm
-          setVisible={setVisible}
-          visible={visible}
+          loading={loading}
+          onSubmit={onSubmit}
           defaultValue={defaultValue}
         />
       </Modal>

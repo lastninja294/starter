@@ -5,12 +5,12 @@ const route = process.env.REACT_APP_SERVER_URL
 
 const routes = {
   news: '/staff',
-  settings: '/settings',
-  certificates: '/certificates',
-  staffs: '/staffs',
-  events: '/events',
-  surgery: '/surgery',
-  application: 'application',
+  settings: '/staff',
+  certificates: '/staff',
+  staffs: '/staff',
+  events: '/staff',
+  surgery: '/staff',
+  application: 'staff',
 }; 
 
 //NEWS
