@@ -7,7 +7,7 @@ import EventsVideo from '../events-video/EventsVideo';
 import Error404 from 'pages/errorPages/Error404';
 import isLoadingContext from '../../myContext/myContext';
 // import useGetData from 'pages/Pagination/useData';
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
 import axios from 'axios';
 
 const columns = [
@@ -21,17 +21,19 @@ const columns = [
   },
   {
     title: 'Title',
-    dataIndex: 'title_ru',
+    dataIndex: 'title',
     width: '25%',
     key: 'title',
     ellipsis: true,
+    render: (title) => <>{title?.uz}</>,
   },
   {
     title: 'Description',
-    dataIndex: 'description_ru',
+    dataIndex: 'description',
     width: '48%',
     key: 'description',
     ellipsis: true,
+    render: (description) => <>{description?.uz}</>,
   },
   {
     title: '',
@@ -39,8 +41,8 @@ const columns = [
     align: 'center',
     render: (item) => (
       <>
-        <EventsImage item={item} />
-        <EventsVideo item={item} />
+        <EventsImage item={item.src} />
+        <EventsVideo item={item.src} />
         <EventsEdit item={item} />
         <EventDelete item={item} />
       </>
@@ -57,15 +59,13 @@ const EventTable = () => {
   //   'event',
   //   `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
   // );
-  const {data, status} = useQuery(
-    'event',
-   async () => {
-    return axios.get(
-      `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
-    ).then(res => res.data);
-    }
-    ,
-  );
+  const {data, status} = useQuery('event', async () => {
+    return axios
+      .get(
+        `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
+      )
+      .then((res) => res.data);
+  });
 
   useEffect(() => {
     setloader(status === 'loading' ? true : false);

@@ -77,7 +77,16 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
                       <Input placeholder='event title...' />
                     </Form.Item>
 
-                    <Form.Item {...restField} name={[name, 'description']}>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'description']}
+                      rules={[
+                        {
+                          required: true,
+                          message:
+                            'Please input the descriotion of collection!',
+                        },
+                      ]}>
                       <TextArea rows={4} placeholder='event description...' />
                     </Form.Item>
                     <Button
