@@ -21,7 +21,9 @@ export default function TableComponent() {
   const [size, setSize] = useState(params.get('size') || 10);
 
   // url for the query
-  let url = `https://axiosuchunsinovapi.herokuapp.com/staff?page=${page}&size=${size}`;
+  let [url, setUrl] = useState(
+    `https://axiosuchunsinovapi.herokuapp.com/staff?page=${page}&size=${size}`,
+  );
 
   // define the data of the table
   const {data, status} = useGetData('hospitals', url);
@@ -39,18 +41,18 @@ export default function TableComponent() {
   const columns = [
     {
       title: messages['common.name'],
-      dataIndex: 'title_uz',
-      key: 'name',
+      dataIndex: ['title', 'uz'],
+      key: ['title', 'uz'],
     },
     {
       title: messages['common.address'],
-      dataIndex: 'title_en',
-      key: 'address',
+      dataIndex: ['title', 'en'],
+      key: ['title', 'uz'],
     },
     {
       title: messages['common.phone'],
-      dataIndex: 'phone',
-      key: 'phone',
+      dataIndex: ['title', 'ru'],
+      key: ['title', 'uz'],
     },
     {
       title: 'Actions',
@@ -71,13 +73,20 @@ export default function TableComponent() {
   useEffect(() => {
     setPage(params.get('page') || 1);
     setSize(params.get('size') || 10);
-    console.log(params.get('page'));
+    setUrl(
+      `https://axiosuchunsinovapi.herokuapp.com/staff?page=${page}&size=${size}`,
+    );
+    console.log('page: ' + page);
+    console.log(history.location.search);
   }, [history.location.search]);
 
   // if the data is not defined, return the error page
   if (status === 'error') {
     return <Error404 />;
   }
+  console.log(status);
+
+  console.table(data);
   return (
     <Space
       direction='vertical'
@@ -90,9 +99,9 @@ export default function TableComponent() {
       <Table
         title={() => "Hospital's List"}
         bordered={true}
-        rowKey='name'
+        rowKey='id'
         columns={columns}
-        dataSource={data?.results}
+        dataSource={data}
         loading={status === 'loading'}
         pagination={false}
         size='small'
