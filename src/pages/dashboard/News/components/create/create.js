@@ -3,7 +3,6 @@ import {Button, Modal} from 'antd';
 import NewsForm from '../form';
 
 const Create = () => {
-  
   const [visible, setVisible] = useState(false);
   // create post modalkani ochish
   const showModalForm = () => {
@@ -14,11 +13,11 @@ const Create = () => {
     setVisible(false);
   };
 
-    const defaultValue = {
-      title: '',
-      file: null,
-      description: null,
-    };
+  const defaultValue = {
+    title: '',
+    file: null,
+    description: null,
+  };
 
   return (
     <>
@@ -41,7 +40,11 @@ const Create = () => {
         footer={null}
         width={800}
         style={{height: '800px'}}>
-         <NewsForm setVisible ={setVisible} visible ={visible} defaultValue={defaultValue} />
+        <NewsForm
+          setVisible={setVisible}
+          visible={visible}
+          defaultValue={defaultValue}
+        />
       </Modal>
     </>
   );

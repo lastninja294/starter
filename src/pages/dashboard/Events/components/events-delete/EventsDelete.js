@@ -10,26 +10,11 @@ function EventsDelete({item}) {
   const [, setloader] = useContext(isLoadingContext);
   const queryClient = useQueryClient();
 
-<<<<<<< HEAD
-  // <delete data>
-  // const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
-  //   `https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`,
-  // );
-
-  const {mutateAsync, isLoading} = useMutation(
-    async () => {
-      const response = await axios.delete(
-        `https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`,
-      );
-      return response.data;
-    },
-=======
   const {mutateAsync, isLoading, isSuccess} = useMutation(
     async () =>
       await axios.delete(
         `https://axiosuchunsinovapi.herokuapp.com/staff/${item.id}`,
       ),
->>>>>>> fb7097cf7d4e03dde22606f668dd0a661b6872a1
     {
       onSuccess: () => {
         message.success("muvaffaqiyatli o'chirildi !");

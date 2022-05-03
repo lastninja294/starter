@@ -8,9 +8,8 @@ import AppPageMetadata from '@crema/core/AppPageMetadata';
 import {QueryClientProvider, QueryClient} from 'react-query';
 
 const queryClient = new QueryClient();
-
+//priter hato berayotgandi Ctrl+S qildim
 const News = () => {
-    
   return (
     <QueryClientProvider client={queryClient}>
       <AppPageMetadata title='News'>

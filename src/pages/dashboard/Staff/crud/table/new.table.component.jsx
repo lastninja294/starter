@@ -1,39 +1,39 @@
-import React, {useState} from 'react';
-import {useQuery /*,useMutation, useQueryClient*/} from 'react-query';
-import {Table, Button, Space} from 'antd';
+import React from 'react';
+// import {useQuery /*,useMutation, useQueryClient*/} from 'react-query';
+import {Table, Space} from 'antd';
 import Delete from '../delete/delete.component';
 // import Edit from '../edit/edit.component';
 import Edit from '../edit/new-edit.component';
-import {AiOutlineEdit} from 'react-icons/ai';
 import PropTypes from 'prop-types';
 // import {AiOutlineDelete} from 'react-icons/ai';
 // import QueryPagination from 'pages/Pagination';
-import ShowIamges from '../show-image/show-image';
-import {getAllData} from '../../api/apiFunction';
+// import ShowIamges from '../show-image/show-image';
+// import {getAllData} from '../../api/apiFunction';
+import {useGetData} from '../../api/apiFunction';
 // import {deleteData} from '../../api/apiFunction';
 const NewTableComponent = () => {
-  const {data, isLoading} = useQuery('staff', getAllData);
-  const [dataID, setDataID] = useState(1);
-  const [visible, setVisible] = useState(false);
-  console.log('type:', typeof dataID);
-  console.log(dataID);
+  const {data, isLoading} = useGetData();
+  console.log(data);
   const columns = [
     {
       title: 'ID',
       dataIndex: 'id',
+      ellipsis: true,
       key: 'id',
     },
     {
       title: 'TITLE-RU',
-      dataIndex: 'title_ru',
+      dataIndex: '',
       key: 'title_ru',
       ellipsis: true,
+      render: (record) => record.title.ru,
     },
     {
       title: 'DESCRIPTION-RU',
-      dataIndex: 'description_ru',
+      dataIndex: '',
       key: 'description_ru',
       ellipsis: true,
+      render: (record) => record.description.ru,
     },
     {
       title: 'EMAIL',
@@ -51,29 +51,20 @@ const NewTableComponent = () => {
       title: 'IMAGES',
       key: 'action',
       align: 'center',
-      render: (record) => (
-        <Space size='middle'>
-          <ShowIamges data={data} id={record.id} />
-        </Space>
+      dataIndex: '',
+      render: () => (
+        <Space size='middle'>{/* <ShowIamges data={record} /> */}img</Space>
       ),
     },
     {
       title: 'ACTION',
       key: 'action',
       align: 'center',
+      dataIndex: '',
       render: (record) => (
         <Space size='middle'>
-          <Button
-            size='large'
-            style={{padding: '0'}}
-            type='link'
-            onClick={() => {
-              setVisible(true);
-              setDataID(record.id);
-            }}>
-            <AiOutlineEdit size={'20px'} />
-          </Button>
-          <Delete id={record.id} />
+          <Edit data={record} />
+          <Delete id={record?.id} />
         </Space>
       ),
     },
@@ -87,7 +78,6 @@ const NewTableComponent = () => {
         dataSource={data}
         pagination={10}
       />
-      <Edit dataID={dataID} visible={visible} setVisible={setVisible} />
       {/* <QueryPagination /> */}
     </>
   );

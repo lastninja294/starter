@@ -4,9 +4,9 @@ import {AiOutlineDelete} from 'react-icons/ai';
 import React from 'react';
 
 const Delete = ({id}) => {
-  const {mutateAsync, isLoading} = useDeleteData();
+  const {mutate, isLoading} = useDeleteData();
   return (
-    <Popconfirm title='delete ?' onConfirm={() => mutateAsync(id)}>
+    <Popconfirm title='delete ?' onConfirm={() => mutate(id)}>
       <Button
         size='large'
         style={{padding: '0'}}
