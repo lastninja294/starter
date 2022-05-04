@@ -1,3 +1,4 @@
+import AppPageMetadata from '@crema/core/AppPageMetadata';
 import React from 'react';
 import ApplicationTable from './components/table/table';
 
@@ -62,7 +63,9 @@ const users = [
 const Application = () => {
   return (
     <>
-      <ApplicationTable users={users} />
+      <AppPageMetadata title='Application'>
+        <ApplicationTable users={users} />
+      </AppPageMetadata>
     </>
   );
 };
