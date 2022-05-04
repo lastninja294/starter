@@ -4,17 +4,23 @@ import PropTypes from 'prop-types';
 import {
   AiOutlineDelete
 } from 'react-icons/ai';
+import { deleteNews } from 'hooks';
 
-const Delete = ({id}) => {
-  function confirm(e) {
-    console.log(e);
-    alert(id + 'uchirishga ruxsat berildi');
-    message.success('Click on Yes');
+const Delete = ({id , refetch}) => {
+  const {mutateAsync} = deleteNews(id)
+  const confirm =()=> {
+    mutateAsync()
+      .then(() => {
+        message.success('Click on Yes');
+        refetch()
+      })
+      .catch((err) => {
+        message.error('failure delete  ', err.message);
+        
+      });
   }
 
-  function cancel(e) {
-    console.log(e);
-    alert(id + 'uchirishga ruxsat berilmadi');
+  const cancel=()=> {
     message.error('Click on No');
   }
   return (
@@ -34,4 +40,5 @@ const Delete = ({id}) => {
 export default Delete;
 Delete.propTypes = {
   id: PropTypes.number,
+  refetch: PropTypes.func
 };

@@ -64,16 +64,35 @@ const Edit = ({data}) => {
         uz: values.user.description_uz,
       },
       email: values.user.email,
-      phone: values.user.email,
-      images: [
-        'https://picfiles.alphacoders.com/280/280339.jpg',
-        'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
-        'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
+      phone: values.user.phone,
+      src: [
+        {
+          uid: '-1',
+          name: 'image.png',
+          status: 'done',
+          url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
+          type: 'image/png',
+        },
+        {
+          uid: '-2',
+          name: 'image2.png',
+          status: 'done',
+          url: 'https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds-1200x900.jpg',
+          type: 'image/',
+        },
+        {
+          uid: '-3',
+          name: 'image3.png',
+          status: 'done',
+          url: 'https://upload.wikimedia.org/wikipedia/commons/3/32/BMW_G20%2C_Paris_Motor_Show_2018%2C_IMG_0493.jpg',
+          type: 'image/jpeg',
+        },
       ],
     };
     console.log('EDITED:', editData);
     mutate(editData);
   };
+  console.log('render - edit');
   return (
     <>
       <Button
@@ -81,11 +100,10 @@ const Edit = ({data}) => {
         size='large'
         style={{padding: '0'}}
         type='link'
+        icon={<AiOutlineEdit size={'20px'} />}
         onClick={() => {
           setVisible(true);
-        }}>
-        <AiOutlineEdit size={'20px'} />
-      </Button>
+        }}></Button>
       <Modal
         title='Edit Staff'
         centered

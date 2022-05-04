@@ -5,15 +5,11 @@ import NewTableComponent from './crud/table/new.table.component';
 import {QueryClientProvider, QueryClient} from 'react-query';
 const queryClient = new QueryClient();
 const Staff = () => {
+  console.log('render - index');
   return (
     <QueryClientProvider client={queryClient}>
       <AppPageMetadata title='Staff' />
       <Create />
-      {/* <TableComponent
-    staffData={staffData}
-    handleDelete={handleDelete}s
-    fetchData={fetchData}
-  /> */}
       <NewTableComponent />
     </QueryClientProvider>
   );

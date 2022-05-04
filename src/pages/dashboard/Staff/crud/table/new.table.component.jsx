@@ -1,16 +1,16 @@
 import React from 'react';
 // import {useQuery /*,useMutation, useQueryClient*/} from 'react-query';
-import {Table, Space} from 'antd';
+import {Table, Space /*, Spin*/} from 'antd';
 import Delete from '../delete/delete.component';
 // import Edit from '../edit/edit.component';
 import Edit from '../edit/new-edit.component';
 import PropTypes from 'prop-types';
 // import {AiOutlineDelete} from 'react-icons/ai';
 // import QueryPagination from 'pages/Pagination';
-// import ShowIamges from '../show-image/show-image';
+import ShowIamges from '../show-image/show-image';
 // import {getAllData} from '../../api/apiFunction';
 import {useGetData} from '../../api/apiFunction';
-// import {deleteData} from '../../api/apiFunction';
+
 const NewTableComponent = () => {
   const {data, isLoading} = useGetData();
   console.log(data);
@@ -52,9 +52,7 @@ const NewTableComponent = () => {
       key: 'action',
       align: 'center',
       dataIndex: '',
-      render: () => (
-        <Space size='middle'>{/* <ShowIamges data={record} /> */}img</Space>
-      ),
+      render: (record) => <ShowIamges data={record} />,
     },
     {
       title: 'ACTION',
@@ -69,6 +67,7 @@ const NewTableComponent = () => {
       ),
     },
   ];
+  console.log('render - table');
   return (
     <>
       <Table
