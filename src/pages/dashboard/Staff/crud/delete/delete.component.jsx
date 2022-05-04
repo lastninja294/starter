@@ -1,7 +1,7 @@
 import {Button, Popconfirm} from 'antd';
 import {useDeleteData} from '../../api/apiFunction';
 import {AiOutlineDelete} from 'react-icons/ai';
-import React from 'react';
+import React, {memo} from 'react';
 
 const Delete = ({id}) => {
   const {mutateAsync, isLoading} = useDeleteData();
@@ -18,4 +18,4 @@ const Delete = ({id}) => {
     </Popconfirm>
   );
 };
-export default Delete;
+export default memo(Delete);

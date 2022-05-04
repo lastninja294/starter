@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {IoImageOutline} from 'react-icons/io5';
 import {Button, Image} from 'antd';
 import './show-image.styles.scss';
@@ -17,7 +17,7 @@ const ShowIamges = ({data}) => {
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {data?.src.map((item, index) => (
+          {data?.src?.map((item, index) => (
             <Image src={item?.url} key={index} />
           ))}
         </Image.PreviewGroup>
@@ -26,7 +26,7 @@ const ShowIamges = ({data}) => {
   );
 };
 
-export default ShowIamges;
+export default memo(ShowIamges);
 ShowIamges.propTypes = {
   data: PropTypes.object,
 };

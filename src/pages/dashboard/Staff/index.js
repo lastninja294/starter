@@ -1,16 +1,19 @@
-import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
-// import Create from './crud/create/create-data.component';
-import Create from './crud/create/new-create-data.component';
-import NewTableComponent from './crud/table/new.table.component';
+import React from 'react';
+import StaffPage from './staffPage';
 import {QueryClientProvider, QueryClient} from 'react-query';
-const queryClient = new QueryClient();
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
 const Staff = () => {
-  console.log('render - index');
   return (
     <QueryClientProvider client={queryClient}>
-      <AppPageMetadata title='Staff' />
-      <Create />
-      <NewTableComponent />
+      <StaffPage />
     </QueryClientProvider>
   );
 };

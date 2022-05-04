@@ -12,8 +12,7 @@ import ShowIamges from '../show-image/show-image';
 import {useGetData} from '../../api/apiFunction';
 
 const NewTableComponent = () => {
-  const {data, isLoading} = useGetData();
-  console.log(data);
+  const {data, isLoading, isError, error} = useGetData();
   const columns = [
     {
       title: 'ID',
@@ -26,14 +25,14 @@ const NewTableComponent = () => {
       dataIndex: '',
       key: 'title_ru',
       ellipsis: true,
-      render: (record) => record.title.ru,
+      render: (record) => record?.title?.ru,
     },
     {
       title: 'DESCRIPTION-RU',
       dataIndex: '',
       key: 'description_ru',
       ellipsis: true,
-      render: (record) => record.description.ru,
+      render: (record) => record?.description?.ru,
     },
     {
       title: 'EMAIL',
@@ -67,7 +66,10 @@ const NewTableComponent = () => {
       ),
     },
   ];
-  console.log('render - table');
+  if (isError) {
+    console.log(error.request.status);
+    return `${error}`;
+  }
   return (
     <>
       <Table

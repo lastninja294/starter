@@ -1,6 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from 'react-query';
 import {APIURL} from './APIURL';
-// import {request} from './APIURL';
 export const getAllData = async () => {
   const response = await APIURL.get('/staff');
   return response.data;
@@ -69,7 +68,6 @@ export const useUpdateData = () => {
         );
         return staffs;
       });
-      // queryClient.setQueryData(['staff', {id: userUpdates.id}], userUpdates);
       return {previousUser, userUpdates};
     },
 
