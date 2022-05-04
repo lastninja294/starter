@@ -13,21 +13,19 @@ const columns = [
   {
     title: 'Title',
     width: '15%',
-    dataIndex: 'title_uz',
-    /*dataIndex: 'title' */
+    dataIndex: '',
     key: 'title_uz',
     ellipsis: true,
+    render:(item) => item?.title?.uz,
   },
   {
     title: 'Description',
-    dataIndex: 'description_uz',
-    // dataIndex: 'description',
-
+    dataIndex: '',
     key: 'description_uz',
     ellipsis: true,
     width: '45%',
+    render: (item) => item?.description?.uz,
   },
-  // {title: 'Date', dataIndex: 'date', key: 'date'},
   {
     title: 'Actions',
     dataIndex: '',

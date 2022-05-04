@@ -13,7 +13,7 @@ export default function SurgeryEdit({item}) {
       <Modal
         centered
         visible={visible}
-        title={item.title}
+        title={item?.title?.uz}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
         footer={null}
@@ -41,17 +41,17 @@ export default function SurgeryEdit({item}) {
                 <Form.Item
                   name={['user', 'description_uz']}
                   label='Description Uz:'>
-                  <Input.TextArea type='text' defaultValue={item.description_uz} />
+                  <Input.TextArea type='text' />
                 </Form.Item>
                 <Form.Item
                   name={['user', 'description_ru']}
                   label='Description Ru:'>
-                  <Input.TextArea type='text' defaultValue={item.description_ru} />
+                  <Input.TextArea type='text' />
                 </Form.Item>
                 <Form.Item
                   name={['user', 'description_en']}
                   label='Description En:'>
-                  <Input.TextArea type='text' defaultValue={item.description_en} />
+                  <Input.TextArea type='text' />
                 </Form.Item>
           </section>
         </Form>

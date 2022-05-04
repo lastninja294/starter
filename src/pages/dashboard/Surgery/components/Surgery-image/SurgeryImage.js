@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {Button, Image} from 'antd';
 import {IoImageOutline} from 'react-icons/io5';
 
-export default function SurgeryImages({item}) {
+export default function SurgeryImages( /*{item} */) {
     const[visible, setVisible] = useState(false);
 
     return(
@@ -16,9 +16,9 @@ export default function SurgeryImages({item}) {
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {item.images.map((img, key) => (
+          {/* {item.images.map((img, key) => (
             <Image src={img} key={key} />
-          ))}
+          ))} */}
         </Image.PreviewGroup>
       </div>
     </>

@@ -15,7 +15,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-function SurgeryVideo({item}) {
+function SurgeryVideo(/*{item} */) {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -31,7 +31,7 @@ function SurgeryVideo({item}) {
         `}
       </style>
       <Modal
-        title={item.title}
+        // title={item.title}
         centered
         visible={visible}
         onOk={() => setVisible(false)}
@@ -39,11 +39,11 @@ function SurgeryVideo({item}) {
         style={{minWidth: '70%', maxWidth: '100%', position: 'relative'}}
         footer={null}>
         <Slider className='surgery-video-slide' {...settings}>
-          {item.videos.map((url) => (
+          {/* {item.videos.map((url) => (
             <video controls className='surgery-modal-video' key={url}>
               <source src={url} type='video/mp4' />
             </video>
-          ))}
+          ))} */}
         </Slider>
       </Modal>
     </>
