@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import {Row, Col, Form, Upload, Input} from 'antd';
 import {Modal, Button} from 'antd';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
-// import {editStaffItem} from '../../api/apiFunction';
 import {useUpdateData} from '../../api/apiFunction';
 import {MdVideoLibrary} from 'react-icons/md';
 import {AiOutlineEdit} from 'react-icons/ai';
-// import {api} from '../api';/
 import PropTypes from 'prop-types';
 import './edit.styles.scss';
-// import {useMutation, useQueryClient} from 'react-query';
 const formItemLayout = {
   labelCol: {
     span: 6,
@@ -171,7 +168,7 @@ const Edit = ({id, data}) => {
     </>
   );
 };
-export default Edit;
+export default memo(Edit);
 Edit.propTypes = {
   data: PropTypes.array,
   myFunc: PropTypes.func,

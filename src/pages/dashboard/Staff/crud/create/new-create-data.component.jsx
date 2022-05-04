@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {PlusOutlined, MinusOutlined} from '@ant-design/icons';
 // import {createData} from '../../api/apiFunction';
-// import {useCreateData} from '../../api/apiFunction';
+import {useCreateData} from '../../api/apiFunction';
 import {Row, Col, Form, Select, Upload, Input, Tabs} from 'antd';
 import {Modal, Button} from 'antd';
 import {MdCreateNewFolder} from 'react-icons/md';
@@ -33,24 +33,51 @@ function callback(key) {
 }
 const Create = () => {
   const [visible, setVisible] = useState(false);
-  //   const {mutate} = useCreateData();
+  const {mutate} = useCreateData();
   const onFinish = (values) => {
     console.log('Received values of form:', values);
+    values.users.map((item) => {
+      const editData = {
+        title: {
+          en: item.title_en,
+          ru: item.title_ru,
+          uz: item.title_uz,
+        },
+        description: {
+          en: item.description_ru,
+          ru: item.description_ru,
+          uz: item.description_uz,
+        },
+        email: item.email,
+        phone: item.email,
+        src: [
+          {
+            uid: '-1',
+            name: 'image.png',
+            status: 'done',
+            url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
+            type: 'image/png',
+          },
+          {
+            uid: '-2',
+            name: 'image2.png',
+            status: 'done',
+            url: 'https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds-1200x900.jpg',
+            type: 'image/',
+          },
+          {
+            uid: '-3',
+            name: 'image3.png',
+            status: 'done',
+            url: 'https://upload.wikimedia.org/wikipedia/commons/3/32/BMW_G20%2C_Paris_Motor_Show_2018%2C_IMG_0493.jpg',
+            type: 'image/jpeg',
+          },
+        ],
+      };
+      mutate(editData);
+    });
   };
-  //   const onFinish = (values) => {
-  //     const newData = {
-  //       title: values.user.title,
-  //       description: values.user.description,
-  //       images: [
-  //         'https://picfiles.alphacoders.com/280/280339.jpg',
-  //         'https://i.pinimg.com/564x/a9/6b/5e/a96b5eda4a24f081da8aaf9301304eab.jpg',
-  //         'https://i.pinimg.com/236x/03/00/2e/03002e7c5655e96a2fa2a8ab73075761.jpg',
-  //       ],
-  //       videos: [],
-  //     };
-  //     mutate(newData);
-  //   };
-  // console.log('render Create');
+  console.log('render - create');
   return (
     <>
       <Button className='btn' type='primary' onClick={() => setVisible(true)}>
@@ -83,13 +110,14 @@ const Create = () => {
                         defaultActiveKey='1'
                         style={{width: '100%'}}
                         onChange={callback}>
-                        <TabPane tab='UZ' key='uz'>
+                        <TabPane tab='UZ' key='uz' forceRender={true}>
                           <p style={{textAlign: 'left', color: '#1890ff'}}>
                             Content of UZ
                           </p>
                           <Form.Item
                             {...restField}
-                            name={[name, 'title-uz']}
+                            name={[name, 'title_uz']}
+                            initialValue={`title-uz ${key}`}
                             rules={[
                               {
                                 required: true,
@@ -99,17 +127,19 @@ const Create = () => {
                           </Form.Item>
                           <Form.Item
                             {...restField}
-                            name={[name, 'description-uz']}>
+                            name={[name, 'description_uz']}
+                            initialValue={`description-uz ${key}`}>
                             <Input.TextArea placeholder='description-uz' />
                           </Form.Item>
                         </TabPane>
-                        <TabPane tab='RU' key='ru'>
+                        <TabPane tab='RU' key='ru' forceRender={true}>
                           <p style={{textAlign: 'left', color: '#1890ff'}}>
                             Content of RU
                           </p>
                           <Form.Item
                             {...restField}
-                            name={[name, 'title-ru']}
+                            name={[name, 'title_ru']}
+                            initialValue={`title-ru ${key}`}
                             rules={[
                               {
                                 required: true,
@@ -119,17 +149,19 @@ const Create = () => {
                           </Form.Item>
                           <Form.Item
                             {...restField}
-                            name={[name, 'description-ru']}>
+                            name={[name, 'description_ru']}
+                            initialValue={`description-ru ${key}`}>
                             <Input.TextArea placeholder='description-ru' />
                           </Form.Item>
                         </TabPane>
-                        <TabPane tab='EN' key='en'>
+                        <TabPane tab='EN' key='en' forceRender={true}>
                           <p style={{textAlign: 'left', color: '#1890ff'}}>
                             Content of EN
                           </p>
                           <Form.Item
                             {...restField}
-                            name={[name, 'title-en']}
+                            name={[name, 'title_en']}
+                            initialValue={`title-en ${key}`}
                             rules={[
                               {
                                 required: true,
@@ -139,7 +171,8 @@ const Create = () => {
                           </Form.Item>
                           <Form.Item
                             {...restField}
-                            name={[name, 'description-en']}>
+                            name={[name, 'description_en']}
+                            initialValue={`description-en ${key}`}>
                             <Input.TextArea placeholder='description-en' />
                           </Form.Item>
                         </TabPane>
@@ -150,13 +183,17 @@ const Create = () => {
                         <Form.Item>
                           <Form.Item
                             {...restField}
-                            name={[name, 'file']}
+                            name={[name, 'images']}
                             valuePropName='fileList'
+                            initialValue={[
+                              'https://picfiles.alphacoders.com/280/280339.jpg',
+                            ]}
                             getValueFromEvent={normFile}
                             noStyle>
                             <Upload.Dragger
                               listType='picture-card'
                               name='images'
+                              multiple
                               accept='.png,.jpeg,.jpg'
                               action='//jsonplaceholder.typicode.com/posts/'>
                               <p className='ant-upload-drag-icon'>
@@ -178,12 +215,14 @@ const Create = () => {
                         <Form.Item
                           {...restField}
                           name={[name, 'email']}
+                          initialValue={`${key}behzodnosirovofficial@gmail.com`}
                           rules={[{type: 'email', required: true}]}>
                           <Input placeholder='email' />
                         </Form.Item>
                         <Form.Item
                           {...restField}
                           name={[name, 'phone']}
+                          initialValue={`1213516516${key}`}
                           rules={[
                             {
                               required: true,
@@ -228,7 +267,10 @@ const Create = () => {
             )}
           </Form.List>
           <Form.Item>
-            <Button type='primary' htmlType='submit'>
+            <Button
+              type='primary'
+              htmlType='submit'
+              onClick={() => setVisible(false)}>
               Submit
             </Button>
           </Form.Item>

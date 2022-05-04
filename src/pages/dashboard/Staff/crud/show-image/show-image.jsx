@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {IoImageOutline} from 'react-icons/io5';
 import {Button, Image} from 'antd';
 import './show-image.styles.scss';
 import PropTypes from 'prop-types';
-const ShowIamges = ({data, id}) => {
+const ShowIamges = ({data}) => {
   const [visible, setVisible] = useState(false);
-  const imagesObj = data.find((item) => item.id == id);
-  // console.log('render showImage');
+  console.log('render - img');
   return (
     <>
       <Button
@@ -18,8 +17,8 @@ const ShowIamges = ({data, id}) => {
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {imagesObj?.images.map((item, index) => (
-            <Image src={item} key={index} />
+          {data?.src?.map((item, index) => (
+            <Image src={item?.url} key={index} />
           ))}
         </Image.PreviewGroup>
       </div>
@@ -27,8 +26,7 @@ const ShowIamges = ({data, id}) => {
   );
 };
 
-export default ShowIamges;
+export default memo(ShowIamges);
 ShowIamges.propTypes = {
-  data: PropTypes.array,
-  id: PropTypes.number,
+  data: PropTypes.object,
 };
