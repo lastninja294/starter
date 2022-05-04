@@ -5,7 +5,7 @@ import {AiOutlineEdit} from 'react-icons/ai';
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import NewsForm from '../form';
-const EditPost = ({post}) => {
+const EditPost = ({post , refetch}) => {
   // modal form newspost update
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,4 +73,5 @@ const EditPost = ({post}) => {
 export default EditPost;
 EditPost.propTypes = {
   post: PropTypes.object,
+  refetch: PropTypes.func
 };

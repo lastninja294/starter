@@ -28,9 +28,12 @@ export const deleteNews = (id) => {
   return useMainApiMutation('delete', `${route + routes.news}/${id}`);
 };
 
-export const editNews = (id) => {
-  return useMainApiMutation('put', `${route + routes.news}/${id}`);
-};
+export const editNews = (id)=>{
+    return useMainApiMutation('put', `${route + routes.news}/${id}`)
+}
+export const editNewsPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.news}/${id}`)
+}
 
 //SETTINGS
 export const getAllSettings = ({page, size}) => {
@@ -47,9 +50,12 @@ export const deleteSettings = (id) => {
   return useMainApiMutation('delete', `${route + routes.settings}/${id}`);
 };
 
-export const editSettings = (id) => {
-  return useMainApiMutation('put', `${route + routes.settings}/${id}`);
-};
+export const editSettings = (id)=>{
+    return useMainApiMutation('put', `${route + routes.settings}/${id}`)
+}
+export const editSettingsPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.settings}/${id}`)
+}
 //STAFF
 export const getAllStaffs = ({page, size}) => {
   return useMainApi(
@@ -65,9 +71,12 @@ export const deleteStaffs = (id) => {
   return useMainApiMutation('delete', `${route + routes.staffs}/${id}`);
 };
 
-export const editStaffs = (id) => {
-  return useMainApiMutation('put', `${route + routes.staffs}/${id}`);
-};
+export const editStaffs = (id)=>{
+    return useMainApiMutation('put', `${route + routes.staffs}/${id}`)
+}
+export const editStaffsPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.staffs}/${id}`)
+}
 //CERTIFICATES
 export const getAllCertificates = ({page, size}) => {
   return useMainApi(
@@ -83,9 +92,12 @@ export const deleteCertificates = (id) => {
   return useMainApiMutation('delete', `${route + routes.certificates}/${id}`);
 };
 
-export const editCertificates = (id) => {
-  return useMainApiMutation('put', `${route + routes.certificates}/${id}`);
-};
+export const editCertificates = (id)=>{
+    return useMainApiMutation('put', `${route + routes.certificates}/${id}`)
+}
+export const editCertificatesPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.certificates}/${id}`)
+}
 
 //SURGERY
 export const getAllSurgery = ({page, size}) => {
@@ -102,9 +114,12 @@ export const deleteSurgery = (id) => {
   return useMainApiMutation('delete', `${route + routes.surgery}/${id}`);
 };
 
-export const editSurgery = (id) => {
-  return useMainApiMutation('put', `${route + routes.surgery}/${id}`);
-};
+export const editSurgery = (id)=>{
+    return useMainApiMutation('put', `${route + routes.surgery}/${id}`)
+}
+export const editSurgeryPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.surgery}/${id}`)
+}
 //EVENTS
 export const getAllEvents = ({page, size}) => {
   return useMainApi(
@@ -120,9 +135,12 @@ export const deleteEvents = (id) => {
   return useMainApiMutation('delete', `${route + routes.events}/${id}`);
 };
 
-export const editEvents = (id) => {
-  return useMainApiMutation('put', `${route + routes.events}/${id}`);
-};
+export const editEvents = (id)=>{
+    return useMainApiMutation('put', `${route + routes.events}/${id}`)
+}
+export const editEventsPatch = (id)=>{
+    return useMainApiMutation('patch', `${route + routes.events}/${id}`)
+}
 
 //APPLICATION
 export const getAllApplication = ({page, size}) => {
