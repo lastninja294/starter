@@ -33,9 +33,10 @@ function EventsDelete({item}) {
     setloader(isLoading);
   }, [isLoading]);
 
-  useEffect(() => {
-    setloader(isSuccess);
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   console.log(isSuccess, 'isSuccess');
+  //   setloader(isSuccess);
+  // }, [isSuccess]);
 
   return (
     <>
