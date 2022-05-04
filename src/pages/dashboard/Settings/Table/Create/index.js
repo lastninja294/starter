@@ -1,11 +1,15 @@
 import {Form, Input, Button, Space, Modal} from 'antd';
 import {MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
 import {useState} from 'react';
+import {useMutation} from 'react-query';
 
 const CreateModal = () => {
   const [isVisible, setVisible] = useState(false);
+
   const onFinish = (values) => {
-    console.log('Received values of form:', values);
+    values.Hospitals.map((item) => {
+      console.log(item);
+    });
   };
 
   return (

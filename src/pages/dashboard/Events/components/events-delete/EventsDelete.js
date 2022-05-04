@@ -1,36 +1,29 @@
-import React, {useContext, useEffect} from 'react';
-import {Popconfirm, Button, message} from 'antd';
-// import useDeleteData from 'pages/Pagination/useDeleteData';
+import React, {useContext, useEffect, memo} from 'react';
+import {Popconfirm, Button} from 'antd';
 import {AiOutlineDelete} from 'react-icons/ai';
-import {useMutation, useQueryClient} from 'react-query';
 import isLoadingContext from '../../myContext/myContext';
+import {useMutation, useQueryClient} from 'react-query';
+import {message} from 'antd';
 import axios from 'axios';
 
 function EventsDelete({item}) {
   const [, setloader] = useContext(isLoadingContext);
   const queryClient = useQueryClient();
 
-
-
-  // <delete data>
-  // const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
-  //   `https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`,
-  // );
-
-  const {mutateAsync, isLoading} = useMutation(
-    async () => {
-      const response = await axios.delete(`https://axiosuchunsinovapi.herokuapp.com/users/${item.id}`);
-      return response.data;
-    },
+  const {mutateAsync, isLoading, isSuccess} = useMutation(
+    async () =>
+      await axios.delete(
+        `https://axiosuchunsinovapi.herokuapp.com/staff/${item.id}`,
+      ),
     {
       onSuccess: () => {
         message.success("muvaffaqiyatli o'chirildi !");
         // <refresh all data>
-        queryClient.invalidateQueries();
+        queryClient.invalidateQueries('event');
         // </refresh all data>
       },
       onError: () => {
-        message.error('nimadir neto');
+        message.error('nimadir xato !');
       },
     },
   );
@@ -39,6 +32,10 @@ function EventsDelete({item}) {
   useEffect(() => {
     setloader(isLoading);
   }, [isLoading]);
+
+  useEffect(() => {
+    setloader(isSuccess);
+  }, [isSuccess]);
 
   return (
     <>
@@ -56,4 +53,4 @@ function EventsDelete({item}) {
   );
 }
 
-export default EventsDelete;
+export default memo(EventsDelete);

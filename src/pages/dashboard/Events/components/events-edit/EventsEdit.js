@@ -1,5 +1,6 @@
 import {Button, message} from 'antd';
 import {AiOutlineEdit} from 'react-icons/ai';
+import React, {memo} from 'react';
 
 function EventsEdit() {
   return (
@@ -17,4 +18,4 @@ function EventsEdit() {
   );
 }
 
-export default EventsEdit;
+export default memo(EventsEdit);

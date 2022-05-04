@@ -1,33 +1,27 @@
-import React from 'react';
-import {useMutation, useQuery, useQueryClient} from 'react-query';
+import React, {useState} from 'react';
+import {useQuery /*,useMutation, useQueryClient*/} from 'react-query';
 import {Table, Button, Space} from 'antd';
-import Edit from '../edit/edit.component';
+import Delete from '../delete/delete.component';
+// import Edit from '../edit/edit.component';
+import Edit from '../edit/new-edit.component';
+import {AiOutlineEdit} from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import {AiOutlineDelete} from 'react-icons/ai';
+// import {AiOutlineDelete} from 'react-icons/ai';
 // import QueryPagination from 'pages/Pagination';
 import ShowIamges from '../show-image/show-image';
 import {getAllData} from '../../api/apiFunction';
-import {deleteData} from '../../api/apiFunction';
-const NewTableComponent = ({fetchData}) => {
+// import {deleteData} from '../../api/apiFunction';
+const NewTableComponent = () => {
   const {data, isLoading} = useQuery('staff', getAllData);
-  const queryClient = useQueryClient();
-  const {mutateAsync, isLoading: isDeleting} = useMutation(deleteData);
-  const remove = async (id) => {
-    await mutateAsync(id);
-    queryClient.invalidateQueries('staff');
-  };
-  console.log(data);
+  const [dataID, setDataID] = useState(1);
+  const [visible, setVisible] = useState(false);
+  console.log('type:', typeof dataID);
+  console.log(dataID);
   const columns = [
     {
       title: 'ID',
       dataIndex: 'id',
       key: 'id',
-    },
-    {
-      title: 'TITLE-UZ',
-      dataIndex: 'title_uz',
-      key: 'title_uz',
-      ellipsis: true,
     },
     {
       title: 'TITLE-RU',
@@ -36,27 +30,9 @@ const NewTableComponent = ({fetchData}) => {
       ellipsis: true,
     },
     {
-      title: 'TITLE-EN',
-      dataIndex: 'title_en',
-      key: 'title_en',
-      ellipsis: true,
-    },
-    {
-      title: 'DESCRIPTION-UZ',
-      dataIndex: 'description_uz',
-      key: 'description_uz',
-      ellipsis: true,
-    },
-    {
       title: 'DESCRIPTION-RU',
       dataIndex: 'description_ru',
       key: 'description_ru',
-      ellipsis: true,
-    },
-    {
-      title: 'DESCRIPTION-UZ',
-      dataIndex: 'description_uz',
-      key: 'description_uz',
       ellipsis: true,
     },
     {
@@ -87,15 +63,17 @@ const NewTableComponent = ({fetchData}) => {
       align: 'center',
       render: (record) => (
         <Space size='middle'>
-          <Edit id={record.id} fetchData={fetchData} data={data} />
           <Button
+            size='large'
+            style={{padding: '0'}}
             type='link'
-            onClick={() => remove(record.id)}
-            loading={isDeleting}>
-            <AiOutlineDelete
-              style={{fontSize: '1.3em', color: 'red', cursor: 'pointer'}}
-            />
+            onClick={() => {
+              setVisible(true);
+              setDataID(record.id);
+            }}>
+            <AiOutlineEdit size={'20px'} />
           </Button>
+          <Delete id={record.id} />
         </Space>
       ),
     },
@@ -109,6 +87,7 @@ const NewTableComponent = ({fetchData}) => {
         dataSource={data}
         pagination={10}
       />
+      <Edit dataID={dataID} visible={visible} setVisible={setVisible} />
       {/* <QueryPagination /> */}
     </>
   );

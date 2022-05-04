@@ -1,16 +1,16 @@
 import {Button, Modal} from 'antd';
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, memo} from 'react';
 import {AiOutlineVideoCamera} from 'react-icons/ai';
 import './EventsVideo.styles.scss';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {BsPlayBtn} from 'react-icons/bs';
+import {FaPlay} from 'react-icons/fa';
 
 const settings = {
   dots: true,
-  infinite: true,
-  arrows: false,
+  infinite: false,
+  // arrows: false,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 2,
@@ -56,11 +56,11 @@ function openFullscreen(elem) {
 // demo item
 const item = [
   'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-  'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-  'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-  'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-  'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-  'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+  '//vjs.zencdn.net/v/oceans.mp4',
+  'https://www.w3schools.com/html/mov_bbb.mp4',
+  '//vjs.zencdn.net/v/oceans.mp4',
+  'https://www.w3schools.com/html/mov_bbb.mp4',
+  '//vjs.zencdn.net/v/oceans.mp4',
 ];
 
 function EventsVideo() {
@@ -79,10 +79,9 @@ function EventsVideo() {
         title='video'
         centered
         visible={visible}
-        // onOk={() => setVisible(false)}
         onCancel={() => {
+          videoRef.current?.pause();
           setVisible(false);
-          videoRef.current.pause();
         }}
         style={{
           minWidth: '70%',
@@ -91,21 +90,23 @@ function EventsVideo() {
           position: 'relative',
         }}
         footer={null}>
-        <div className='team-slider-view'>
+        <div className='events-slider-view'>
           <Slider {...settings}>
             {item.map((member) => {
               return (
-                <div className='team-slider-info' key={member}>
-                  <div className='team-slider-thumb'>
-                    <video src={member} ref={videoRef} />
-                    <BsPlayBtn
-                      className='media-video-icon'
-                      onClick={() => {
+                <div className='events-slider-info' key={member}>
+                  <div className='events-slider-thumb'>
+                    <video
+                      src={member}
+                      onClick={(e) => {
+                        videoRef.current?.pause();
+                        videoRef.current = e.target;
                         openFullscreen(videoRef.current);
                       }}
                     />
+                    <FaPlay className='media-video-icon' />
                   </div>
-                  <h5>{member}</h5>
+                  <h5 className='events-video-slide-title'>{member}</h5>
                 </div>
               );
             })}
@@ -116,4 +117,4 @@ function EventsVideo() {
   );
 }
 
-export default EventsVideo;
+export default memo(EventsVideo);

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {IoImageOutline} from 'react-icons/io5';
-import {Image} from 'antd';
+import {Button, Image} from 'antd';
 import './show-image.styles.scss';
 import PropTypes from 'prop-types';
 const ShowIamges = ({data, id}) => {
@@ -9,12 +9,12 @@ const ShowIamges = ({data, id}) => {
   // console.log('render showImage');
   return (
     <>
-      <IoImageOutline
-        className='icon_style'
-        onClick={() => setVisible(true)}
-        width={'100%'}
-        size={'20px'}
-      />
+      <Button
+        type='link'
+        size='large'
+        icon={<IoImageOutline size={'20px'} />}
+        onClick={() => setVisible(true)}></Button>
+
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>

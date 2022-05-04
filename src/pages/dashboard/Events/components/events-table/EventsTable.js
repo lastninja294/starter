@@ -1,14 +1,14 @@
-import React, {useContext, useEffect} from 'react';
-// ant
+import React, {useContext, useEffect, useState} from 'react';
 import {Space, Table} from 'antd';
-// events btn
 import EventDelete from '../events-delete/EventsDelete';
 import EventsEdit from '../events-edit/EventsEdit';
 import EventsImage from '../events-image/EventsImage';
 import EventsVideo from '../events-video/EventsVideo';
 import Error404 from 'pages/errorPages/Error404';
-import useGetData from 'pages/Pagination/useData';
 import isLoadingContext from '../../myContext/myContext';
+// import useGetData from 'pages/Pagination/useData';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 const columns = [
   {
@@ -21,14 +21,14 @@ const columns = [
   },
   {
     title: 'Title',
-    dataIndex: 'name',
+    dataIndex: 'title_ru',
     width: '25%',
     key: 'title',
     ellipsis: true,
   },
   {
     title: 'Description',
-    dataIndex: 'surname',
+    dataIndex: 'description_ru',
     width: '48%',
     key: 'description',
     ellipsis: true,
@@ -39,12 +39,10 @@ const columns = [
     align: 'center',
     render: (item) => (
       <>
-        <>
-          <EventsImage item={item} />
-          <EventsVideo item={item} />
-          <EventsEdit item={item} />
-          <EventDelete item={item} />
-        </>
+        <EventsImage item={item} />
+        <EventsVideo item={item} />
+        <EventsEdit item={item} />
+        <EventDelete item={item} />
       </>
     ),
   },
@@ -52,13 +50,23 @@ const columns = [
 
 const EventTable = () => {
   const [loader, setloader] = useContext(isLoadingContext);
+  const [page] = useState(1);
+  const [size] = useState(20);
 
-  let pageParam = 1,
-    pageLimit = 20;
-  const {data, status} = useGetData(
+  // const {data, status} = useGetData(
+  //   'event',
+  //   `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
+  // );
+  const {data, status} = useQuery(
     'event',
-    `https://axiosuchunsinovapi.herokuapp.com/users?_page=${pageParam}&_limit=${pageLimit}`,
+   async () => {
+    return axios.get(
+      `https://axiosuchunsinovapi.herokuapp.com/staff/?page=${page}&limit=${size}`,
+    ).then(res => res.data);
+    }
+    ,
   );
+
   useEffect(() => {
     setloader(status === 'loading' ? true : false);
   }, [status]);
@@ -72,7 +80,7 @@ const EventTable = () => {
         rowKey='id'
         columns={columns}
         dataSource={data}
-        pagination={20}
+        pagination={true}
         bordered={true}
         loading={loader}
       />

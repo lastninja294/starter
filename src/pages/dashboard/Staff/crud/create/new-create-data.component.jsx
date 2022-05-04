@@ -1,34 +1,15 @@
 import React, {useState} from 'react';
-import {PlusOutlined} from '@ant-design/icons';
+import {PlusOutlined, MinusOutlined} from '@ant-design/icons';
 // import {createData} from '../../api/apiFunction';
 // import {useCreateData} from '../../api/apiFunction';
-import {Row, Col, Form, Divider, Select, Upload, Input} from 'antd';
+import {Row, Col, Form, Select, Upload, Input, Tabs} from 'antd';
 import {Modal, Button} from 'antd';
 import {MdCreateNewFolder} from 'react-icons/md';
-import {AiOutlineMinusCircle} from 'react-icons/ai';
 import {BsFillFileEarmarkImageFill} from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import './create-data.styles.scss';
 const {Option} = Select;
-// import {api} from '../api';
-// const formItemLayout = {
-//   labelCol: {
-//     span: 6,
-//   },
-//   wrapperCol: {
-//     span: 20,
-//   },
-// };
-// const validateMessages = {
-//   required: '${label} is required!',
-//   types: {
-//     email: '${label} is not a valid email!',
-//     number: '${label} is not a valid number!',
-//   },
-//   number: {
-//     range: '${label} must be between ${min} and ${max}',
-//   },
-// };
+const {TabPane} = Tabs;
 const normFile = (e) => {
   console.log('Upload event:', e);
 
@@ -47,6 +28,9 @@ const prefixSelector = (
     <Option value='87'>+87</Option>
   </Select>
 );
+function callback(key) {
+  console.log(key);
+}
 const Create = () => {
   const [visible, setVisible] = useState(false);
   //   const {mutate} = useCreateData();
@@ -70,18 +54,19 @@ const Create = () => {
   return (
     <>
       <Button className='btn' type='primary' onClick={() => setVisible(true)}>
-        <span className='text'>CREATE</span> <MdCreateNewFolder size={'20px'} />
+        <span>CREATE</span> <MdCreateNewFolder size={'20px'} />
       </Button>
       <Modal
-        title='Modal 1300px width'
+        title='Create Staff'
         centered
         visible={visible}
         footer={null}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        width={1300}>
+        className='event-create-modal'
+        width={1000}>
         <Form
-          style={{overflowY: 'auto', maxHeight: '83vh'}}
+          className='create-modal-scrollbar'
           name='dynamic_form_nest_item'
           onFinish={onFinish}
           autoComplete='off'>
@@ -89,11 +74,19 @@ const Create = () => {
             {(fields, {add, remove}) => (
               <>
                 {fields.map(({key, name, ...restField}) => (
-                  <Row key={key} align='middle' justify='center'>
-                    <Divider plain={true}>Field {key + 1}</Divider>
-                    <Col span={20}>
-                      <Row gutter={16}>
-                        <Col span={8}>
+                  <section
+                    key={key}
+                    align='middle'
+                    className='event-create-box'>
+                    <Row>
+                      <Tabs
+                        defaultActiveKey='1'
+                        style={{width: '100%'}}
+                        onChange={callback}>
+                        <TabPane tab='UZ' key='uz'>
+                          <p style={{textAlign: 'left', color: '#1890ff'}}>
+                            Content of UZ
+                          </p>
                           <Form.Item
                             {...restField}
                             name={[name, 'title-uz']}
@@ -104,8 +97,16 @@ const Create = () => {
                             ]}>
                             <Input placeholder='title-uz' />
                           </Form.Item>
-                        </Col>
-                        <Col span={8}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'description-uz']}>
+                            <Input.TextArea placeholder='description-uz' />
+                          </Form.Item>
+                        </TabPane>
+                        <TabPane tab='RU' key='ru'>
+                          <p style={{textAlign: 'left', color: '#1890ff'}}>
+                            Content of RU
+                          </p>
                           <Form.Item
                             {...restField}
                             name={[name, 'title-ru']}
@@ -116,8 +117,16 @@ const Create = () => {
                             ]}>
                             <Input placeholder='title-ru' />
                           </Form.Item>
-                        </Col>
-                        <Col span={8}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, 'description-ru']}>
+                            <Input.TextArea placeholder='description-ru' />
+                          </Form.Item>
+                        </TabPane>
+                        <TabPane tab='EN' key='en'>
+                          <p style={{textAlign: 'left', color: '#1890ff'}}>
+                            Content of EN
+                          </p>
                           <Form.Item
                             {...restField}
                             name={[name, 'title-en']}
@@ -128,113 +137,93 @@ const Create = () => {
                             ]}>
                             <Input placeholder='title-en' />
                           </Form.Item>
-                        </Col>
-                      </Row>
-                      <Row gutter={16}>
-                        <Col span={8}>
-                          <Form.Item
-                            {...restField}
-                            name={[name, 'description-uz']}>
-                            <Input.TextArea placeholder='description-uz' />
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
-                          <Form.Item
-                            {...restField}
-                            name={[name, 'description-ru']}>
-                            <Input.TextArea placeholder='description-ru' />
-                          </Form.Item>
-                        </Col>
-                        <Col span={8}>
                           <Form.Item
                             {...restField}
                             name={[name, 'description-en']}>
                             <Input.TextArea placeholder='description-en' />
                           </Form.Item>
-                        </Col>
-                      </Row>
-                      <Row gutter={16}>
-                        <Col span={12}>
-                          <Form.Item>
-                            <Form.Item
-                              {...restField}
-                              name={[name, 'file']}
-                              valuePropName='fileList'
-                              getValueFromEvent={normFile}
-                              noStyle>
-                              <Upload.Dragger
-                                listType='picture-card'
-                                name='images'
-                                accept='.png,.jpeg,.jpg'
-                                action='//jsonplaceholder.typicode.com/posts/'>
-                                <p className='ant-upload-drag-icon'>
-                                  <BsFillFileEarmarkImageFill
-                                    color='blue'
-                                    size={'40px'}
-                                  />
-                                </p>
-                                <p className='ant-upload-text'>
-                                  Click or drag file to this area to upload
-                                </p>
-                                <p className='ant-upload-hint'>
-                                  Support for a single or bulk upload.
-                                </p>
-                              </Upload.Dragger>
-                            </Form.Item>
-                          </Form.Item>
-                        </Col>
-                        <Col span={12}>
+                        </TabPane>
+                      </Tabs>
+                    </Row>
+                    <Row gutter={16}>
+                      <Col span={10}>
+                        <Form.Item>
                           <Form.Item
                             {...restField}
-                            name={[name, 'email']}
-                            rules={[{type: 'email', required: true}]}>
-                            <Input placeholder='email' />
+                            name={[name, 'file']}
+                            valuePropName='fileList'
+                            getValueFromEvent={normFile}
+                            noStyle>
+                            <Upload.Dragger
+                              listType='picture-card'
+                              name='images'
+                              accept='.png,.jpeg,.jpg'
+                              action='//jsonplaceholder.typicode.com/posts/'>
+                              <p className='ant-upload-drag-icon'>
+                                <BsFillFileEarmarkImageFill
+                                  color='#1890ff'
+                                  size={'20px'}
+                                />
+                              </p>
+                              <p
+                                className='ant-upload-text'
+                                style={{color: '#1890ff', margin: '0px'}}>
+                                IMAGE
+                              </p>
+                            </Upload.Dragger>
                           </Form.Item>
-                          <Form.Item
-                            {...restField}
+                        </Form.Item>
+                      </Col>
+                      <Col span={14}>
+                        <Form.Item
+                          {...restField}
+                          name={[name, 'email']}
+                          rules={[{type: 'email', required: true}]}>
+                          <Input placeholder='email' />
+                        </Form.Item>
+                        <Form.Item
+                          {...restField}
+                          name={[name, 'phone']}
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your phone number!',
+                            },
+                          ]}>
+                          <Input
+                            placeholder='phone'
                             name={[name, 'phone']}
-                            rules={[
-                              {
-                                required: true,
-                                message: 'Please input your phone number!',
-                              },
-                            ]}>
-                            <Input
-                              placeholder='phone'
-                              name={[name, 'phone']}
-                              addonBefore={prefixSelector}
-                              style={{
-                                width: '100%',
-                              }}
-                            />
-                          </Form.Item>
-                        </Col>
-                      </Row>
-                    </Col>
-                    <Col span={1}>
-                      <Button
-                        type='link'
-                        onClick={() => remove(name)}
-                        danger
-                        size={'large'}>
-                        <AiOutlineMinusCircle size={'25px'} />
-                      </Button>
-                    </Col>
-                  </Row>
+                            addonBefore={prefixSelector}
+                            style={{
+                              width: '100%',
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    {/* <Divider plain={true}>Field {key + 1}</Divider> */}
+                    <Row justify='end'>
+                      <Col>
+                        <Button
+                          type='dashed'
+                          onClick={() => remove(name)}
+                          icon={<MinusOutlined />}
+                          danger>
+                          Remove
+                        </Button>
+                      </Col>
+                    </Row>
+                  </section>
                 ))}
-                <Row justify='center' style={{margin: '15px 0'}}>
-                  <Col span={21}>
-                    <Form.Item>
-                      <Button
-                        type='dashed'
-                        onClick={() => add()}
-                        block
-                        icon={<PlusOutlined />}>
-                        Add field
-                      </Button>
-                    </Form.Item>
-                  </Col>
-                </Row>
+                <Form.Item>
+                  <Button
+                    block
+                    type='dashed'
+                    onClick={() => add()}
+                    icon={<PlusOutlined />}>
+                    Add field
+                  </Button>
+                </Form.Item>
               </>
             )}
           </Form.List>

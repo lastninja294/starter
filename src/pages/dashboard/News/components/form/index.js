@@ -12,7 +12,7 @@ import AppButton from './assist/button';
 
 const schema = yup.object().shape({
   file: yup.object().required('must be select file'),
-  title: yup.string().required('This field is required to be filled'),
+  title_uz: yup.string().required('This field is required to be filled'),
   title_en: yup.string().required('This field is required to be filled'),
   title_ru: yup.string().required('This field is required to be filled'),
   description_uz: yup.object().required('This field is required to be filled'),
@@ -20,83 +20,48 @@ const schema = yup.object().shape({
   description_ru: yup.object().required('This field is required to be filled'),
 });
 
-const NewsForm = ({setVisible, defaultValue}) => {
+const NewsForm = ({loading, defaultValue, onSubmit}) => {
   // const nn = JSON.parse(
   //   '{"blocks":[{"key":"clla0","text":"berdimay","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
   // );
-  const {title, description, file} = defaultValue;
-  const [loading, setLoading] = useState(false);
+  const {
+    title_en,
+    title_ru,
+    title_uz,
+    description_uz,
+    description_en,
+    description_ru,
+    file,
+  } = defaultValue;
   const defaultValues = {
     //defaultda file va description ishlamayabdi
-    file: {
-      file: {
-        uid: '-1',
-        name: 'image.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        type: 'image/png',
-      },
-      fileList: [
-        {
-          uid: '-1',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          type: 'image/png',
-        },
-      ],
-    },
-    title: title,
-    title_en: title,
-    title_ru: title,
-    description_uz: EditorState.createEmpty(),
-    description_en: EditorState.createEmpty(),
-    description_ru: EditorState.createEmpty(),
+    file: [],
+    title_uz: title_uz,
+    title_en: title_en,
+    title_ru: title_ru,
+    description_uz: description_uz,
+    description_en: description_en,
+    description_ru: description_ru,
   };
   const {
     handleSubmit,
     control,
-    reset,
+    // reset,
     formState: {errors},
   } = useForm({defaultValues, resolver: yupResolver(schema)});
   console.log(errors);
-  const onSubmit = (data) => {
-    console.log(data, 'sadsad');
-    reset({
-      //reset da file descripton ishlamayabdi
-      file: {
-        file: {},
-        fileList: []
-      },
-      title: '',
-      title_en: '',
-      title_ru: '',
-      description_uz: EditorState.createEmpty(),
-      description_en: EditorState.createEmpty(),
-      description_ru: EditorState.createEmpty(),
-    });
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setVisible(false);
-    }, 3000);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <UploadFile 
-      control={control} 
-      defaultValue={file} 
-      error={errors.file} 
-      />
+      <UploadFile control={control} defaultValue={file} error={errors.file} />
       <TitleInput
-        name='title'
+        name='title_uz'
         id='title'
         type='text'
         label='title uz '
         control={control}
-        error={errors.title}
-        // defaultValue={title}
+        error={errors.title_uz}
+        defaultValue={title_uz}
       />
       <TitleInput
         name='title_en'
@@ -105,7 +70,7 @@ const NewsForm = ({setVisible, defaultValue}) => {
         label='title en'
         control={control}
         error={errors.title_en}
-        // defaultValue={title}
+        defaultValue={title_uz}
       />
       <TitleInput
         name='title_ru'
@@ -114,28 +79,28 @@ const NewsForm = ({setVisible, defaultValue}) => {
         label='title ru'
         control={control}
         error={errors.title_ru}
-        // defaultValue={title}
+        defaultValue={title_ru}
       />
       <AppEditor
         name='description_uz'
         control={control}
         label=' description uz'
         error={errors.description_uz}
-        defaultValue={description}
+        defaultValue={description_uz}
       />
       <AppEditor
         name='description_en'
         control={control}
         label=' description en'
         error={errors.description_en}
-        defaultValue={description}
+        defaultValue={description_en}
       />
       <AppEditor
         name='description_ru'
         control={control}
         label=' description ru'
         error={errors.description_ru}
-        defaultValue={description}
+        defaultValue={description_en}
       />
 
       <AppButton control={control} loading={loading} />
@@ -146,6 +111,7 @@ const NewsForm = ({setVisible, defaultValue}) => {
 export default NewsForm;
 
 NewsForm.propTypes = {
-  setVisible: PropTypes.func,
+  loading: PropTypes.bool,
   defaultValue: PropTypes.object,
+  onSubmit: PropTypes.func,
 };

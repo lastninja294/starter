@@ -40,7 +40,12 @@ const TableComponent = ({staffData, handleDelete, fetchData}) => {
       fixed: 'right',
       width: 80,
       render: (record) => (
-        <Edit id={record.id} fetchData={fetchData} data={staffData} />
+        <button
+          onClick={() => {
+            <Edit id={record.id} fetchData={fetchData} data={staffData} />;
+          }}>
+          EDIT
+        </button>
       ),
     },
     {

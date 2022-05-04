@@ -26,7 +26,7 @@ const QueryPagination = ({pageName, countPage}) => {
       <Pagination
         current={+params.get('page') || 1}
         pageSize={+params.get('size') || 10}
-        total={countPage?countPage:500}
+        total={countPage ? countPage : 500}
         onChange={(page, size) => {
           setPage(page);
           setSize(size);

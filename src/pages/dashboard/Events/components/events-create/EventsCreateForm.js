@@ -23,7 +23,7 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
         okText='Create'
         cancelText='Cancel'
         onCancel={onCancel}
-        className="event-create-modal"
+        className='event-create-modal'
         width={1000}
         onOk={() => {
           form
@@ -82,6 +82,7 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
                     </Form.Item>
                     <Button
                       type='link'
+                      danger
                       className='event-create-btn'
                       onClick={() => remove(name)}>
                       <IoIosRemoveCircleOutline
