@@ -2,10 +2,12 @@ import React from 'react';
 import {Popconfirm, message, Button} from 'antd';
 import PropTypes from 'prop-types';
 import {AiOutlineDelete} from 'react-icons/ai';
-import {deleteNews} from 'hooks';
+import { deleteNews } from 'hooks';
 
-const Delete = ({id, refetch}) => {
-  const {mutateAsync} = deleteNews(id);
+const DeleteApplicaton = ({id, refetch}) => {
+  const nn = deleteNews(id);
+  console.log(nn);
+  const {mutateAsync, isLoading} = nn;
   const confirm = () => {
     mutateAsync()
       .then(() => {
@@ -27,15 +29,15 @@ const Delete = ({id, refetch}) => {
       onCancel={cancel}
       okText='Yes'
       cancelText='No'>
-      <Button type='link' danger>
+      <Button type='link' loading={isLoading} danger>
         <AiOutlineDelete style={{fontSize: '1.3em'}} />
       </Button>
     </Popconfirm>
   );
 };
 
-export default Delete;
-Delete.propTypes = {
+export default DeleteApplicaton;
+DeleteApplicaton.propTypes = {
   id: PropTypes.number,
   refetch: PropTypes.func,
 };

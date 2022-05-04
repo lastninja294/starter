@@ -8,9 +8,7 @@ import draftToHtml from 'draftjs-to-html';
 import MediaView from '../media/media';
 import QueryPagination from 'pages/Pagination';
 
-function NewsTable({posts , refetch , isLoading ,data }) {
-
-
+function NewsTable({posts, refetch, isLoading, dataCount}) {
   const {messages} = useIntl();
   const columns = [
     {
@@ -27,8 +25,7 @@ function NewsTable({posts , refetch , isLoading ,data }) {
       key: 'title',
       fixed: 'left',
       ellipsis: true,
-      render: (title)=>(<>{title?.uz}</>)
-      
+      render: (title) => <>{title?.uz}</>,
     },
     {
       title: `${messages['common.title']} ru `,
@@ -37,7 +34,7 @@ function NewsTable({posts , refetch , isLoading ,data }) {
       key: 'title',
       fixed: 'left',
       ellipsis: true,
-      render: (title)=>(<>{title?.ru}</>)
+      render: (title) => <>{title?.ru}</>,
     },
     {
       title: `${messages['common.description']} uz`,
@@ -109,20 +106,21 @@ function NewsTable({posts , refetch , isLoading ,data }) {
       key: 'operation',
       fixed: 'right',
       width: 30,
-      render: (record) => <Delete id={record.id} refetch = {refetch}/>,
+      render: (record) => <Delete id={record.id} refetch={refetch} />,
     },
   ];
-  return (<>
-    <Table
-      rowKey='id'
-      pagination={false}
-      columns={columns}
-      bordered={true}
-      loading={isLoading}
-      dataSource=  { isLoading? []: [...posts]}
+  return (
+    <>
+      <Table
+        rowKey='id'
+        pagination={false}
+        columns={columns}
+        bordered={true}
+        loading={isLoading}
+        dataSource={isLoading ? [] : [...posts]}
       />
-    <QueryPagination pageName = {'news'} countPage={data?.data?.count} />
-      </>
+      <QueryPagination pageName={'news'} countPage={dataCount} />
+    </>
   );
 }
 
@@ -133,5 +131,5 @@ NewsTable.propTypes = {
   url: PropTypes.string,
   isLoading: PropTypes.bool,
   refetch: PropTypes.func,
-  data: PropTypes.object
+  dataCount: PropTypes.number,
 };

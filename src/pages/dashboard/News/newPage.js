@@ -30,7 +30,7 @@ const NewsPage = () => {
       <Create refetch={refetch} />
       <NewsTable
         posts={posts}
-        data={data}
+        dataCount={data?.data?.count}
         isLoading={isLoading}
         refetch={refetch}
       />
