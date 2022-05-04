@@ -101,7 +101,7 @@ function NewsTable({posts , refetch , isLoading ,data }) {
       fixed: 'right',
       width: 30,
       render: (post) => {
-        return <EditPost post={post} />;
+        return <EditPost post={post} refetch={refetch} />;
       },
     },
     {
