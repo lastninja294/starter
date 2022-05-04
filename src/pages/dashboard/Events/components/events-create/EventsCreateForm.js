@@ -1,32 +1,28 @@
-import {Modal, Input, Tabs, Button} from 'antd';
-import {IoIosAddCircleOutline, IoIosRemoveCircleOutline} from 'react-icons/io';
+import {Modal, Button} from 'antd';
+import {IoIosAddCircleOutline} from 'react-icons/io';
 import '../../../../../shared/styles/vendors/ql-editor.css';
 import './EventsCreate.styles.scss';
 //////////////////////////
-import {useState, useRef} from 'react';
-import {useForm, useFieldArray, Controller} from 'react-hook-form';
-import WysiwygEditor from './EventsEditor';
-import EventsUpload from './EventsUpload';
+import { useRef} from 'react';
+import {useForm, useFieldArray} from 'react-hook-form';
+import EventsFields from './EventsFields';
 
-const EventCreateForm = ({visible, onCancel}) => {
-  const {TabPane} = Tabs;
-  const [tab, settab] = useState('uzb');
+const EventsCreateForm = ({visible, onCancel}) => {
   const refFrom = useRef();
   const {handleSubmit, control, reset} = useForm();
-  const {fields, append, remove} = useFieldArray({
+  const {fields, append ,remove} = useFieldArray({
     control,
     name: 'events',
   });
 
-  function callback(key) {
-    settab(key);
-  }
+
   const handleOk = (e) => {
     e.preventDefault();
     refFrom.current?.click();
     reset({
       data: 'events',
     });
+    onCancel();
   };
   const handleCancel = () => {
     onCancel();
@@ -72,89 +68,7 @@ const EventCreateForm = ({visible, onCancel}) => {
           <ul>
             {fields.map((item, index) => (
               <li key={item.id} className='events-create-box'>
-                <Tabs
-                  defaultActiveKey='uzb'
-                  activeKey={tab}
-                  onChange={callback}>
-                  <TabPane tab='Uzbekcha' key='uzb' />
-                  <TabPane tab='Russian' key='rus' />
-                  <TabPane tab='English' key='eng' />
-                </Tabs>
-                <br />
-                <p>title</p>
-
-                <div style={tab !== 'uzb' ? {display: 'none'} : null}>
-                  <Controller
-                    render={({field}) => (
-                      <Input
-                        {...field}
-                        placeholder='event title...uz'
-                        rules={[
-                          {
-                            required: true,
-                            message: 'Please input the title of collection!',
-                          },
-                        ]}
-                      />
-                    )}
-                    name={`events.${index}.title.uz`}
-                    control={control}
-                  />
-                </div>
-                <div style={tab !== 'rus' ? {display: 'none'} : null}>
-                  <Controller
-                    render={({field}) => (
-                      <Input {...field} placeholder='event title...ru' />
-                    )}
-                    name={`events.${index}.title.ru`}
-                    control={control}
-                  />
-                </div>
-                <div style={tab !== 'eng' ? {display: 'none'} : null}>
-                  <Controller
-                    render={({field}) => (
-                      <Input {...field} placeholder='event title...en' />
-                    )}
-                    name={`events.${index}.title.en`}
-                    control={control}
-                  />
-                </div>
-                <p>description</p>
-                <div style={tab !== 'uzb' ? {display: 'none'} : null}>
-                  <WysiwygEditor
-                    control={control}
-                    index={index}
-                    name={`events.${index}.description.uz`}
-                  />
-                </div>
-                <div style={tab !== 'rus' ? {display: 'none'} : null}>
-                  <WysiwygEditor
-                    control={control}
-                    index={index}
-                    name={`events.${index}.description.ru`}
-                  />
-                </div>
-                <div style={tab !== 'eng' ? {display: 'none'} : null}>
-                  <WysiwygEditor
-                    control={control}
-                    index={index}
-                    name={`events.${index}.description.en`}
-                  />
-                </div>
-                <p>pictures</p>
-                <EventsUpload />
-
-                <br />
-                <Button
-                  type='link'
-                  danger
-                  onClick={() => remove(index)}
-                  className='events-create-btn'>
-                  <IoIosRemoveCircleOutline
-                    style={{fontSize: '1.2em', marginRight: '4px'}}
-                  />
-                  Delete
-                </Button>
+                <EventsFields item={item} index={index} remove={remove} control={control} />
               </li>
             ))}
           </ul>
@@ -165,4 +79,4 @@ const EventCreateForm = ({visible, onCancel}) => {
   );
 };
 
-export default EventCreateForm;
+export default EventsCreateForm;

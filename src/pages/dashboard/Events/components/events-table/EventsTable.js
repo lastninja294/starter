@@ -40,12 +40,12 @@ const columns = [
     dataIndex: '',
     align: 'center',
     render: (item) => (
-      <>
+      <div style={{ maxWidth:'350px',display:'flex', justifyContent:'space-evenly',alignItems:'center',flexWrap:'wrap'}}>
         <EventsImage item={item.src} />
         <EventsVideo item={item.src} />
         <EventsEdit item={item} />
         <EventDelete item={item} />
-      </>
+      </div>
     ),
   },
 ];

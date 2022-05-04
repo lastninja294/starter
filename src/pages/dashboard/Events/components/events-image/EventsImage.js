@@ -9,7 +9,7 @@ function EventsImage() {
       <Button
         type='link'
         onClick={() => setVisible(true)}
-        style={{padding: 0, margin: '0 1em'}}>
+        style={{padding: 0, margin: '0 .5em'}}>
         <IoImageOutline style={{fontSize: '1.3em'}} />
       </Button>
       <div style={{display: 'none'}}>

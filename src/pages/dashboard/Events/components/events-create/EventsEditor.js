@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import {Editor} from 'react-draft-wysiwyg';
-import {EditorState, convertToRaw} from 'draft-js';
+import {EditorState} from 'draft-js';
 import {Controller} from 'react-hook-form';
 import './EventsCreate.styles.scss';
 // import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-const WysiwygEditor = ({control, index, ...others}) => {
+const WysiwygEditor = ({control,placeholder, ...others}) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty(),
   );
@@ -26,7 +26,7 @@ const WysiwygEditor = ({control, index, ...others}) => {
               wrapperClassName='wrapper-class'
               editorClassName='editor-class'
               toolbarClassName='toolbar-class'
-              placeholder='Enter some text...'
+              placeholder={placeholder}
             />
           </>
         )}
