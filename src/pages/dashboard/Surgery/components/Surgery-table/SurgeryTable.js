@@ -9,7 +9,7 @@ import Error404 from 'pages/errorPages/Error404';
 // import {fakeData} from '../../Fake-data/fake-data';
 
 const columns = [
-  {title: 'Id', width: '5%', dataIndex: 'id', key: 'id', ellipsis: true},
+  {title: 'Id', width: '6%', dataIndex: 'id', key: 'id', ellipsis: true},
   {
     title: 'Title',
     width: '15%',
