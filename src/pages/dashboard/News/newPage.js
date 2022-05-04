@@ -9,8 +9,6 @@ import {getAllNews} from 'hooks';
 import {useHistory} from 'react-router-dom';
 import Error404 from 'pages/errorPages/Error404';
 
-
-
 const NewsPage = () => {
   const history = useHistory();
   const params = new URLSearchParams(history.location.search);
@@ -27,11 +25,15 @@ const NewsPage = () => {
 
   return (
     <AppPageMetadata title='News'>
-        <Create refetch={refetch} />
-        <NewsTable posts={posts} data={data} isLoading={isLoading} refetch={refetch}  />
-      </AppPageMetadata>
-       
+      <Create refetch={refetch} />
+      <NewsTable
+        posts={posts}
+        data={data}
+        isLoading={isLoading}
+        refetch={refetch}
+      />
+    </AppPageMetadata>
   );
-};;
+};
 
 export default NewsPage;

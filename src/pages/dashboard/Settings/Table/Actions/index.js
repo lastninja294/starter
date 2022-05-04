@@ -1,28 +1,35 @@
 import {Space, Button, Popconfirm, message} from 'antd';
 import {useQueryClient} from 'react-query';
-import useDeleteData from 'pages/Pagination/useDeleteData';
+// import useDeleteData from 'pages/Pagination/useDeleteData';
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
 import {useMemo} from 'react';
+import {deleteSettings} from 'hooks';
 
-const TableActions = ({id}) => {
+const TableActions = ({id, refetch}) => {
   const queryClient = useQueryClient();
-  const {mutateAsync, isLoading, isSuccess, isError} = useDeleteData(
-    'hospitals',
-    `https://axiosuchunsinovapi.herokuapp.com/hospitals/${id}`,
-  );
+  const {mutateAsync, isError, isSuccess, isLoading} = deleteSettings(id);
 
   function showSuccessMessage(isSuccess, isError) {
     if (isSuccess) {
       message.success('Item deleted successfully. Good job!');
       // <refresh all data>
-      queryClient.invalidateQueries('hospitals');
+      refetch();
     }
     if (isError) {
       message.error('Error deleting item. Try again later');
     }
   }
 
-  useMemo(() => {
+  const Confirm = () => {
+    mutateAsync()
+      .then(() => {
+        showSuccessMessage(true, false);
+      })
+      .catch((err) => {
+        showSuccessMessage(false, true);
+      });
+  };
+  useMemo((isSuccess, isError) => {
     showSuccessMessage(isSuccess, isError);
   }, [isSuccess, isError]);
   return (
@@ -35,7 +42,7 @@ const TableActions = ({id}) => {
         style={{width: '10px'}}
         okText='Yes'
         cancelText='No'
-        onConfirm={mutateAsync}
+        onConfirm={Confirm}
         placement='topRight'>
         <Button
           type='link'

@@ -1,17 +1,33 @@
 import {Form, Input, Button, Space, Modal} from 'antd';
 import {MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
-import {useState} from 'react';
-import {useMutation} from 'react-query';
+import {useMemo, useState} from 'react';
+import {createSettings} from 'hooks';
 
 const CreateModal = () => {
   const [isVisible, setVisible] = useState(false);
 
+  const {mutateAsync, data, isError, isSuccess, error, isLoading} =
+    createSettings();
+  console.log(data);
+
   const onFinish = (values) => {
-    values.Hospitals.map((item) => {
-      console.log(item);
+    values.Hospitals.map((hospital) => {
+      console.log(hospital);
+      mutateAsync({
+        name: hospital.name,
+        address: hospital.address,
+        phone: hospital.number,
+      });
     });
   };
-
+  useMemo(() => {
+    if (isError) {
+      console.log(error);
+    }
+    if (isSuccess) {
+      setVisible(false);
+    }
+  }, [isError, isSuccess]);
   return (
     <>
       <Button
@@ -81,7 +97,7 @@ const CreateModal = () => {
             )}
           </Form.List>
           <Form.Item>
-            <Button type='primary' htmlType='submit'>
+            <Button loading={isLoading} type='primary' htmlType='submit'>
               Submit
             </Button>
           </Form.Item>

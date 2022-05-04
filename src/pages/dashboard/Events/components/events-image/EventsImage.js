@@ -2,7 +2,7 @@ import React, {useState, memo} from 'react';
 import {Button, Image} from 'antd';
 import {IoImageOutline} from 'react-icons/io5';
 
-function EventsImage({item}) {
+function EventsImage() {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -15,9 +15,9 @@ function EventsImage({item}) {
       <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {item.images.map((img, i) => (
+          {/* {item.map((img, i) => (
             <Image src={img} key={i} />
-          ))}
+          ))} */}
         </Image.PreviewGroup>
       </div>
     </>

@@ -8,17 +8,17 @@ const Create = ({refetch}) => {
   const [visible, setVisible] = useState(false);
   const mutation = createNews();
   console.log(mutation);
-  const {data, isLoading, mutate, isError, isSuccess} = mutation
+  const {data, isLoading, mutate, isError, isSuccess} = mutation;
   console.log(data);
   console.log(isLoading);
-  useEffect(()=>{
+  useEffect(() => {
     if (isError) message.error('Post yaratilmadi');
     if (isSuccess) {
       refetch();
       message.success('Post yaratildi');
       setVisible(false);
     }
-  },[isLoading])
+  }, [isLoading]);
 
   const emptyEditor =
     '{"blocks":[{"key":"clla0","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[{}],"entityRanges":[],"data":{}}],"entityMap":{}}';
@@ -59,9 +59,7 @@ const Create = ({refetch}) => {
       images: [
         'https://pyxis.nymag.com/v1/imgs/0a8/5d1/3139b0b2fc427ff34fe5394bd1625d8527-2019-critics-joker.rsquare.w700.jpg',
       ],
-      vedios: [
-        'https://www.w3schools.com/html/movie.mp4',
-      ],
+      vedios: ['https://www.w3schools.com/html/movie.mp4'],
       title_uz: data.title_uz,
       title_en: data.title_en,
       title_ru: data.title_ru,
@@ -69,7 +67,7 @@ const Create = ({refetch}) => {
       description_ru: data.description_ru,
       description_uz: data.description_uz,
       email: 'gsattorov0102@mail.ru',
-      phone: '+998900077611'
+      phone: '+998900077611',
     });
   };
   return (

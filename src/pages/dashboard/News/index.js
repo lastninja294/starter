@@ -10,13 +10,12 @@ const queryClient = new QueryClient({
   },
 });
 
-
 const News = () => {
   return (
-   <QueryClientProvider client={queryClient}>
-     <NewsPage/>
+    <QueryClientProvider client={queryClient}>
+      <NewsPage />
     </QueryClientProvider>
-     );
+  );
 };
 
 export default News;

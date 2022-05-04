@@ -5,8 +5,7 @@ import axios from 'axios';
 // };
 
 const MainRequest = axios.create({
-  baseURL:
-    process.env.REACT_APP_SERVER_URL ,
+  baseURL: process.env.REACT_APP_SERVER_URL,
   // headers: {
   //   Authorization: `Bearer ${getToken()}`,
   // },
