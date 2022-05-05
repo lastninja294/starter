@@ -9,6 +9,7 @@ import AppEditor from './assist/appEditor';
 import TitleInput from './assist/titleInput';
 import AppButton from './assist/button';
 import {Tabs} from 'antd';
+import './form.scss';
 const {TabPane} = Tabs;
 const schema = yup.object().shape({
   file: yup.object().required('must be select file'),
@@ -52,66 +53,92 @@ const NewsForm = ({loading, defaultValue, onSubmit}) => {
   console.log(errors);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <UploadFile control={control} defaultValue={file} error={errors.file} />
-      <Tabs>
-        <TabPane tab='UZ' key='uz' forceRender={true}>
-          <TitleInput
-            name='title_uz'
-            id='title'
-            type='text'
-            label='title uz '
+    <div style={{position: 'relative'}}>
+      <form className='newsForm' onSubmit={handleSubmit(onSubmit)}>
+        <Tabs defaultActiveKey='uz'>
+          <UploadFile
             control={control}
-            error={errors.title_uz}
-            defaultValue={title_uz}
+            defaultValue={file}
+            error={errors.file}
           />
-          <AppEditor
-            name='description_uz'
-            control={control}
-            label=' description uz'
-            error={errors.description_uz}
-            defaultValue={description_uz}
-          />
-        </TabPane>
-        <TabPane tab='EN' key='en' forceRender={true}>
-          <TitleInput
-            name='title_en'
-            id='title_en'
-            type='text'
-            label='title en'
-            control={control}
-            error={errors.title_en}
-            defaultValue={title_uz}
-          />
-          <AppEditor
-            name='description_en'
-            control={control}
-            label=' description en'
-            error={errors.description_en}
-            defaultValue={description_en}
-          />
-        </TabPane>
-        <TabPane tab='RU' key='ru' forceRender={true}>
-          <TitleInput
-            name='title_ru'
-            id='title_ru'
-            type='text'
-            label='title ru'
-            control={control}
-            error={errors.title_ru}
-            defaultValue={title_ru}
-          />
-          <AppEditor
-            name='description_ru'
-            control={control}
-            label=' description ru'
-            error={errors.description_ru}
-            defaultValue={description_en}
-          />
-        </TabPane>
-      </Tabs>
-      <AppButton control={control} loading={loading} />
-    </form>
+          <TabPane tab='UZ' key='uz' forceRender={true}>
+            <TitleInput
+              name='title_uz'
+              id='title'
+              type='text'
+              label='title uz '
+              control={control}
+              error={errors.title_uz}
+              defaultValue={title_uz}
+            />
+            <AppEditor
+              name='description_uz'
+              control={control}
+              label=' description uz'
+              error={errors.description_uz}
+              defaultValue={description_uz}
+            />
+          </TabPane>
+          <TabPane tab='EN' key='en' forceRender={true}>
+            <TitleInput
+              name='title_en'
+              id='title_en'
+              type='text'
+              label='title en'
+              control={control}
+              error={errors.title_en}
+              defaultValue={title_uz}
+            />
+            <AppEditor
+              name='description_en'
+              control={control}
+              label=' description en'
+              error={errors.description_en}
+              defaultValue={description_en}
+            />
+          </TabPane>
+          <TabPane tab='RU' key='ru' forceRender={true}>
+            <TitleInput
+              name='title_ru'
+              id='title_ru'
+              type='text'
+              label='title ru'
+              control={control}
+              error={errors.title_ru}
+              defaultValue={title_ru}
+            />
+            <AppEditor
+              name='description_ru'
+              control={control}
+              label=' description ru'
+              error={errors.description_ru}
+              defaultValue={description_en}
+            />
+          </TabPane>
+        </Tabs>
+        <AppButton control={control} loading={loading} />{' '}
+      </form>
+      {(errors?.title_en ||
+        errors?.title_ru ||
+        errors?.title_uz ||
+        errors?.description_en ||
+        errors?.description_ru ||
+        errors?.description_uz ||
+        errors?.file) && (
+        <p
+          style={{
+            color: 'red',
+            fontSize: '12px',
+            textAlign: 'right',
+            position: 'absolute',
+            right:0,
+            margin:0,
+            bottom: '0px'
+          }}>
+          Some fields were not filled
+        </p>
+      )}
+    </div>
   );
 };
 
