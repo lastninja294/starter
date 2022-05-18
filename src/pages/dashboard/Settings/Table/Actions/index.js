@@ -6,7 +6,6 @@ import {useMemo} from 'react';
 import {deleteSettings} from 'hooks';
 
 const TableActions = ({id, refetch}) => {
-  const queryClient = useQueryClient();
   const {mutateAsync, isError, isSuccess, isLoading} = deleteSettings(id);
 
   function showSuccessMessage(isSuccess, isError) {

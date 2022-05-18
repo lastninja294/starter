@@ -34,11 +34,13 @@ export default function TableComponent() {
       title: messages['common.name'],
       dataIndex: 'name',
       key: 'name',
+      ellipsis: true,
     },
     {
       title: messages['common.address'],
       dataIndex: 'address',
       key: 'address',
+      ellipsis: true,
     },
     {
       title: messages['common.phone'],
@@ -54,13 +56,13 @@ export default function TableComponent() {
 
   // if the data is not defined, return the error page
   if (isError) {
-    if (error.response.status === 404) {
+    if (error?.response.status === 404) {
       return <Error404 />;
-    } else if (error.response.status === 500) {
+    } else if (error?.response.status === 500) {
       return <Error500 />;
-    } else if (error.response.status === 401) {
+    } else if (error?.response.status === 401) {
       return <Error401 />;
-    } else if (error.response.status === 403) {
+    } else if (error?.response.status === 403) {
       return <Error403 />;
     } else {
       return <Maintenance />;

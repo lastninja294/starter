@@ -1,11 +1,12 @@
 import {Form, Input, Button, Space, Modal} from 'antd';
 import {MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
+import InputMask from 'react-input-mask';
 import {useMemo, useState} from 'react';
 import {createSettings} from 'hooks';
 
 const CreateModal = () => {
   const [isVisible, setVisible] = useState(false);
-
+  const [phone, setPhone] = useState('');
   const {mutateAsync, data, isError, isSuccess, error, isLoading} =
     createSettings();
   console.log(data);
@@ -78,8 +79,18 @@ const CreateModal = () => {
                       name={[name, 'number']}
                       rules={[
                         {required: true, message: 'Missing phone number'},
+                        {
+                          // create pattern for phone number
+                          pattern:
+                            /(?:\+\([9]{2}[8]\) [0-9]{2}\ [0-9]{3}\ [0-9]{4})/g,
+                          message: 'Invalid phone number',
+                        },
                       ]}>
-                      <Input placeholder='Phone Number' />
+                      <InputMask
+                        mask='+(999) 99 999 9999'
+                        placeholder='Phone Number'>
+                        {(inputProps) => <Input {...inputProps} />}
+                      </InputMask>
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>

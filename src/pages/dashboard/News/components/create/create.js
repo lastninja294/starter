@@ -8,11 +8,10 @@ const Create = ({refetch}) => {
   const [visible, setVisible] = useState(false);
   const mutation = createNews();
   console.log(mutation);
-  const {data, isLoading, mutate, isError, isSuccess} = mutation;
-  console.log(data);
-  console.log(isLoading);
+  const {isLoading, mutate, isError, error, isSuccess} = mutation;
+
   useEffect(() => {
-    if (isError) message.error('Post yaratilmadi');
+    if (isError) message.error(error.message);
     if (isSuccess) {
       refetch();
       message.success('Post yaratildi');
@@ -54,21 +53,45 @@ const Create = ({refetch}) => {
     //   description_en: description_en,
     //   description_ru: description_en,
     // });
-    mutate({
-      id: 10,
-      images: [
-        'https://pyxis.nymag.com/v1/imgs/0a8/5d1/3139b0b2fc427ff34fe5394bd1625d8527-2019-critics-joker.rsquare.w700.jpg',
+    const controlData = {
+      title: {
+        uz: data?.title_uz,
+        ru: data?.title_ru,
+        en: data?.title_en,
+      },
+      description: {
+        en: JSON.stringify(data?.description_en),
+        ru: JSON.stringify(data?.description_ru),
+        uz: JSON.stringify(data?.description_uz),
+      },
+      src: [
+        {
+          uid: '-1',
+          name: 'image.png',
+          status: 'done',
+          url: 'https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg',
+          type: 'image/png',
+        },
+        {
+          uid: '-2',
+          name: 'image2.png',
+          status: 'done',
+          url: 'https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/14/yvA5SpUH-IMG-Worlds-1200x900.jpg',
+          type: 'image/',
+        },
+        {
+          uid: '-3',
+          name: 'image3.png',
+          status: 'done',
+          url: 'https://upload.wikimedia.org/wikipedia/commons/3/32/BMW_G20%2C_Paris_Motor_Show_2018%2C_IMG_0493.jpg',
+          type: 'image/jpeg',
+        },
       ],
-      vedios: ['https://www.w3schools.com/html/movie.mp4'],
-      title_uz: data.title_uz,
-      title_en: data.title_en,
-      title_ru: data.title_ru,
-      description_en: data.description_en,
-      description_ru: data.description_ru,
-      description_uz: data.description_uz,
       email: 'gsattorov0102@mail.ru',
       phone: '+998900077611',
-    });
+      date: new Date(),
+    };
+    mutate(controlData);
   };
   return (
     <>

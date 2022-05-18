@@ -14,8 +14,10 @@ const NewsPage = () => {
   const params = new URLSearchParams(history.location.search);
   const page = params.get('page');
   const size = params.get('size');
-  const {isLoading, data, isError, refetch} = getAllNews({page, size});
+  const {isLoading, data, isError, refetch , error } = getAllNews({page, size});
   console.log(data);
+  console.log(error);
+  console.log(error?.request?.status);
   // const [news , setNews] = useState([])
 
   // useEffect(()=>{
