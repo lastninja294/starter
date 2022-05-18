@@ -10,7 +10,7 @@ function EventsDelete({item}) {
   const [, setloader] = useContext(isLoadingContext);
   const queryClient = useQueryClient();
 
-  const {mutateAsync, isLoading, isSuccess} = useMutation(
+  const {mutateAsync, isLoading} = useMutation(
     async () =>
       await axios.delete(
         `https://axiosuchunsinovapi.herokuapp.com/staff/${item.id}`,
@@ -33,9 +33,10 @@ function EventsDelete({item}) {
     setloader(isLoading);
   }, [isLoading]);
 
-  useEffect(() => {
-    setloader(isSuccess);
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   console.log(isSuccess, 'isSuccess');
+  //   setloader(isSuccess);
+  // }, [isSuccess]);
 
   return (
     <>
@@ -45,7 +46,7 @@ function EventsDelete({item}) {
         onConfirm={() => {
           mutateAsync();
         }}>
-        <Button type='link' danger style={{padding: 0, margin: '0 1em'}}>
+        <Button type='link' danger style={{padding: 0, margin: '0 .5em'}}>
           <AiOutlineDelete style={{fontSize: '1.3em'}} />
         </Button>
       </Popconfirm>

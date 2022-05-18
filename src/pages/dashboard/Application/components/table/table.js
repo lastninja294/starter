@@ -3,10 +3,10 @@ import {Table} from 'antd';
 import PropTypes from 'prop-types';
 import QueryPagination from 'pages/Pagination';
 import {useIntl} from 'react-intl';
+import DeleteApplicaton from './delete';
 
-function ApplicationTable({users}) {
+function ApplicationTable({users ,isLoading , refetch}) {
   const {messages} = useIntl();
-  const users1 = users? users : []
   const columns = [
     {
       title: 'ID',
@@ -18,16 +18,20 @@ function ApplicationTable({users}) {
     {
       title: 'F I SH *',
       width: 220,
-      dataIndex: 'fullName',
+      dataIndex: 'title',
       key: 'fullName',
       fixed: 'left',
+      ellipsis: true,
+      render: (title) => <>{title?.uz}</>,
     },
     {
       title: 'BANISA NOMI',
       width: 220,
-      dataIndex: 'medName',
+      dataIndex: 'description',
       key: 'email',
       fixed: 'left',
+      ellipsis: true,
+      render: (des) => <>{des?.uz}</>,
     },
     {
       title: messages['common.email'],
@@ -35,6 +39,7 @@ function ApplicationTable({users}) {
       fixed: 'right',
       width: 150,
       dataIndex: 'email',
+      ellipsis: true,
     },
     {
       title: messages['common.phone'],
@@ -43,11 +48,21 @@ function ApplicationTable({users}) {
       dataIndex: 'phone',
       width: 150,
     },
+    {
+      title: messages['common.delete'],
+      key: 'phone',
+      fixed: 'right',
+      dataIndex: 'id',
+      width: 80,
+      render: (id) => {
+        return <DeleteApplicaton refetch={refetch} id={id} />;
+      },
+    },
   ];
 
   return (
     <>
-      <Table rowKey='id' columns={columns} dataSource={[...users1]} />
+      <Table rowKey='id' pagination={null} loading={isLoading} columns={columns} dataSource={[...users]} />
       <QueryPagination pageName='application' />
     </>
   );
@@ -57,4 +72,6 @@ export default ApplicationTable;
 
 ApplicationTable.propTypes = {
   users: PropTypes.array,
+  isLoading: PropTypes.bool,
+  refetch: PropTypes.func
 };

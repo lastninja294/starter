@@ -1,17 +1,31 @@
-import {Modal, Form, Input, Tabs, Button} from 'antd';
-import {IoIosAddCircleOutline, IoIosRemoveCircleOutline} from 'react-icons/io';
+import {Modal, Button} from 'antd';
+import {IoIosAddCircleOutline} from 'react-icons/io';
+import '../../../../../shared/styles/vendors/ql-editor.css';
 import './EventsCreate.styles.scss';
+//////////////////////////
+import { useRef} from 'react';
+import {useForm, useFieldArray} from 'react-hook-form';
+import EventsFields from './EventsFields';
 
-const EventCreateForm = ({visible, onCreate, onCancel}) => {
-  const [form] = Form.useForm();
-  const {TabPane} = Tabs;
-  const {TextArea} = Input;
+const EventsCreateForm = ({visible, onCancel}) => {
+  const refFrom = useRef();
+  const {handleSubmit, control, reset} = useForm();
+  const {fields, append ,remove} = useFieldArray({
+    control,
+    name: 'events',
+  });
 
-  function callback(key) {
-    console.log(key);
-  }
-  const onFinish = (values) => {
-    console.log('Received values of form:', values);
+
+  const handleOk = (e) => {
+    e.preventDefault();
+    refFrom.current?.click();
+    reset({
+      data: 'events',
+    });
+    onCancel();
+  };
+  const handleCancel = () => {
+    onCancel();
   };
 
   return (
@@ -23,102 +37,46 @@ const EventCreateForm = ({visible, onCreate, onCancel}) => {
         okText='Create'
         cancelText='Cancel'
         onCancel={onCancel}
-        className='event-create-modal'
+        className='events-create-modal'
         width={1000}
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields();
-              onCreate(values);
-            })
-            .catch((info) => {
-              console.log('Validate Failed:', info);
-            });
-        }}>
-        <Form
-          className='create-modal-scrollbar'
-          form={form}
-          layout='vertical'
-          name='form_in_modal'
-          onFinish={onFinish}
-          autoComplete='off'
-          initialValues={{
-            modifier: 'public',
-          }}>
-          <Form.List name='newData'>
-            {(fields, {add, remove}) => (
-              <>
-                {fields.map(({key, name, ...restField}) => (
-                  <div key={key} className='event-create-box'>
-                    <Form.Item {...restField} name={[name, 'lang']}>
-                      <Tabs defaultActiveKey='1' onChange={callback}>
-                        <TabPane tab='Uzbekcha' key='uzb'>
-                          Content of Uzbek
-                        </TabPane>
-                        <TabPane tab='Russian' key='rus'>
-                          Content of Russian
-                        </TabPane>
-                        <TabPane tab='English' key='eng'>
-                          Content of English
-                        </TabPane>
-                      </Tabs>
-                    </Form.Item>
-
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'title']}
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please input the title of collection!',
-                        },
-                      ]}>
-                      <Input placeholder='event title...' />
-                    </Form.Item>
-
-                    <Form.Item
-                      {...restField}
-                      name={[name, 'description']}
-                      rules={[
-                        {
-                          required: true,
-                          message:
-                            'Please input the descriotion of collection!',
-                        },
-                      ]}>
-                      <TextArea rows={4} placeholder='event description...' />
-                    </Form.Item>
-                    <Button
-                      type='link'
-                      danger
-                      className='event-create-btn'
-                      onClick={() => remove(name)}>
-                      <IoIosRemoveCircleOutline
-                        style={{fontSize: '1.2em', marginRight: '4px'}}
-                      />
-                      Delete
-                    </Button>
-                  </div>
-                ))}
-                <Form.Item>
-                  <Button
-                    type='link'
-                    className='event-create-btn'
-                    onClick={() => add()}>
-                    <IoIosAddCircleOutline
-                      style={{fontSize: '1.2em', marginRight: '4px'}}
-                    />
-                    Add field
-                  </Button>
-                </Form.Item>
-              </>
-            )}
-          </Form.List>
-        </Form>
+        footer={
+          <div className='events-modal-footer'>
+            <Button
+              type='link'
+              onClick={() => append()}
+              className='events-create-btn'>
+              <IoIosAddCircleOutline
+                style={{fontSize: '1.2em', marginRight: '4px'}}
+              />
+              Add field
+            </Button>
+            <div>
+              <Button key='back' onClick={handleCancel}>
+                Cancel
+              </Button>
+              <Button key='submit' type='primary' onClick={handleOk}>
+                Submit
+              </Button>
+            </div>
+          </div>
+        }>
+        <form
+          className='events-modal-scrollbar'
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+          })}>
+          <ul>
+            {fields.map((item, index) => (
+              <li key={item.id} className='events-create-box'>
+                <EventsFields item={item} index={index} remove={remove} control={control} />
+              </li>
+            ))}
+          </ul>
+          <input type='submit' hidden={true} ref={refFrom} />
+        </form>
       </Modal>
     </>
   );
 };
 
-export default EventCreateForm;
+export default EventsCreateForm;

@@ -1,14 +1,18 @@
-.create-modal-scrollbar {
-  overflow-y: auto;
-  max-height: 70vh;
-  padding: 24px;
-}
-.event-create-box {
+@mixin borderBox {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   margin: 5px 0;
   padding: 10px;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.events-modal-scrollbar {
+  overflow-y: auto;
+  max-height: 75vh;
+  padding: 0 24px;
+}
+.events-create-box {
+  list-style: none;
+  @include borderBox();
   &:hover {
     border-color: #31abe8;
     border-right-width: 1px !important;
@@ -16,13 +20,41 @@
     box-shadow: 0 0 0 2px rgb(10 143 220 / 20%);
   }
 }
-.event-create-btn {
+.events-editor-box {
+  @include borderBox();
+  &:hover {
+    border-color: #31abe8;
+    border-right-width: 1px !important;
+    outline: 0;
+  }
+  .rdw-colorpicker-modal {
+    right: 0 !important;
+    left: -150px !important;
+  }
+}
+.events-create-btn {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.event-create-modal {
+.events-create-modal {
   .ant-modal-body {
     padding: 0;
+  }
+}
+.events-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.events-upload {
+  .ant-upload-list {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .ant-upload-list-item {
+    margin-right: 10px;
   }
 }

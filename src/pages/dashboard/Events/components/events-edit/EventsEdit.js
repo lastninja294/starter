@@ -7,7 +7,7 @@ function EventsEdit() {
     <>
       <Button
         type='link'
-        style={{padding: 0, margin: '0 1em'}}
+        style={{padding: 0, margin: '0 .5em'}}
         // onClick => bu shunchaki namuna message.success
         onClick={() => {
           message.success('This is an success message');

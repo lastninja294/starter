@@ -1,6 +1,6 @@
 .events-slider-view {
-  // margin-left: -22px;
-  // margin-right: -22px;
+  margin-left: -20px;
+  margin-right: -20px;
   padding-bottom: 25px;
 
   .events-slider-info {
@@ -48,16 +48,16 @@
   .slick-slider {
     position: relative;
     .slick-prev {
-      margin-left: 5px;
       position: absolute;
+      left: -2px;
       z-index: 999;
       &:before {
         color: #be8658;
       }
     }
     .slick-next {
-      margin-right: 5px;
       position: absolute;
+      right: -2px;
       z-index: 999;
       &:before {
         color: #be8658;
@@ -94,6 +94,11 @@
 }
 .events-video-slide-title {
   width: 100%;
-  height: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
+  margin-bottom: 4px;
+  color: #111827;
+  font-weight: 500;
+  font-size: 14px;
 }
