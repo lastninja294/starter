@@ -1,11 +1,12 @@
 import {Space, Button, Popconfirm, message} from 'antd';
-import {useQueryClient} from 'react-query';
 // import useDeleteData from 'pages/Pagination/useDeleteData';
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai';
-import {useMemo} from 'react';
+import {useEffect, useMemo, useContext} from 'react';
 import {deleteSettings} from 'hooks';
+import IsLoadingContext from '../../settingContext';
 
 const TableActions = ({id, refetch}) => {
+  const [loading, setLoading] = useContext(IsLoadingContext);
   const {mutateAsync, isError, isSuccess, isLoading} = deleteSettings(id);
 
   function showSuccessMessage(isSuccess, isError) {
@@ -24,13 +25,22 @@ const TableActions = ({id, refetch}) => {
       .then(() => {
         showSuccessMessage(true, false);
       })
-      .catch((err) => {
+      .catch(() => {
         showSuccessMessage(false, true);
       });
   };
-  useMemo((isSuccess, isError) => {
-    showSuccessMessage(isSuccess, isError);
-  }, [isSuccess, isError]);
+
+  useMemo(
+    (isSuccess, isError) => {
+      showSuccessMessage(isSuccess, isError);
+    },
+    [isSuccess, isError],
+  );
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading]);
+
   return (
     <Space size='middle'>
       <Button type='link'>
@@ -46,7 +56,7 @@ const TableActions = ({id, refetch}) => {
         <Button
           type='link'
           danger
-          disabled={isLoading}
+          disabled={loading}
           onClick={() => {
             console.log(id);
           }}>

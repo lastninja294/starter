@@ -9,8 +9,12 @@ import QueryPagination from 'pages/Pagination';
 import {getAllSettings} from 'hooks';
 import {useHistory} from 'react-router-dom';
 import TableActions from './Actions';
+import IsLoadingContext from '../settingContext';
+import {useContext, useEffect} from 'react';
 
 export default function TableComponent() {
+  const [loading, setLoading] = useContext(IsLoadingContext);
+
   // define the history object, because we need to define the page number and page size in the url
   const history = useHistory();
 
@@ -20,11 +24,15 @@ export default function TableComponent() {
   //  define page and pageSize. If they are not defined, set them to 1 and 10
   const page = params.get('page') || 1;
   const size = params.get('size') || 10;
-  const {isLoading, data, status, isError, error, refetch} = getAllSettings({
+  const {data, status, isError, error, refetch} = getAllSettings({
     page,
     size,
   });
-  console.log(data?.data);
+
+  useEffect(() => {
+    setLoading(status === 'loading');
+  }, [status]);
+
   // define react-intl  messages for language switching
   const {messages} = useIntl();
 
@@ -84,7 +92,7 @@ export default function TableComponent() {
         rowKey='id'
         columns={columns}
         dataSource={status === 'success' ? data.data.data : []}
-        loading={isLoading}
+        loading={loading}
         pagination={false}
         size='small'
         scroll={{y: 'calc(100vh - 300px)'}}

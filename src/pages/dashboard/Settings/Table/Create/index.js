@@ -6,10 +6,7 @@ import {createSettings} from 'hooks';
 
 const CreateModal = () => {
   const [isVisible, setVisible] = useState(false);
-  const [phone, setPhone] = useState('');
-  const {mutateAsync, data, isError, isSuccess, error, isLoading} =
-    createSettings();
-  console.log(data);
+  const {mutateAsync, isError, isSuccess, error, isLoading} = createSettings();
 
   const onFinish = (values) => {
     values.Hospitals.map((hospital) => {
@@ -23,12 +20,16 @@ const CreateModal = () => {
   };
   useMemo(() => {
     if (isError) {
-      console.log(error);
+      Modal.error({
+        title: 'Error',
+        content: error,
+      });
     }
     if (isSuccess) {
       setVisible(false);
     }
   }, [isError, isSuccess]);
+  
   return (
     <>
       <Button
@@ -87,7 +88,7 @@ const CreateModal = () => {
                         },
                       ]}>
                       <InputMask
-                        mask='+(999) 99 999 9999'
+                        mask='+(\9\98) 99 999 9999'
                         placeholder='Phone Number'>
                         {(inputProps) => <Input {...inputProps} />}
                       </InputMask>
