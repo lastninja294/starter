@@ -8,14 +8,10 @@ const SITE_URL =
     ? 'http://localhost:3000'
     : 'https://ant-cra.cremawork.com/';
 
-const FACEBOOK_APP_ID = 'XXXXXXXXX';
-
-const defaultTitle = 'Dashboard Template';
+const defaultTitle = 'UZAMBS';
 const defaultDescription =
-  'Crema Ant is an Ant design based admin template. buid with CRA all ant library. ';
-const defaultImage =
-  'https://firebasestorage.googleapis.com/v0/b/crema-demo.appspot.com/o/logo512.png?alt=media';
-const defaultTwitter = '@crema';
+  'Uzbekistan Association of Metabolic and Bariatric surgeons.';
+const defaultImage = '%PUBLIC_URL%/assets/images/mainLogo.svg';
 const defaultSep = ' | ';
 
 const AppPageMetadata = ({children, ...rest}) => {
@@ -26,12 +22,11 @@ const AppPageMetadata = ({children, ...rest}) => {
       description,
       image,
       contentType,
-      twitter,
       noCrawl,
-      published = '01-05-2021',
+      published = '01-05-2022',
       updated,
-      category = 'admin Template, admin Dashboard, ',
-      tags = 'admin Template, admin Dashboard, CRA, Antd, Ant Design, Less, Create React App, Firebase, Aws Cognito, Jwt-Auth, Mail App, Todo App, ',
+      category = 'Admin Dashboard',
+      tags = 'Admin Dashboard',
     },
     pathname,
   ) => {
@@ -48,18 +43,11 @@ const AppPageMetadata = ({children, ...rest}) => {
       {itemprop: 'description', content: theDescription},
       {itemprop: 'image', content: theImage},
       {name: 'description', content: theDescription},
-      {name: 'twitter:card', content: 'summary_large_image'},
-      {name: 'twitter:site', content: defaultTwitter},
-      {name: 'twitter:title', content: theTitle},
-      {name: 'twitter:description', content: theDescription},
-      {name: 'twitter:creator', content: twitter || defaultTwitter},
-      {name: 'twitter:image:src', content: theImage},
       {property: 'og:title', content: theTitle},
       {property: 'og:type', content: contentType || 'website'},
       {property: 'og:url', content: SITE_URL + pathname},
       {property: 'og:description', content: theDescription},
       {property: 'og:site_name', content: defaultTitle},
-      {property: 'fb:app_id', content: FACEBOOK_APP_ID},
     ];
 
     if (noCrawl) {
@@ -88,7 +76,7 @@ const AppPageMetadata = ({children, ...rest}) => {
         htmlAttributes={{
           lang: 'en',
           itemscope: undefined,
-          itemtype: `http://schema.org/${rest.schema || 'admin Template'}`,
+          itemtype: `http://schema.org/${rest.schema || 'Admin Template'}`,
         }}
         title={
           rest.title ? rest.title + defaultSep + defaultTitle : defaultTitle

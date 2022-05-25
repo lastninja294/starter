@@ -10,13 +10,9 @@ import AppNotifications from '../../AppNotifications';
 
 const AppHeader = () => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
 
   const menuMobile = (
     <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
       <AppLanguageSwitcher />
     </Menu>
   );
@@ -24,15 +20,8 @@ const AppHeader = () => {
   return (
     <Header className='app-header-mini'>
       <AppLogo />
-
-      <Search
-        className='header-search-mini'
-        placeholder={messages['common.searchHere']}
-      />
       <div className='app-header-mini-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
       </div>
       <div className='app-header-mini-section-mobile'>
         <Dropdown overlay={menuMobile} trigger={['click']}>

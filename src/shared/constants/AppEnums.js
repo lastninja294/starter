@@ -12,15 +12,18 @@ export const ThemeStyle = {
   MODERN: 'modern',
   STANDARD: 'standard',
 };
+
 export const ThemeStyleRadius = {
   MODERN: 30,
   STANDARD: 4,
 };
+
 export const ThemeMode = {
   LIGHT: 'light',
   SEMI_DARK: 'semi-dark',
   DARK: 'dark',
 };
+
 export const LayoutType = {
   FULL_WIDTH: 'full-width',
   BOXED: 'boxed',
@@ -48,6 +51,7 @@ export const NavStyle = {
   HOR_HEADER_FIXED: 'hor-header-fixed',
   HOR_DARK_LAYOUT: 'hor-dark-layout',
 };
+
 export const FooterType = {
   FIXED: 'fixed',
   FLUID: 'fluid',

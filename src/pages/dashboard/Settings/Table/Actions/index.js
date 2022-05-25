@@ -53,13 +53,7 @@ const TableActions = ({id, refetch}) => {
         cancelText='No'
         onConfirm={Confirm}
         placement='topRight'>
-        <Button
-          type='link'
-          danger
-          disabled={loading}
-          onClick={() => {
-            console.log(id);
-          }}>
+        <Button type='link' danger>
           <AiOutlineDelete style={{fontSize: '1.3em'}} />
         </Button>
       </Popconfirm>

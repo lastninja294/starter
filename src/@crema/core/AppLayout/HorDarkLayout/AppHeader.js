@@ -16,8 +16,7 @@ import {useSidebarContext} from '../../../utility/AppContextProvider/SidebarCont
 
 const AppHeader = ({showDrawer}) => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
+
   const {sidebarColorSet} = useSidebarContext();
 
   const menuMobile = (
@@ -49,15 +48,9 @@ const AppHeader = ({showDrawer}) => {
               <AiOutlineMenu />
             </a>
             <AppLogo hasSidebarColor />
-            <Search
-              className='header-search-hor-dark'
-              placeholder={messages['common.searchHere']}
-            />
 
             <div className='app-header-hor-dark-sectionDesktop'>
               <AppLanguageSwitcher />
-              <AppHeaderMessages />
-              <AppNotifications />
             </div>
             <UserInfo />
             <div className='app-header-hor-dark-section-mobile'>

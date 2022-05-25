@@ -15,15 +15,12 @@ import {useSidebarContext} from '../../../utility/AppContextProvider/SidebarCont
 
 const AppHeader = ({showDrawer}) => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
+
   const {sidebarColorSet} = useSidebarContext();
 
   const menuMobile = (
     <Menu>
       <AppHeaderMessages />
-      <AppNotifications />
-      <AppLanguageSwitcher />
     </Menu>
   );
 
@@ -42,15 +39,9 @@ const AppHeader = ({showDrawer}) => {
             </a>
             <AppLogo hasSidebarColor />
             <AppHorizontalNav className='app-main-hor-header-fixed-menu' />
-            <Search
-              className='header-search-hor-header-fixed'
-              placeholder={messages['common.searchHere']}
-            />
 
             <div className='app-header-hor-header-fixed-sectionDesktop'>
               <AppLanguageSwitcher />
-              <AppHeaderMessages />
-              <AppNotifications />
             </div>
             <UserInfo />
             <div className='app-header-hor-header-fixed-section-mobile'>

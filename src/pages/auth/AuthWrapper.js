@@ -24,11 +24,8 @@ const AuthWrapper = ({children}) => {
           </div>
           <div className='auth-wel-action'>
             <div className='auth-wel-content'>
-              <h2>Welcome to Crema!</h2>
-              <p>
-                Crema is purely based on Ant Design components and follows Ant
-                Design guidelines.
-              </p>
+              <h2>Welcome</h2>
+              <p>Uzbekistan Assocation of Metabolic and Bariatric Surgeons</p>
             </div>
           </div>
         </Card>

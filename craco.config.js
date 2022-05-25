@@ -12,7 +12,7 @@ module.exports = {
             //   '@primary-color': '#0A8FDC',
             //   dark: true,
             // }),
-            modifyVars: {'@primary-color': '#0A8FDC'},
+            modifyVars: {'@primary-color': '#7F2941'},
             javascriptEnabled: true,
           },
         },

@@ -7,7 +7,7 @@ img {
 }
 
 .item-hover {
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   transform: scale(1);
 
   &:hover {
@@ -22,7 +22,7 @@ img {
   transform: scale(1);
 
   &:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .45);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
     transform: scale(1.05);
   }
 }
@@ -48,7 +48,7 @@ img {
 .text-left {
   text-align: left;
 
-  [dir=rtl] & {
+  [dir='rtl'] & {
     text-align: right;
   }
 }
@@ -60,7 +60,7 @@ img {
 .text-right {
   text-align: right;
 
-  [dir=rtl] & {
+  [dir='rtl'] & {
     text-align: left;
   }
 }
@@ -73,7 +73,8 @@ img {
 
 .cr-btn {
   box-sizing: border-box;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   text-transform: uppercase;
 }
 
@@ -83,7 +84,8 @@ img {
   color: @grey-500;
   box-shadow: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: fade(@tooltip-bg, 4);
     border-color: fade(@tooltip-bg, 4);
     color: @text-color;
@@ -99,7 +101,8 @@ img {
   border-color: @secondary-color;
   color: @white;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: darken(@secondary-color, 25);
     border-color: darken(@secondary-color, 25);
     color: @white;
@@ -111,7 +114,8 @@ img {
   color: @primary-color;
   border-color: fade(@primary-color, 10);
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: fade(@primary-color, 20);
     color: @primary-color;
     border-color: fade(@primary-color, 20);
@@ -124,7 +128,8 @@ img {
   color: @secondary-color;
   box-shadow: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
     border-color: darken(@secondary-color, 15);
     color: darken(@secondary-color, 15);
@@ -137,7 +142,8 @@ img {
   color: @primary-color;
   box-shadow: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
     border-color: darken(@primary-color, 15);
     color: darken(@primary-color, 15);
@@ -150,7 +156,8 @@ img {
   color: @white;
   box-shadow: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: transparent;
     border-color: @white;
     color: @white;
@@ -190,7 +197,8 @@ img {
   padding: 0;
   height: auto;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: 0 none;
   }
 
@@ -302,7 +310,6 @@ img {
   &:focus {
     background-color: fade(@black, 5);
     color: @text-color;
-
   }
 }
 
@@ -316,7 +323,8 @@ img {
     & .ant-menu-item-icon {
       margin-right: 6px;
 
-      & .anticon, & svg {
+      & .anticon,
+      & svg {
         display: block;
       }
     }

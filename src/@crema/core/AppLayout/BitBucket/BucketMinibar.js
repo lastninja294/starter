@@ -28,10 +28,10 @@ const BucketMinibar = () => {
           <img
             src={
               sidebarColorSet.mode === 'dark'
-                ? '/assets/images/logo-white.png'
-                : '/assets/images/logo.png'
+                ? '/assets/images/mainLogo.svg'
+                : '/assets/images/mainLogo.svg'
             }
-            alt='crema-logo'
+            alt='logo'
           />
         </a>
 

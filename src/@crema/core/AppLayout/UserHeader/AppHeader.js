@@ -13,12 +13,9 @@ import UserInfo from '../components/UserInfo';
 
 const AppHeader = ({isCollapsed, onToggleSidebar}) => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
+
   const menuMobile = (
     <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
       <AppLanguageSwitcher />
     </Menu>
   );
@@ -29,14 +26,9 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
         <AiOutlineMenu />
       </a>
       <AppLogo />
-      <Search
-        className='app-userHeader-search'
-        placeholder={messages['common.searchHere']}
-      />
+
       <div className='app-userHeader-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
       </div>
       <UserInfo />
       <div className='app-userHeader-section-mobile'>

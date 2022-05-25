@@ -12,13 +12,9 @@ import {FiMoreVertical} from 'react-icons/fi';
 
 const AppHeader = ({isCollapsed, onToggleSidebar}) => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
 
   const menuMobile = (
     <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
       <AppLanguageSwitcher />
     </Menu>
   );
@@ -33,15 +29,8 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
         },
       )}
       <AppLogo />
-
-      <Search
-        className='header-search-mini-sidebar'
-        placeholder={messages['common.searchHere']}
-      />
       <div className='app-header-mini-sidebar-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
       </div>
       <div className='app-header-mini-sidebar-section-mobile'>
         <Dropdown overlay={menuMobile} trigger={['click']}>

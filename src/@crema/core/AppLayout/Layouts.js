@@ -3,7 +3,6 @@ import MiniSidebar from './MiniSidebar';
 import DrawerLayout from './DrawerLayout';
 import Standard from './Standard';
 import BitBucket from './BitBucket';
-// import HorLightNav from './HorLightNav';
 import HorDarkLayout from './HorDarkLayout';
 import Default from './Default';
 import HeaderUserLayout from './UserHeader';

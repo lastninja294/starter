@@ -12,12 +12,9 @@ import {AiOutlineMenu} from 'react-icons/ai';
 
 const AppHeader = ({isCollapsed, onToggleSidebar}) => {
   const {Header} = Layout;
-  const {Search} = Input;
-  const {messages} = useIntl();
+
   const menuMobile = (
     <Menu>
-      <AppHeaderMessages />
-      <AppNotifications />
       <AppLanguageSwitcher />
     </Menu>
   );
@@ -28,14 +25,9 @@ const AppHeader = ({isCollapsed, onToggleSidebar}) => {
         <AiOutlineMenu />
       </a>
       <AppLogo />
-      <Search
-        className='standard-header-search'
-        placeholder={messages['common.searchHere']}
-      />
+
       <div className='app-standard-header-sectionDesktop'>
         <AppLanguageSwitcher />
-        <AppHeaderMessages />
-        <AppNotifications />
       </div>
       <div className='app-standard-header-section-mobile'>
         <Dropdown overlay={menuMobile} trigger={['click']}>
