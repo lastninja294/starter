@@ -4,7 +4,7 @@ import {Upload, Button, Input, Form, Space} from 'antd';
 // import axios from 'axios';
 import {PlusOutlined} from '@ant-design/icons';
 
-function ComposeCertificate() {
+function CreateCertificate() {
   const [isVisible, setIsVisible] = useState(false);
   const [fileList, setFileList] = useState([]);
   const [previewImage, setPreviewImage] = useState([]);
@@ -139,4 +139,4 @@ function ComposeCertificate() {
   );
 }
 
-export default ComposeCertificate;
+export default CreateCertificate;

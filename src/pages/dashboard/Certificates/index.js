@@ -3,21 +3,38 @@ import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import './index.styles.css';
 
 import {Typography} from 'antd';
-import ComposeCertificate from './ComposeCertificate';
-import CertificatesTable from './CertificatesTable';
+import {getAllCertificates} from 'hooks';
+import {CreateCertificate} from './components/';
+import CertificatesTable from './certificates-table';
+import Error404 from 'pages/errorPages/Error404';
+import {useHistory} from 'react-router-dom';
 
 const {Title} = Typography;
 
 const Certificates = () => {
+  const params = useHistory();
+  const searchParams = new URLSearchParams(params.location.search);
+
+  const {isLoading, data, isError, refetch, error} = getAllCertificates({
+    page: searchParams.get('page'),
+    size: searchParams.get('size'),
+  });
+
+  if (isError) return <Error404 />;
+
   return (
-    <>
-      <AppPageMetadata title='Certificates' />
+    <AppPageMetadata title='Certificates'>
       <div className='certificates-title-container'>
         <Title level={3}>Certificates Page</Title>
-        <ComposeCertificate />
+        <CreateCertificate />
       </div>
-      <CertificatesTable />
-    </>
+      <CertificatesTable
+        loading={isLoading}
+        data={data?.data}
+        refetch={refetch}
+        dataCount={data?.data?.count || 100}
+      />
+    </AppPageMetadata>
   );
 };
 
