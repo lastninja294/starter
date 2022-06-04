@@ -1,20 +1,17 @@
 import React, {useState} from 'react';
 import AppPageMetadata from '../../../@crema/core/AppPageMetadata';
 import EventsTable from './components/events-table/EventsTable';
-import isLoadingContext from './myContext/myContext';
 import EventCreate from './components/events-create/EventsCreate';
-
+import {Space} from 'antd';
 
 const Events = () => {
-  const [loader, setloader] = useState(false);
-
   return (
     <>
-      <isLoadingContext.Provider value={[loader, setloader]}>
-          <AppPageMetadata title='Events' />
+        <AppPageMetadata title='Events' />
+        <Space direction='vertical'>
           <EventCreate />
           <EventsTable />
-      </isLoadingContext.Provider>
+        </Space>
     </>
   );
 };

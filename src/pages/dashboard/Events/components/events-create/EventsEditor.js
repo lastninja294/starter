@@ -6,7 +6,7 @@ import './EventsCreate.styles.scss';
 // import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-const WysiwygEditor = ({control,placeholder, ...others}) => {
+const WysiwygEditor = ({control,placeholder,errors,allerrors, name, ...others}) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty(),
   );
@@ -15,25 +15,42 @@ const WysiwygEditor = ({control,placeholder, ...others}) => {
   };
 
   return (
-    <div className='events-editor-box'>
+    <>
       <Controller
+        control={control}
+        name={name}
+        defaultValue=''
         render={({field}) => (
           <>
-            <Editor
-              {...field}
-              editorState={editorState}
-              onEditorStateChange={handleEditorChange}
-              wrapperClassName='wrapper-class'
-              editorClassName='editor-class'
-              toolbarClassName='toolbar-class'
-              placeholder={placeholder}
-            />
+            <label
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                margin: '10px 0',
+              }}>
+              deccription
+              <div className='events-editor-box'>
+                <Editor
+                  {...field}
+                  editorState={editorState}
+                  onEditorStateChange={handleEditorChange}
+                  wrapperClassName='wrapper-class'
+                  editorClassName='editor-class'
+                  toolbarClassName='toolbar-class'
+                  placeholder={placeholder}
+                />
+              </div>
+            </label>
           </>
         )}
-        control={control}
         {...others}
       />
-    </div>
+      {allerrors && (
+        <p style={{fontSize: '12px', color: 'red'}}>
+          {errors?.message || "I Barcha maydonlar to'ldirilishi lozim !"}
+        </p>
+      )}
+    </>
   );
 };
 

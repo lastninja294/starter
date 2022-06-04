@@ -32,7 +32,6 @@
       background-color: black;
       border-radius: 20px;
       object-fit: cover;
-      cursor: pointer;
     }
     .media-video-icon {
       font-size: 2em;
@@ -41,7 +40,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #ffff;
-      pointer-events: none;
+      // cursor: pointer;
+      pointer-events: none; 
     }
   }
 
@@ -52,7 +52,8 @@
       left: -2px;
       z-index: 999;
       &:before {
-        color: #be8658;
+        color: #8c4356;
+        
       }
     }
     .slick-next {
@@ -60,7 +61,7 @@
       right: -2px;
       z-index: 999;
       &:before {
-        color: #be8658;
+        color: #8c4356;
       }
     }
   }
@@ -79,13 +80,13 @@
         width: 12px;
         height: 12px;
         font-size: 10px;
-        color: #be8658;
+        color: #8c4356;
       }
     }
   }
 
   & .slick-dots li.slick-active button:before {
-    color: #825a44;
+    color: #8c4356;
   }
 }
 
@@ -98,7 +99,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   margin-bottom: 4px;
-  color: #111827;
-  font-weight: 500;
+  color: rgb(110, 110, 110);
   font-size: 14px;
 }

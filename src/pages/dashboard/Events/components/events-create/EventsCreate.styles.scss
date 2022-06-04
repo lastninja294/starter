@@ -1,7 +1,7 @@
 @mixin borderBox {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  margin: 5px 0;
+
   padding: 10px;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -11,19 +11,21 @@
   padding: 0 24px;
 }
 .events-create-box {
-  list-style: none;
   @include borderBox();
+  list-style: none;
+  margin: 5px 0;
   &:hover {
-    border-color: #31abe8;
     border-right-width: 1px !important;
+    border-color: #8c4356;
+    box-shadow: 0 0 0 2px rgb(127 41 65 / 20%);
+    border-right-width: 1px;
     outline: 0;
-    box-shadow: 0 0 0 2px rgb(10 143 220 / 20%);
   }
 }
 .events-editor-box {
   @include borderBox();
   &:hover {
-    border-color: #31abe8;
+    border-color: #8c4356;
     border-right-width: 1px !important;
     outline: 0;
   }
@@ -46,6 +48,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .events-modal-footer-item {
+    width: 100%;
+    align-self: flex-end;
+  }
 }
 .events-upload {
   .ant-upload-list {
@@ -56,5 +62,10 @@
   }
   .ant-upload-list-item {
     margin-right: 10px;
+  }
+}
+.events-fields {
+  .ant-tabs {
+    overflow: unset;
   }
 }
