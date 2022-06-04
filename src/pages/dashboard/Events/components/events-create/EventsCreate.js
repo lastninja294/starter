@@ -6,7 +6,7 @@ function EventCreate() {
   const [visible, setVisible] = useState(false);
 
   const onCreate = (values) => {
-    console.log('Received values of form: ', values);
+    console.log('Received values of form:===== ', values);
     setVisible(false);
   };
 
@@ -14,7 +14,6 @@ function EventCreate() {
     <div>
       <Button
         type='primary'
-        style={{margin: '1em 0'}}
         onClick={() => {
           setVisible(true);
         }}>

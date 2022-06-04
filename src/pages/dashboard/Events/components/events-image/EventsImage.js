@@ -12,14 +12,12 @@ function EventsImage() {
         style={{padding: 0, margin: '0 .5em'}}>
         <IoImageOutline style={{fontSize: '1.3em'}} />
       </Button>
-      <div style={{display: 'none'}}>
         <Image.PreviewGroup
           preview={{visible, onVisibleChange: (vis) => setVisible(vis)}}>
-          {/* {item.map((img, i) => (
-            <Image src={img} key={i} />
+          {/* {item.map((imgUrl, index) => (
+            <Image src={imgUrl} key={iindex} />
           ))} */}
         </Image.PreviewGroup>
-      </div>
     </>
   );
 }

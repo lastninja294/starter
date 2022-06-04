@@ -1,8 +1,8 @@
 import {Button, Modal} from 'antd';
 import React, {useState, useRef, memo} from 'react';
-import {AiOutlineVideoCamera} from 'react-icons/ai';
 import './EventsVideo.styles.scss';
 import Slider from 'react-slick';
+import {AiOutlineVideoCamera} from 'react-icons/ai';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {FaPlay} from 'react-icons/fa';

@@ -1,42 +1,11 @@
-import React, {useContext, useEffect, memo} from 'react';
+import React, {memo} from 'react';
 import {Popconfirm, Button} from 'antd';
 import {AiOutlineDelete} from 'react-icons/ai';
-import isLoadingContext from '../../myContext/myContext';
-import {useMutation, useQueryClient} from 'react-query';
 import {message} from 'antd';
-import axios from 'axios';
+import {deleteEvents} from 'hooks';
 
-function EventsDelete({item}) {
-  const [, setloader] = useContext(isLoadingContext);
-  const queryClient = useQueryClient();
-
-  const {mutateAsync, isLoading} = useMutation(
-    async () =>
-      await axios.delete(
-        `https://axiosuchunsinovapi.herokuapp.com/staff/${item.id}`,
-      ),
-    {
-      onSuccess: () => {
-        message.success("muvaffaqiyatli o'chirildi !");
-        // <refresh all data>
-        queryClient.invalidateQueries('event');
-        // </refresh all data>
-      },
-      onError: () => {
-        message.error('nimadir xato !');
-      },
-    },
-  );
-  // < /delete data>
-
-  useEffect(() => {
-    setloader(isLoading);
-  }, [isLoading]);
-
-  // useEffect(() => {
-  //   console.log(isSuccess, 'isSuccess');
-  //   setloader(isSuccess);
-  // }, [isSuccess]);
+function EventsDelete({item, refetch}) {
+  const {mutateAsync, isLoading} = deleteEvents(item.id);
 
   return (
     <>
@@ -44,9 +13,20 @@ function EventsDelete({item}) {
         title='Sure to delete?'
         placement='topRight'
         onConfirm={() => {
-          mutateAsync();
+          mutateAsync()
+            .then(() => {
+              message.success("muvaffaqiyatli o'chirildi !");
+              refetch();
+            })
+            .catch((error) => {
+              message.error(error.message);
+            });
         }}>
-        <Button type='link' danger style={{padding: 0, margin: '0 .5em'}}>
+        <Button
+          type='link'
+          danger
+          style={{padding: 0, margin: '0 .5em'}}
+          loading={isLoading}>
           <AiOutlineDelete style={{fontSize: '1.3em'}} />
         </Button>
       </Popconfirm>
