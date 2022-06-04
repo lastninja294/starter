@@ -15,7 +15,7 @@ const Certificates = () => {
   const params = useHistory();
   const searchParams = new URLSearchParams(params.location.search);
 
-  const {isLoading, data, isError, refetch, error} = getAllCertificates({
+  const {isLoading, data, isError, refetch} = getAllCertificates({
     page: searchParams.get('page'),
     size: searchParams.get('size'),
   });

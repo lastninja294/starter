@@ -1,19 +1,15 @@
 import React from 'react';
 import {Table} from 'antd';
-import {useHistory} from 'react-router-dom';
 import QueryPagination from 'pages/Pagination';
 
-import {columns} from './table-columns'
+import {columns} from './table-columns';
 
-function CertificatesTable({loading, data, dataCount}) {
-  const history = useHistory();
-  
-  
+function CertificatesTable({loading, data, dataCount, refetch}) {
   return (
     <>
       <Table
         rowKey='id'
-        columns={columns}
+        columns={columns(refetch)}
         loading={loading}
         dataSource={data}
         pagination={false}
