@@ -3,6 +3,7 @@ import Modal from 'antd/lib/modal/Modal';
 import {Upload, Button, Input, Form, Space} from 'antd';
 // import axios from 'axios';
 import {PlusOutlined} from '@ant-design/icons';
+import {CreateButton} from 'pages/dashboard/shared';
 
 function CreateCertificate() {
   const [isVisible, setIsVisible] = useState(false);
@@ -80,9 +81,7 @@ function CreateCertificate() {
 
   return (
     <div>
-      <Button type='primary' onClick={showModal}>
-        Create
-      </Button>
+      <CreateButton onClick={showModal} />
 
       <Modal
         title='Create Certificate'
